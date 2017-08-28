@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<title>CS/ECE 5584: Network Security, Fall 2017</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: lightgray;
+    color: black;
+}
+
+.tabstyle { display: inline-block; width: 150px; }
+
+</style>
+<body>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-black w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>Network<br>Security</b></h3>
+  </div>
+  <div class="w3-bar-block">
+    <a href="#Announcements" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Announcements</a> 
+    <a href="#Syllabus" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Syllabus</a> 
+    <a href="#Schedule" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Schedule</a> 
+    <a href="#Projects" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Projects</a> 
+    <a href="#Ethics" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Ethics</a> 
+  </div>
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-black w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-black w3-margin-right" onclick="w3_open()">☰</a>
+  <span>Network Security</span>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+  <!-- Header -->
+  <div class="w3-container" style="margin-top:80px" id="showcase">
+    <h1 class="w3-jumbo"><b>CS/ECE 5584: Network Security, Fall 2017</b></h1>
+    <h2 class="w3-xlarge">
+
+    <p>
+      <b>
+      <span class="tabstyle">Instructor:   </span>   <span class="c"><a href="http://ningzhang.info" target="_blank" class="w3-hover-opacity">Ning Zhang</a>, ningzh@vt.edu </span> <br>
+      <span class="tabstyle">Meeting:      </span>   <span class="c">Monday 4:00 pm - 6:45</span> <br>
+      <span class="tabstyle">Classroom:    </span>   <span class="c">NVC 207 / Torgersen Hall 1100C</span>
+      </b>
+    </p>
+
+    </h2>
+  </div>
+
+  <div class="w3-container" id="Announcements" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-gray"><b>Announcements</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p> Aug 27 &emsp; Course Website is up </p>
+  </div>
+  
+
+
+  <div class="w3-container" id="Syllabus" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-gray"><b>Syllabus</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <a href="CS.ECE.5584_Syllabus.pdf" target="_blank" class="w3-hover-opacity">Syllabus in PDF</a>
+
+    <!-- <h1 class="w3-xxlarge w3-text-gray"><b>Syllabus.</b></h1> -->
+  </div>
+  
+
+  <div class="w3-container" id="Schedule" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-gray"><b>Schedule</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+
+<table>
+<tr>
+<td> Weeks </td> <td> Topics </td> 
+</tr>
+
+<tr>
+<td> 08.28.17    </td>
+<td>  
+Class Introduction and Logistics              <br>
+ Security Fundamentals - Threat Model and Security Objectives  </td>
+</tr>
+
+<tr>
+<td> 09.04.17    </td>
+<td>    Labor Day - No Class </td>
+</tr>
+
+
+<tr>
+<td>
+09.11.17    
+<!-- </td><td> Network Security Fundamentals - Threat Model  and Security Objectives <br> -->
+</td><td> Cryptography Review - Symmetric Key Cryptography     </td>
+</tr>
+
+<tr>        
+<td> 09.18.17     </td>
+<td>  Cryptography Review - Asymmetric Key Cryptography   <br>
+      <em>Class Project Proposal </em>                    </td>
+</tr>
+
+
+<tr>
+<td>
+09.25.17    </td><td>  User Authentication                     </td>
+</tr>
+
+<tr>
+<td>
+10.02.17    </td><td>   IPSec                       </td>
+</tr>
+<tr>
+
+<td>
+10.09.17    
+</td><td>   No Class, Project Individual Meeting              </td>
+        
+</tr>
+<tr>
+
+<td>
+10.16.17    
+</td><td> SSL/TLS                       </td>             
+        
+</tr>
+<tr>
+
+<td>
+10.23.17     
+</td><td>       Public Key Infrastructures, HTTPS and E-mail      <br>
+<em> Class Project Progress Report </em>            </td>
+</tr>
+<tr>
+
+<td>
+10.30.17    
+</td><td>     Wireless security                     </td>
+</tr>
+<tr>
+
+<td>
+11.06.17   
+</td><td>  Network Fingerprinting, Firewalls and Network Intrusion Detection  </td>
+</tr>
+<tr>
+
+<td>
+11.13.17     
+</td><td>  Denial of Service      </td>
+</tr>
+<tr>
+
+<td>
+11.27.17     
+</td><td>   Network Malware - Bots and Worms  </td>
+</tr>
+<tr>
+
+<td>
+12.04.17     
+</td><td>  Anonymous Communication and Anti-Censorship      </td>
+</tr>
+<tr>
+
+<td>
+12.11.17     </td><td>    <em> Class Project Presentation </em>  </td>
+</tr>
+<tr>
+
+<td>
+12.20.17   
+</td><td>   <em> Class Project Writeup Due </em>   </td>
+ </tr>
+
+ </table>
+
+  </div>
+
+  <div class="w3-container" id="Projects" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-gray"><b>Project</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <h2> Project Ideas </h2>
+    
+    <ul>
+      <li> Methods to discover IoT device in the Internet </li>
+    </ul>
+    
+    <h2>Project Assignments</h2>
+    
+  </div>
+
+
+
+  <div class="w3-container" id="Announcements" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-gray"><b>Ethics</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p> With greater power, comes greater responsibility. In this course, we will be learning about and exploring some vulnerabilities that could be used to attack systems. Students are expected to behave responsibly and ethically. You may not attack any system prior approval of the site owners, and may not use anything you learn in this class to disrupt services or harm others. If you have any doubts about whether or not something you want to do is ethical and legal, you should check with the course instructor.</p>
+  </div>
+  
+
+
+<!-- End page content -->
+</div>
+
+<!-- W3.CSS Container -->
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px">
+<p class="w3-right"> CS/ECE 5584: Network Security, Fall 2017, <a href="http://ningzhang.info" target="_blank" class="w3-hover-opacity">Ning Zhang</a>
+</p></div>
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+</script>
+
+</body>
+</html>
