@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+
 <style>
 body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
 body {font-size:16px;}
@@ -25,13 +26,13 @@ th, td {
 tr:nth-child(even){background-color: #f2f2f2}
 
 th {
-    background-color: lightgray;
-    color: black;
+    background-color: #990000;
+    color: white;
 }
 
 .tabstyle { display: inline-block; width: 150px; }
-
 </style>
+
 <body>
 
 <!-- Sidebar/menu -->
@@ -41,12 +42,13 @@ th {
     <h3 class="w3-padding-64"><b>Network<br>Security</b></h3>
   </div>
   <div class="w3-bar-block">
-    <a href="#Announcements" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Announcements</a> 
-    <a href="#Syllabus" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Syllabus</a> 
-    <a href="#Schedule" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Schedule</a> 
-    <a href="#Projects" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Projects</a> 
-    <a href="#Readings" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Readings</a> 
-    <a href="#Ethics" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Ethics</a> 
+    <a href="#Announcements"   onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Announcements</a> 
+    <a href="#Syllabus"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Syllabus</a> 
+    <a href="#Schedule"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Schedule</a> 
+    <a href="#Projects"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Projects</a> 
+    <a href="#Readings"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Readings</a>
+    <a href="blogs/index.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Blogs</a>  
+    <a href="#Ethics"          onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Ethics</a> 
   </div>
 </nav>
 
@@ -64,13 +66,13 @@ th {
 
   <!-- Header -->
   <div class="w3-container" style="margin-top:80px" id="showcase">
-    <h1 class="w3-jumbo"><b>CS/ECE 5584: Network Security, Fall 2017</b></h1>
+    <h1 class="w3-xxxlarge"><b>CS/ECE 5584: Network Security, Fall 2017</b></h1>
     <h2 class="w3-xlarge">
 
     <p>
       <b>
       <span class="tabstyle">Instructor:   </span>   <span class="c"><a href="http://ningzhang.info" target="_blank" class="w3-hover-opacity">Ning Zhang</a>, ningzh@vt.edu </span> <br>
-      <span class="tabstyle">Meeting:      </span>   <span class="c">Monday 4:00 pm - 6:45</span>          <br>
+      <span class="tabstyle">Meeting:      </span>   <span class="c">Monday 4:00 pm - 6:45 pm</span>          <br>
       <span class="tabstyle">Classroom:    </span>   <span class="c">NVC 207 / Torgersen Hall 1100C</span> <br>
       <span class="tabstyle">Slack:        </span>   <span class="c">networksecurityvt.slack.com</span>
       </b>
@@ -81,7 +83,7 @@ th {
 
   <div class="w3-container" id="Announcements" style="margin-top:75px">
     <h1 class="w3-xxxlarge w3-text-gray"><b>Announcements</b></h1>
-    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <hr style="width:50px;border:5px solid #990000" class="w3-round">
     <p> Aug 27 &emsp; Course Website is up </p>
   </div>
   
@@ -89,7 +91,7 @@ th {
 
   <div class="w3-container" id="Syllabus" style="margin-top:75px">
     <h1 class="w3-xxxlarge w3-text-gray"><b>Syllabus</b></h1>
-    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <hr style="width:50px;border:5px solid #990000" class="w3-round">
     <a href="CS.ECE.5584_Syllabus.pdf" target="_blank" class="w3-hover-opacity">Syllabus in PDF</a>
 
     <!-- <h1 class="w3-xxlarge w3-text-gray"><b>Syllabus.</b></h1> -->
@@ -98,11 +100,11 @@ th {
 
   <div class="w3-container" id="Schedule" style="margin-top:75px">
     <h1 class="w3-xxxlarge w3-text-gray"><b>Schedule</b></h1>
-    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <hr style="width:50px;border:5px solid #990000" class="w3-round">
 
 <table>
 <tr>
-<td> Weeks </td> <td> Topics </td> 
+<th> Weeks </th> <th> Topics </th> 
 </tr>
 
 <tr>
@@ -210,11 +212,11 @@ Class Introduction and Logistics              <br>
 
   <div class="w3-container" id="Projects" style="margin-top:75px">
     <h1 class="w3-xxxlarge w3-text-gray"><b>Project</b></h1>
-    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <hr style="width:50px;border:5px solid #990000" class="w3-round">
     <h2> Project Ideas </h2>
     
     <ul>
-      <li> Build an to IoT device locator in the Internet using tools from 
+      <li> Build an IoT device locator in the Internet using tools from 
       <a href="https://github.com/zmap/" target="_blank" class="w3-hover-opacity">Zmap</a> 
       project</li>
     </ul>
@@ -222,7 +224,7 @@ Class Introduction and Logistics              <br>
     <h2>Project Assignments</h2>
       <table>
       <tr>
-      <td> Teams </td> <td> Project Name </td> 
+      <th> Teams </th> <th> Project Name </th> 
       </tr>
 
       <tr>
@@ -240,32 +242,238 @@ Class Introduction and Logistics              <br>
 
   <div class="w3-container" id="Readings" style="margin-top:75px">
     <h1 class="w3-xxxlarge w3-text-gray"><b>Readings</b></h1>
-    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <hr style="width:50px;border:5px solid #990000" class="w3-round">
     
     <h2 class="w3-xlarge w3-text-black"><b>Security Fundamentals</b></h1>
     <p>
-    Ken Thompson, <i> Reflections on Trusting Trust </i>, Communications of the ACM, 1984    
-    <a href="paper/p761-thompson.pdf" target="_blank" class="w3-hover-opacity">PDF</a> <br>
+    
+    Ken Thompson, 
+    <b><i> Reflections on Trusting Trust </i></b>, 
+    Communications of the ACM, 1984    
+    <a href="paper/p761-thompson.pdf" target="_blank" class="w3-hover-opacity">PDF</a> 
+    <br>
 
-    Aleph One, <i> Smashing The Stack For Fun And Profit </i>, Phrack 49
-    <a href="paper/stack_smashing.pdf" target="_blank" class="w3-hover-opacity">PDF</a> <br>    
+    <br>
+    Aleph One, 
+    <b><i> Smashing The Stack For Fun And Profit </i></b>, 
+    Phrack 49
+    <a href="paper/stack_smashing.pdf" target="_blank" class="w3-hover-opacity">PDF</a> 
+    <br>    
+    
+    <br>
+    Daniel Bernstein, 
+    <i><b>Cache-timing attack</b></i>,
+    <a href="paper/cachetiming-20050414.pdf" target="_blank" class="w3-hover-opacity">PDF</a> 
+    <br>
+
+    <br>
+    David Adrian, Karthikeyan Bhargavan, Zakir Durumeric, Pierrick Gaudry, Matthew Green, J. Alex Halderman, Nadia Heninger, Drew Springall, Emmanuel Thomé, Luke Valenta, Benjamin VanderSloot, Eric Wustrow, Santiago Zanella-Béguelin, and Paul Zimmermann. 
+    <b><i>Imperfect Forward Secrecy: How Diffie-Hellman Fails in Practice. </i></b>
+    22nd ACM Conference on Computer and Communications Security (CCS ’15), October 2015. 
+    <a href="paper/sp17-neuralNetRobustness.pdf" target="_blank" class="w3-hover-opacity">PDF</a>, 
+    <a href="https://weakdh.org/" target="_blank" class="w3-hover-opacity">Website</a> 
+    <br>
+
+    <br>
+    Nimrod Aviram, Sebastian Schinzel, Juraj Somorovsky, Nadia Heninger, Maik Dankel, Jens Steube, Luke Valenta, David Adrian, J. Alex Halderman, Viktor Dukhovni, Emilia Käsper, Shaanan Cohney, Susanne Engels, Christof Paar, and Yuval Shavitt. 
+    <b><i>DROWN: Breaking TLS using SSLv2. </i></b>
+    25th USENIX Security Symposium, Austin, TX, August 2016. 
+    <a href="https://drownattack.com/drown-attack-paper.pdf" target="_blank" class="w3-hover-opacity">PDF</a>, 
+    <a href="https://drownattack.com/" target="_blank" class="w3-hover-opacity"> Website </a>
+    <br>
+
+    <br>
+    Nicholas Carlini, David Wagner, 
+    <b><i> Towards Evaluating the Robustness of Neural Networks </i></b>, 
+    <a href="paper/sp17-neuralNetRobustness.pdf" target="_blank" class="w3-hover-opacity">PDF</a>, 
+    <a href="https://www.youtube.com/watch?v=yIXNL88JBWQ&feature=youtu.be" target="_blank" class="w3-hover-opacity">YouTube</a> 
+    <br>
+
+    <br>
+    Y. Sheffer, et al., 
+    <i> RFC on known attacks: Summarizing Known Attacks on Transport Layer Security (TLS) and Datagram TLS (DTLS)</i>, RFC 7457. February 2015. 
+    <a href="paper/stack_smashing.pdf" target="_blank" class="w3-hover-opacity">PDF</a>
+    <br>
+
+    <br>
+    Karthikeyan Bhargavan, Cédric Fournet, Markulf Kohlweiss, Alfredo Pironti, Pierre-Yves Strub. 
+    <b><i>Implementing TLS with Verified Cryptographic Security </i></b>,
+    IEEE Symposium on Security and Privacy (Oakland), 2013. 
+    <a href="http://www.ieee-security.org/TC/SP2013/papers/4977a445.pdf" target="_blank" class="w3-hover-opacity">PDF</a> 
+    <br>   
+
+    <br>
+    Martin Georgiev, Subodh Iyengar, Suman Jana, Rishita Anubhai, Dan Boneh, Vitaly Shmatikov. 
+    <b><i>
+    The Most Dangerous Code in the World: Validating SSL Certificates in Non-Browser Software. 
+    </i></b>
+    ACM CCS 2012. 
+    <a href="http://www.cs.utexas.edu/~shmat/shmat_ccs12.pdf" target="_blank" class="w3-hover-opacity">PDF</a> 
+    <br>
+
+    <br>
+    Suman Jana, Yuan Kang, Samuel Roth, and Baishakhi Ray. 
+    <b><i>
+    Automatically Detecting Error Handling Bugs using Error Specifications. 
+    </i></b>
+    USENIX Security 2016. 
+    <a href="https://www.usenix.org/system/files/conference/usenixsecurity16/sec16_paper_jana.pdf" target="_blank" class="w3-hover-opacity">PDF</a> 
+    <br>
+  
+
+    <br>
+    Jeremy Clark and Paul C. van Oorschot. 
+    <b><i>
+    SoK: SSL and HTTPS: Revisiting past challenges and evaluating certificate trust model enhancements. 
+    </i></b>
+    IEEE Symposium on Security and Privacy (Oakland) 2013. 
+    <a href="http://citeseerx.ist.psu.edu/viewdoc/download;jsessionid=7F08E4E035A8FEA6F82AF179D2234B68?doi=10.1.1.391.1736&rep=rep1&type=pdf" target="_blank" class="w3-hover-opacity">PDF</a>
+    <br>
+    
+
+    <br>
+    Zakir Durumeric, Zane Ma, Drew Springall, Richard Barnes, Nick Sullivan, Elie Bursztein, Michael Bailey, J. Alex Halderman, Vern Paxson. 
+    <b><i>
+    The Security Impact of HTTPS Interception. 
+    </i></b>
+    NDSS 2017. 
+    <a href="https://www.internetsociety.org/sites/default/files/ndss2017_04A-4_Durumeric_paper_0.pdf" target="_blank" class="w3-hover-opacity">PDF</a>
+    <a href="https://www.internetsociety.org/sites/default/files/ndss2017-04a_4-durumeric_slides.pdf" target="_blank" class="w3-hover-opacity">Slides</a>
+    <br>
+
+    <br>
+    Jens Müller, Vladislav Mladenov, Juraj Somorovsky, Jörg Schwenk.
+    <b><i>
+    SoK: Exploiting Network Printers.   
+    </i></b>
+    IEEE Symposium on Security and Privacy (Oakland) 2017. 
+    <a href="https://www.ieee-security.org/TC/SP2017/papers/64.pdf" target="_blank" class="w3-hover-opacity">PDF</a>
+    <br>
 
 
-    </p>
+    <br>
+    Reza Shokri, Marco Stronati, Congzheng Song, Vitaly Shmatikov. 
+    <b><i>
+    Membership Inference Attacks Against Machine Learning Models.
+    </i></b>
+    IEEE Symposium on Security and Privacy (Oakland) 2017. 
+    <a href="https://arxiv.org/pdf/1610.05820.pdf" target="_blank" class="w3-hover-opacity">PDF</a>
+    <br>
 
 
 
-    <p>
+    <br>
+    Ruba Abu-Salma, M. Angela Sasse, Joseph Bonneau, Anastasia Danilova, Alena Naiakshina, Matthew Smith.
+    <b><i>
+    Obstacles to the Adoption of Secure Communication Tools.
+    </i></b>
+    IEEE Symposium on Security and Privacy (Oakland) 2017. 
+    <a href="http://mattsmith.de/pdfs/messaging_obstacles.pdf" target="_blank" class="w3-hover-opacity">PDF</a>
+    <br>
 
-    Daniel Bernstein, Cache-timing attack, 
-    <a href="paper/abc.pdf" target="_blank" class="w3-hover-opacity">PDF</a> <br> 
 
-    Karthikeyan Bhargavan, Cédric Fournet, Markulf Kohlweiss, Alfredo Pironti, Pierre-Yves Strub. Implementing TLS with Verified Cryptographic Security IEEE Symposium on Security and Privacy (Oakland), 2013. 
-     <a href="paper/abc.pdf" target="_blank" class="w3-hover-opacity">PDF</a> <br>   
+<!--     <br>
+    
+    <b><i>
+    
+    </i></b>
+   
+    <a href="     " target="_blank" class="w3-hover-opacity">PDF</a>
+    <br>
+ -->
+ 
+
+<!-- 
 
 
 
-    </p>
+XHOUND: Quantifying the Fingerprintability of Browser Extensions
+
+SoK: Science, Security, and the Elusive Goal of Security as a Scientific Pursuit
+
+
+Under the Shadow of Sunshine: Understanding and Detecting Bulletproof Hosting on Legitimate Service Provider Networks
+
+Implementing and Proving the TLS 1.3 Record Layer
+
+CoSMeDis: A Distributed Social Media Platform with Formally Verified Confidentiality Guarantees
+
+SymCerts: Practical Symbolic Execution For Exposing Noncompliance in X.509 Certificate Validation Implementations
+
+A Lustrum of Malware Network Communication: Evolution and Insights
+
+Counter-RAPTOR: Safeguarding Tor Against Active Routing Attacks
+
+Augur: Internet-Wide Detection of Connectivity Disruptions
+
+side channels
+From trash to treasure: timing-sensitive garbage collection
+
+Wenbo Yang, Yuanyuan Zhang, Juanru Li, Hui Liu, Qing Wang, Yueheng Zhang, Dawu Gu
+Show Me the Money! Finding Flawed
+Implementations of Third-party In-app Payment
+in Android Apps
+https://www.internetsociety.org/sites/default/files/ndss2017_05A-2_Yang_paper.pdf
+
+
+Internet-scale Probing of CPS: Inference, Characterization and Orchestration Analysis
+
+(Cross-)Browser Fingerprinting via OS and Hardware Level Features
+
+Hello from the Other Side: SSH over Robust Cache Covert Channels in the Cloud
+
+Hey, My Malware Knows Physics!
+Attacking PLCs with Physical Model Aware Rootkit
+
+Wi-Fly? : Detecting Privacy Invasion Attacks by
+Consumer Drones
+
+6thSense: A Context-aware Sensor-based Attack Detector for Smart Devices
+
+Sebastian Angel, Srinath Setty,
+Unobservable Communication over Fully
+Untrusted Infrastructure
+https://www.usenix.org/system/files/conference/osdi16/osdi16-angel.pdf
+
+Vale: Verifying High-Performance Cryptographic Assembly Code
+
+A Longitudinal, End-to-End View of the DNSSEC Ecosystem
+
+CLKSCREW: Exposing the Perils of Security-Oblivious Energy Management
+
+Detecting Credential Spearphishing in Enterprise Settings
+
+SoK: Secure Data Deletion
+SoK: SSL and HTTPS: Revisiting Past Challenges and Evaluating Certificate Trust Model Enhancements
+SoK: P2PWNED — Modeling and Evaluating the Resilience of Peer-to-Peer Botnets
+SoK: Eternal War in Memory
+SoK: (State of) The Art of War: Offensive Techniques in Binary Analysis
+SoK: Lessons Learned From Android Security Research For Appified Software Platforms 
+SoK: Towards Grounding Censorship Circumvention in Empiricism 
+SoK: Deep Packer Inspection: A Longitudinal Study of the Complexity of Run-Time Packers
+SoK: Security and Privacy in Implantable Medical Devices and Body Area Networks
+SoK: Introspections on Trust and the Semantic Gap
+ -->
+
+<br>
+Niels Ferguson, Bruce Schneier
+<b><i>A Cryptographic Evaluation of IPsec</i></b>
+<a href="https://www.schneier.com/academic/paperfiles/paper-ipsec.pdf" target="_blank" class="w3-hover-opacity">PDF</a>
+<br>
+
+<!--     <br>
+    
+    <b><i>
+    
+    </i></b>
+   
+    <a href="     " target="_blank" class="w3-hover-opacity">PDF</a>
+    <br>
+ -->
+
+
+</p>
+
 
 
   </div>
@@ -274,7 +482,7 @@ Class Introduction and Logistics              <br>
 
   <div class="w3-container" id="Ethics" style="margin-top:75px">
     <h1 class="w3-xxxlarge w3-text-gray"><b>Ethics</b></h1>
-    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <hr style="width:50px;border:5px solid #990000" class="w3-round">
     <p> With greater power, comes greater responsibility. In this course, we will be learning about and exploring some vulnerabilities that could be used to attack systems. Students are expected to behave responsibly and ethically. You may not attack any system prior approval of the site owners, and may not use anything you learn in this class to disrupt services or harm others. If you have any doubts about whether or not something you want to do is ethical and legal, you should check with the course instructor.</p>
   </div>
 
