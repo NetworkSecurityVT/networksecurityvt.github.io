@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<!-- saved from url=(0102)https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="https://yangsecurity.wordpress.com/xmlrpc.php">
+
+<title>Can You Fool an AI? A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang</title>
+<link rel="dns-prefetch" href="https://s2.wp.com/">
+<link rel="dns-prefetch" href="https://s0.wp.com/">
+<link rel="dns-prefetch" href="https://s1.wp.com/">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+<link rel="alternate" type="application/rss+xml" title="You are Secure with Yang » Feed" href="https://yangsecurity.wordpress.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="You are Secure with Yang » Comments Feed" href="https://yangsecurity.wordpress.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="You are Secure with Yang » Can You Fool an AI? A Beginner’s Guide to Adversarial Machine Learning Comments Feed" href="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/feed/">
+	<script type="text/javascript">
+		/* <![CDATA[ */
+		function addLoadEvent(func) {
+			var oldonload = window.onload;
+			if (typeof window.onload != 'function') {
+				window.onload = func;
+			} else {
+				window.onload = function () {
+					oldonload();
+					func();
+				}
+			}
+		}
+		/* ]]> */
+	</script>
+			<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/72x72\/","ext":".png","svgUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/s0.wp.com\/wp-includes\/js\/wp-emoji-release.min.js?m=1505864856h&ver=4.8.2"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,56826,8203,55356,56819),0,0),c=j.toDataURL(),b!==c&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55358,56794,8205,9794,65039),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55358,56794,8203,9794,65039),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/wp-emoji-release.min.js.download" type="text/javascript" defer=""></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="all-css-0-1" href="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/saved_resource" type="text/css" media="all">
+<style id="wpcom-admin-bar-inline-css" type="text/css">
+.goog-te-banner-frame { top:32px !important }
+</style>
+<link rel="stylesheet" id="kelly-fonts-css" href="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/css" type="text/css" media="all">
+<link rel="stylesheet" id="all-css-2-1" href="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/saved_resource(1)" type="text/css" media="all">
+<link rel="stylesheet" id="print-css-3-1" href="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/global-print.css" type="text/css" media="print">
+<link rel="stylesheet" id="all-css-4-1" href="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/saved_resource(2)" type="text/css" media="all">
+<script type="text/javascript" src="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/saved_resource(3)"></script><style type="text/css"></style>
+<link rel="stylesheet" id="all-css-0-2" href="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/style.css" type="text/css" media="all">
+<!--[if lt IE 8]>
+<link rel='stylesheet' id='highlander-comments-ie7-css'  href='https://s1.wp.com/wp-content/mu-plugins/highlander-comments/style-ie7.css?m=1351637563h&#038;ver=20110606' type='text/css' media='all' />
+<![endif]-->
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://yangsecurity.wordpress.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://s1.wp.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="A Glance at Internet-of-Things Security" href="https://yangsecurity.wordpress.com/2017/09/24/first-blog-post/">
+<meta name="generator" content="WordPress.com">
+<link rel="canonical" href="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/">
+<link rel="shortlink" href="http://wp.me/p9djDK-k">
+<link rel="alternate" type="application/json+oembed" href="https://public-api.wordpress.com/oembed/?format=json&amp;url=https%3A%2F%2Fyangsecurity.wordpress.com%2F2017%2F09%2F24%2Fcan-you-fool-ai-a-guide-to-adversarial-machine-learning%2F&amp;for=wpcom-auto-discovery"><link rel="alternate" type="application/xml+oembed" href="https://public-api.wordpress.com/oembed/?format=xml&amp;url=https%3A%2F%2Fyangsecurity.wordpress.com%2F2017%2F09%2F24%2Fcan-you-fool-ai-a-guide-to-adversarial-machine-learning%2F&amp;for=wpcom-auto-discovery">
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Can You Fool an AI? A Beginner’s Guide to Adversarial Machine Learning">
+<meta property="og:url" content="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/">
+<meta property="og:description" content="Let’s say you are a good friend of Professor Xavier and you want to build an AI for him so he won’t suffer from using the gigantic Cerebro machine. Just like what Prof. X can do with Ce…">
+<meta property="article:published_time" content="2017-09-24T21:55:34+00:00">
+<meta property="article:modified_time" content="2017-10-07T23:39:38+00:00">
+<meta property="og:site_name" content="You are Secure with Yang">
+<meta property="og:image" content="https://yangsecurity.files.wordpress.com/2017/09/poisoning-svm-example-9-vs-8.png">
+<meta property="og:image:secure_url" content="https://yangsecurity.files.wordpress.com/2017/09/poisoning-svm-example-9-vs-8.png">
+<meta property="og:image" content="https://yangsecurity.files.wordpress.com/2017/09/poisoning-svm-example-9-vs-8-percentage-of-attack-points2.png">
+<meta property="og:image:secure_url" content="https://yangsecurity.files.wordpress.com/2017/09/poisoning-svm-example-9-vs-8-percentage-of-attack-points2.png">
+<meta property="og:image" content="https://yangsecurity.files.wordpress.com/2017/09/membership-inference-black-box.png">
+<meta property="og:image:secure_url" content="https://yangsecurity.files.wordpress.com/2017/09/membership-inference-black-box.png">
+<meta property="og:image" content="https://yangsecurity.files.wordpress.com/2017/09/shadow-model.png">
+<meta property="og:image:secure_url" content="https://yangsecurity.files.wordpress.com/2017/09/shadow-model.png">
+<meta property="og:image" content="https://yangsecurity.files.wordpress.com/2017/09/membership-inference-attack-result.png">
+<meta property="og:image:secure_url" content="https://yangsecurity.files.wordpress.com/2017/09/membership-inference-attack-result.png">
+<meta property="og:image" content="https://yangsecurity.files.wordpress.com/2017/09/membership-inference-uncertainty-and-accuracy-of-different-number-of-classes.png">
+<meta property="og:image:secure_url" content="https://yangsecurity.files.wordpress.com/2017/09/membership-inference-uncertainty-and-accuracy-of-different-number-of-classes.png">
+<meta property="og:image" content="https://yangsecurity.files.wordpress.com/2017/09/three-properties2.png">
+<meta property="og:image:secure_url" content="https://yangsecurity.files.wordpress.com/2017/09/three-properties2.png">
+<meta property="og:image" content="https://yangsecurity.files.wordpress.com/2017/09/dogding-frs.png">
+<meta property="og:image:secure_url" content="https://yangsecurity.files.wordpress.com/2017/09/dogding-frs.png">
+<meta property="og:image" content="https://yangsecurity.files.wordpress.com/2017/09/impersonation.png">
+<meta property="og:image:secure_url" content="https://yangsecurity.files.wordpress.com/2017/09/impersonation.png">
+<meta property="og:image" content="https://yangsecurity.files.wordpress.com/2017/09/poisoning-svm-kernelized.png">
+<meta property="og:image:secure_url" content="https://yangsecurity.files.wordpress.com/2017/09/poisoning-svm-kernelized.png">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:site" content="@wordpressdotcom">
+<meta name="twitter:text:title" content="Can You Fool an AI? A Beginner’s Guide to Adversarial Machine Learning">
+<meta name="twitter:image0" content="https://yangsecurity.files.wordpress.com/2017/09/poisoning-svm-example-9-vs-8.png?w=640">
+<meta name="twitter:image1" content="https://yangsecurity.files.wordpress.com/2017/09/poisoning-svm-example-9-vs-8-percentage-of-attack-points2.png?w=640">
+<meta name="twitter:image2" content="https://yangsecurity.files.wordpress.com/2017/09/membership-inference-black-box.png?w=640">
+<meta name="twitter:image3" content="https://yangsecurity.files.wordpress.com/2017/09/shadow-model.png?w=640">
+<meta name="twitter:card" content="gallery">
+<meta property="fb:app_id" content="249643311490">
+<meta property="article:publisher" content="https://www.facebook.com/WordPresscom">
+<link rel="search" type="application/opensearchdescription+xml" href="https://yangsecurity.wordpress.com/osd.xml" title="You are Secure with Yang">
+<link rel="search" type="application/opensearchdescription+xml" href="https://s1.wp.com/opensearch.xml" title="WordPress.com">
+<meta name="application-name" content="You are Secure with Yang"><meta name="msapplication-window" content="width=device-width;height=device-height"><meta name="msapplication-tooltip" content="Author posts, manage comments, and manage You are Secure with Yang."><meta name="msapplication-task" content="name=Edit post;action-uri=https://wordpress.com/post/yangsecurity.wordpress.com/20;icon-uri=https://s2.wp.com/i/icons/post.ico"><meta name="msapplication-task" content="name=Write a post;action-uri=https://wordpress.com/post/yangsecurity.wordpress.com;icon-uri=https://s2.wp.com/i/icons/post.ico"><meta name="msapplication-task" content="name=Moderate comments;action-uri=https://yangsecurity.wordpress.com/wp-admin/edit-comments.php?comment_status=moderated;icon-uri=https://s0.wp.com/i/icons/comment.ico"><meta name="msapplication-task" content="name=Upload new media;action-uri=https://yangsecurity.wordpress.com/wp-admin/media-new.php;icon-uri=https://s2.wp.com/i/icons/media.ico"><meta name="msapplication-task" content="name=Blog stats;action-uri=https://yangsecurity.wordpress.com/wp-admin/index.php?page=stats;icon-uri=https://s1.wp.com/i/icons/stats.ico"><meta name="title" content="Can You Fool an AI? A Beginner’s Guide to Adversarial Machine Learning | You are Secure with Yang on WordPress.com">
+<meta name="description" content="Let&#39;s say you are a good friend of Professor Xavier and you want to build an AI for him so he won&#39;t suffer from using the gigantic Cerebro machine. Just like what Prof. X can do with Cerebro, your machine is expected to locate, recognize, and classify every mutants on the earth, and you are…">
+<link rel="amphtml" href="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/amp/"><style type="text/css" media="print">#wpadminbar { display:none; }</style>
+<style type="text/css" media="screen">
+	html { margin-top: 32px !important; }
+	* html body { margin-top: 32px !important; }
+	@media screen and ( max-width: 782px ) {
+		html { margin-top: 46px !important; }
+		* html body { margin-top: 46px !important; }
+	}
+</style>
+<style type="text/css" id="syntaxhighlighteranchor"></style>
+<link rel="icon" href="https://yangsecurity.files.wordpress.com/2017/09/logoyx.png?w=32" sizes="32x32">
+<link rel="icon" href="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/logoyx.png" sizes="192x192">
+<link rel="apple-touch-icon-precomposed" href="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/logoyx.png">
+<meta name="msapplication-TileImage" content="https://yangsecurity.files.wordpress.com/2017/09/logoyx.png?w=38">
+<link rel="stylesheet" type="text/css" id="gravatar-card-css" href="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/hovercard.css"><link rel="stylesheet" type="text/css" id="gravatar-card-services-css" href="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/services.css"></head>
+
+<body class="post-template-default single single-post postid-20 single-format-standard logged-in admin-bar no-customize-support mp6 customizer-styles-applied has-header highlander-enabled highlander-light">
+<div id="page" class="hfeed site">
+			<header id="masthead" class="site-header" role="banner" style="background-image: url( https://defaultcustomheadersdata.files.wordpress.com/2016/07/city1.jpg?resize=1200,250 );">
+		<div class="header-background"></div>
+		<div class="site-branding">
+			<h1 class="site-title"><a href="https://yangsecurity.wordpress.com/" rel="home">You are Secure with Yang</a></h1>
+			<h2 class="site-description"></h2>
+		</div>
+
+		<nav id="site-navigation" class="main-navigation" role="navigation">
+			<h1 class="menu-toggle">Menu</h1>
+			<a class="skip-link screen-reader-text" href="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/#content">Skip to content</a>
+
+			<div class="menu"><ul id="menu-primary" class="nav-menu"><li id="menu-item-8" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8"><a href="https://yangsecurity.wordpress.com/">Home</a></li>
+<li id="menu-item-9" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9"><a href="https://yangsecurity.wordpress.com/about/">About</a></li>
+<li id="menu-item-10" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10"><a href="https://yangsecurity.wordpress.com/contact/">Contact</a></li>
+</ul></div>		</nav><!-- #site-navigation -->
+	</header><!-- #masthead -->
+
+	<div id="content" class="site-content">
+
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+
+		
+			
+<article id="post-20" class="post-20 post type-post status-publish format-standard hentry category-uncategorized">
+		<header class="entry-header">
+					<h1 class="entry-title">Can You Fool an AI? A Beginner’s Guide to Adversarial Machine&nbsp;Learning</h1>
+		
+		<div class="entry-meta">
+			<span class="posted-on">Posted on <a href="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/" rel="bookmark"><time class="entry-date published" datetime="2017-09-24T21:55:34+00:00">September 24, 2017</time><time class="updated" datetime="2017-10-07T18:39:38+00:00">October 7, 2017</time></a></span><span class="byline"> by <span class="author vcard"><a class="url fn n" href="https://yangsecurity.wordpress.com/author/yangsecurity/">yangsecurity</a></span></span>		</div><!-- .entry-meta -->
+	</header><!-- .entry-header -->
+
+	<div class="entry-content">
+		<p>Let’s say you are a good friend of Professor Xavier and you want to build an AI for him so he won’t suffer from using the gigantic <a href="https://en.wikipedia.org/wiki/Cerebro" target="_blank" rel="noopener">Cerebro</a> machine. Just like what Prof. X can do with Cerebro, your machine is expected to locate, recognize, and classify every mutants on the earth, and you are quite sure that some wily-and-naughty mutants like the Wolverine are trying to evade the detection of your machine. They may simply hide themselves to avoid brainwave scanning, disguise a human being by attaching more human features, or even “poison” your machine’s database by feed it with long-term fake data, just like what the Magneto’s legion would do.</p>
+<p>Yes, I was talking about adversarial machine learning, for a fictional AI that would help in the X-Men comic series. So what is the exact meaning of adversarial machine learning?</p>
+<h2 style="text-align:left;"><span style="color:#333399;">Adversarial Machine Learning</span></h2>
+<p>Formally speaking, adversarial machine learning is the study of effective machine learning techniques in adversarial settings, typically against an adversarial opponent <span style="color:#ff0000;">[6][7]</span>.</p>
+<p>Since machine learning has become ubiquitous in most technological sectors of modern society, there are various adversarial settings to consider. To name a few, email spammers are sending complicate and byzantine contents to evade spam filters, hackers are trying new intrusion patterns to dodge network intrusion detectors, and some powerful attackers such as enterprise-level opponents and state-sponsored hacking groups can “poison” a targeted ML system by feeding it with&nbsp;nuanced and imperceptible malicious training samples. Additionally, as machine learning techniques has become an important tool for building secured systems, the adversary only knows too well that crushing the machine learning component is essential to its ultimate goal of bringing down the entire target system.</p>
+<h2 style="text-align:left;"><span style="color:#333399;">Attack Taxonomy</span></h2>
+<p>To categorize possible attacks against machine learning, <span style="color:#ff0000;">[3]</span> provides a taxonomy based on the three properties: <strong>influence</strong>, <strong>security violation</strong>, and <strong>specificity</strong>.</p>
+<p><img data-attachment-id="26" data-permalink="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/three-properties/" data-orig-file="https://yangsecurity.files.wordpress.com/2017/09/three-properties2.png" data-orig-size="1344,484" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="three properties" data-image-description="" data-medium-file="https://yangsecurity.files.wordpress.com/2017/09/three-properties2.png?w=300" data-large-file="https://yangsecurity.files.wordpress.com/2017/09/three-properties2.png?w=653&amp;h=235" class="aligncenter  wp-image-26" src="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/three-properties2.png" alt="three properties" width="653" height="235" srcset="https://yangsecurity.files.wordpress.com/2017/09/three-properties2.png?w=653&amp;h=235 653w, https://yangsecurity.files.wordpress.com/2017/09/three-properties2.png?w=1306&amp;h=470 1306w, https://yangsecurity.files.wordpress.com/2017/09/three-properties2.png?w=150&amp;h=54 150w, https://yangsecurity.files.wordpress.com/2017/09/three-properties2.png?w=300&amp;h=108 300w, https://yangsecurity.files.wordpress.com/2017/09/three-properties2.png?w=768&amp;h=277 768w, https://yangsecurity.files.wordpress.com/2017/09/three-properties2.png?w=1024&amp;h=369 1024w" sizes="(max-width: 653px) 100vw, 653px"></p>
+<p style="text-align:center;"><strong>Figure 1.</strong>&nbsp;Three properties of an attack against machine learning</p>
+<p><strong>Causative</strong> attacks will cause changes in the target ML model, while <strong>exploratory</strong> attacks only seek to fool the ML detection system without altering them. <strong>Integrity</strong> attacks aim to lead the target system to classify an adversarial data point as benign (false negative). <strong>Availability</strong> attacks will eventually results in blocking the ML system from performing normal tasks. While <strong>privacy</strong> attacks focus on obtaining the ML system users’ private information. <strong>Targeted</strong> attacks are against a particular data point or class, while <strong>indiscriminate</strong> attacks will profit from any false negative.</p>
+<p>To facilitate the understanding of these properties, the next section gives three attack examples from three research papers.</p>
+<h2 style="text-align:left;"><span style="color:#000080;">Three Attack Examples</span></h2>
+<h4 style="text-align:left;">Example 1: Evading Facial Recognition Systems&nbsp;<span style="color:#ff0000;">[4]</span></h4>
+<p>A facial recognition system (FRS) is a device that identify the person to whom a given face image belongs. Previously the commonly used ML algorithm for FRS is Support Vector Machine (SVM), while in recent years systems based on <a href="https://en.wikipedia.org/wiki/Deep_learning" target="_blank" rel="noopener">Deep Neural Networks</a> (DNN) became the state-of-the-art.</p>
+<p>The adversary wishes to pass the FRS without triggering any suspicion. Sh/e can achieve it by either dodging or impersonation. The adversary’s general strategy is to disguise a malicious face image by altering it on the pixel level in the hope that it will be accepted by the FRS. Assuming the target FRS is based on a well-designed DNN that is transparent to the adversary (white box).&nbsp; The adversary can directly formulate an optimization problem which outputs a best disguise for any input image. And of course dodging and impersonation will have different target functions based on their objectives. Here are a dodging attack and a impersonation attack against a transfer-learned DNN FRS in <span style="color:#ff0000;">[4]</span>:</p>
+<p><img data-attachment-id="57" data-permalink="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/dogding-frs/" data-orig-file="https://yangsecurity.files.wordpress.com/2017/09/dogding-frs.png?w=1200" data-orig-size="735,240" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="dogding FRS" data-image-description="" data-medium-file="https://yangsecurity.files.wordpress.com/2017/09/dogding-frs.png?w=1200?w=300" data-large-file="https://yangsecurity.files.wordpress.com/2017/09/dogding-frs.png?w=1200?w=735" class=" size-full wp-image-57 aligncenter" src="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/dogding-frs.png" alt="dogding FRS" srcset="https://yangsecurity.files.wordpress.com/2017/09/dogding-frs.png 735w, https://yangsecurity.files.wordpress.com/2017/09/dogding-frs.png?w=150 150w, https://yangsecurity.files.wordpress.com/2017/09/dogding-frs.png?w=300 300w" sizes="(max-width: 735px) 100vw, 735px"></p>
+<p style="text-align:center;"><strong>Figure 2.</strong> A dodging attack by perturbing an entire face. Left: a face image of Julia Jones. Middle: image after perturbation. Right: pixels perturbed.</p>
+<p><img data-attachment-id="58" data-permalink="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/impersonation/" data-orig-file="https://yangsecurity.files.wordpress.com/2017/09/impersonation.png?w=1200" data-orig-size="721,229" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="impersonation" data-image-description="" data-medium-file="https://yangsecurity.files.wordpress.com/2017/09/impersonation.png?w=1200?w=300" data-large-file="https://yangsecurity.files.wordpress.com/2017/09/impersonation.png?w=1200?w=721" class=" size-full wp-image-58 aligncenter" src="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/impersonation.png" alt="impersonation" srcset="https://yangsecurity.files.wordpress.com/2017/09/impersonation.png 721w, https://yangsecurity.files.wordpress.com/2017/09/impersonation.png?w=150 150w, https://yangsecurity.files.wordpress.com/2017/09/impersonation.png?w=300 300w" sizes="(max-width: 721px) 100vw, 721px"></p>
+<p style="text-align:center;"><strong>Figure 3.</strong> An impersonation attack with eyeglass frames. Left: a face image of Kaylee Defer. Middle: image after adding a frame. Right: Nancy Travis, the impersonation target.</p>
+<p>As you can see in Figure 2 and Figure 3, altering a small portion of a benign image can mislead the FRS to miss the detection or classify it as another face.</p>
+<p>Since the attack is designed to pass adversarial data points through the FRS without altering it, and either dodging or impersonation can be used, this attack can be tagged by “<span style="color:#3366ff;">exploratory</span>, <span style="color:#3366ff;">integrity</span>, <span style="color:#3366ff;">targeted</span> or <span style="color:#3366ff;">indiscriminate</span>“.</p>
+<h4 style="text-align:left;">Example 2: Poisoning Support Vector Machines&nbsp;<span style="color:#ff0000;">[1]</span></h4>
+<p><a href="https://en.wikipedia.org/wiki/Support_vector_machine" target="_blank" rel="noopener">Support vector machine</a> (SVM) was the most popular image recognition ML algorithm before the thriving of deep neural networks. Briefly speaking, a typical SVM classifier consists of an optimal subset of its training data set which provides the best separating hyperplane for the training data.</p>
+<p>In this example, rather than merely evading classification, the adversary schemes to alter the SVM classifier itself by chronically feeding it carefully designed training data points. After adequate rounds of feeding, the target SVM will become poisoned so deeply that it will produce false negatives with high probability and eventually be abandoned by its users.</p>
+<p>Figure 4 shows a specific example how the adversary generates a optimal poisoning training data point for a single iteration. The adversary first chooses a support vector from the attacked class (red), re-labels it as the attacking class (blue), then performs <a href="https://en.wikipedia.org/wiki/Gradient_descent" target="_blank" rel="noopener">gradient ascent</a> to relocate it to a local maximum with respect to a certain classification error measure.</p>
+<p><img data-attachment-id="60" data-permalink="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/poisoning-svm-kernelized/" data-orig-file="https://yangsecurity.files.wordpress.com/2017/09/poisoning-svm-kernelized.png?w=1200" data-orig-size="726,299" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="poisoning SVM – kernelized" data-image-description="" data-medium-file="https://yangsecurity.files.wordpress.com/2017/09/poisoning-svm-kernelized.png?w=1200?w=300" data-large-file="https://yangsecurity.files.wordpress.com/2017/09/poisoning-svm-kernelized.png?w=1200?w=726" class=" size-full wp-image-60 aligncenter" src="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/poisoning-svm-kernelized.png" alt="poisoning SVM - kernelized" srcset="https://yangsecurity.files.wordpress.com/2017/09/poisoning-svm-kernelized.png 726w, https://yangsecurity.files.wordpress.com/2017/09/poisoning-svm-kernelized.png?w=150 150w, https://yangsecurity.files.wordpress.com/2017/09/poisoning-svm-kernelized.png?w=300 300w" sizes="(max-width: 726px) 100vw, 726px"></p>
+<p style="text-align:center;"><strong>Figure 4. </strong>Behavior of the gradient-based attack on the Gaussian data sets for the SVM with RBF kernel. Red: the attacking class. Blue: the attacked class.</p>
+<p>Figure 5 shows the result after many iterations of the above poisoning operation. The error rate of the SVM classification increases with more iterations of poisoning. As you may know that a 25% error rate is high enough for <a href="http://yann.lecun.com/exdb/mnist/" target="_blank" rel="noopener">MNIST</a> data set to declare the classification system fails.</p>
+<div class="tiled-gallery type-rectangular" data-original-width="1200" data-carousel-extra="{&quot;blog_id&quot;:136160788,&quot;permalink&quot;:&quot;https:\/\/yangsecurity.wordpress.com\/2017\/09\/24\/can-you-fool-ai-a-guide-to-adversarial-machine-learning\/&quot;,&quot;likes_blog_id&quot;:136160788}"> <div class="gallery-row" style="width: 1200px; height: 299px;" data-original-width="1200" data-original-height="299"> <div class="gallery-group images-1" style="width: 824px; height: 299px;" data-original-width="824" data-original-height="299"> <div class="tiled-gallery-item tiled-gallery-item-large" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"> <a href="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/poisoning-svm-example-9-vs-8/" border="0" itemprop="url"> <meta itemprop="width" content="820"> <meta itemprop="height" content="295"> <img data-attachment-id="62" data-orig-file="https://yangsecurity.files.wordpress.com/2017/09/poisoning-svm-example-9-vs-8.png" data-orig-size="794,286" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="poisoning SVM example – 9 vs 8" data-image-description="" data-medium-file="https://yangsecurity.files.wordpress.com/2017/09/poisoning-svm-example-9-vs-8.png?w=300" data-large-file="https://yangsecurity.files.wordpress.com/2017/09/poisoning-svm-example-9-vs-8.png?w=794" src="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/poisoning-svm-example-9-vs-8.png" width="820" height="295" data-original-width="820" data-original-height="295" itemprop="http://schema.org/image" title="poisoning SVM example - 9 vs 8" alt="poisoning SVM example - 9 vs 8" style="width: 820px; height: 295px;"> </a> </div> </div> <!-- close group --> <div class="gallery-group images-1" style="width: 376px; height: 299px;" data-original-width="376" data-original-height="299"> <div class="tiled-gallery-item tiled-gallery-item-large" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"> <a href="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/poisoning-svm-example-9-vs-8-percentage-of-attack-points/" border="0" itemprop="url"> <meta itemprop="width" content="372"> <meta itemprop="height" content="295"> <img data-attachment-id="66" data-orig-file="https://yangsecurity.files.wordpress.com/2017/09/poisoning-svm-example-9-vs-8-percentage-of-attack-points2.png" data-orig-size="429,341" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="poisoning SVM example – 9 vs 8 percentage of attack points" data-image-description="" data-medium-file="https://yangsecurity.files.wordpress.com/2017/09/poisoning-svm-example-9-vs-8-percentage-of-attack-points2.png?w=300" data-large-file="https://yangsecurity.files.wordpress.com/2017/09/poisoning-svm-example-9-vs-8-percentage-of-attack-points2.png?w=429" src="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/poisoning-svm-example-9-vs-8-percentage-of-attack-points2.png" width="372" height="295" data-original-width="372" data-original-height="295" itemprop="http://schema.org/image" title="poisoning SVM example - 9 vs 8 percentage of attack points" alt="poisoning SVM example - 9 vs 8 percentage of attack points" style="width: 372px; height: 295px;"> </a> </div> </div> <!-- close group --> </div> <!-- close row --> </div>
+<p style="text-align:center;"><strong>Figure 5. </strong>Modifications&nbsp;to the initial (mislabeled) attack point performed by the proposed attack strategy against an SVM using the MNIST data set.</p>
+<p>Since the attack causes degradation of the machine learning model, affects the classification accuracy and system usability, and target the training data set as a whole, thus this attack can be tagged as “<span style="color:#3366ff;">causative</span>, <span style="color:#3366ff;">integrity</span> and <span style="color:#3366ff;">availability</span>, <span style="color:#3366ff;">indiscriminate</span>“.</p>
+<h4 style="text-align:left;">Example 3: Membership Inference&nbsp;<span style="color:#ff0000;">[5]</span></h4>
+<p>For some&nbsp;<a href="https://en.wikipedia.org/wiki/Supervised_learning" target="_blank" rel="noopener">supervised learning</a>&nbsp;tasks, it is essential to keep the training data set secret. A well known example is the clinical study of genetic disease, where patients’ gene data records are used for building a statistical model. And any patient’s gene data should be kept secret. In this scenario, the adversary’s goal is to infer whether a certain data record was used for training the ML model.</p>
+<p>Different from the previous two examples, the adversary in this example treats the machine learning system as an oracle and have no knowledge on its internal mechanisms. In other words, the attack is “black-box”. Figure 6 provides a conceptual attack model:</p>
+<div class="tiled-gallery type-rectangular" data-original-width="1200" data-carousel-extra="{&quot;blog_id&quot;:136160788,&quot;permalink&quot;:&quot;https:\/\/yangsecurity.wordpress.com\/2017\/09\/24\/can-you-fool-ai-a-guide-to-adversarial-machine-learning\/&quot;,&quot;likes_blog_id&quot;:136160788}"> <div class="gallery-row" style="width: 1200px; height: 344px;" data-original-width="1200" data-original-height="344"> <div class="gallery-group images-1" style="width: 781px; height: 344px;" data-original-width="781" data-original-height="344"> <div class="tiled-gallery-item tiled-gallery-item-large" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"> <a href="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/membership-inference-black-box/" border="0" itemprop="url"> <meta itemprop="width" content="777"> <meta itemprop="height" content="340"> <img data-attachment-id="72" data-orig-file="https://yangsecurity.files.wordpress.com/2017/09/membership-inference-black-box.png" data-orig-size="706,309" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="membership inference – black-box" data-image-description="" data-medium-file="https://yangsecurity.files.wordpress.com/2017/09/membership-inference-black-box.png?w=300" data-large-file="https://yangsecurity.files.wordpress.com/2017/09/membership-inference-black-box.png?w=706" src="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/membership-inference-black-box.png" width="777" height="340" data-original-width="777" data-original-height="340" itemprop="http://schema.org/image" title="membership inference - black-box" alt="(a)" style="width: 777px; height: 340px;"> </a> <div class="tiled-gallery-caption" itemprop="caption description" style="display: none;"> (a) </div> </div> </div> <!-- close group --> <div class="gallery-group images-1" style="width: 419px; height: 344px;" data-original-width="419" data-original-height="344"> <div class="tiled-gallery-item tiled-gallery-item-large" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"> <a href="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/shadow-model/" border="0" itemprop="url"> <meta itemprop="width" content="415"> <meta itemprop="height" content="340"> <img data-attachment-id="73" data-orig-file="https://yangsecurity.files.wordpress.com/2017/09/shadow-model.png" data-orig-size="550,450" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="shadow model" data-image-description="" data-medium-file="https://yangsecurity.files.wordpress.com/2017/09/shadow-model.png?w=300" data-large-file="https://yangsecurity.files.wordpress.com/2017/09/shadow-model.png?w=550" src="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/shadow-model.png" width="415" height="340" data-original-width="415" data-original-height="340" itemprop="http://schema.org/image" title="shadow model" alt="(b)" style="width: 415px; height: 340px;"> </a> <div class="tiled-gallery-caption" itemprop="caption description" style="display: none;"> (b) </div> </div> </div> <!-- close group --> </div> <!-- close row --> </div>
+<p style="text-align:center;"><strong>Figure 6.</strong>&nbsp;Left: Black-box membership inference attack model. Right: Training a bank of shadow models in the hope ti approximate the target model.</p>
+<p>To evaluate the attack proposed in <span style="color:#ff0000;">[5]</span>, the author tested it against a purchased data set trained on a targeted Google’s ML model. Figure 7 presents the attack result and a explanatory illustration on why this attack works.</p>
+<div class="tiled-gallery type-rectangular" data-original-width="1200" data-carousel-extra="{&quot;blog_id&quot;:136160788,&quot;permalink&quot;:&quot;https:\/\/yangsecurity.wordpress.com\/2017\/09\/24\/can-you-fool-ai-a-guide-to-adversarial-machine-learning\/&quot;,&quot;likes_blog_id&quot;:136160788}"> <div class="gallery-row" style="width: 1200px; height: 356px;" data-original-width="1200" data-original-height="356"> <div class="gallery-group images-1" style="width: 469px; height: 356px;" data-original-width="469" data-original-height="356"> <div class="tiled-gallery-item tiled-gallery-item-large" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"> <a href="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/membership-inference-attack-result/" border="0" itemprop="url"> <meta itemprop="width" content="465"> <meta itemprop="height" content="352"> <img data-attachment-id="75" data-orig-file="https://yangsecurity.files.wordpress.com/2017/09/membership-inference-attack-result.png" data-orig-size="699,529" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="membership inference – attack result" data-image-description="" data-medium-file="https://yangsecurity.files.wordpress.com/2017/09/membership-inference-attack-result.png?w=300" data-large-file="https://yangsecurity.files.wordpress.com/2017/09/membership-inference-attack-result.png?w=699" src="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/membership-inference-attack-result.png" width="465" height="352" data-original-width="465" data-original-height="352" itemprop="http://schema.org/image" title="membership inference - attack result" alt="membership inference - attack result" style="width: 465px; height: 352px;"> </a> </div> </div> <!-- close group --> <div class="gallery-group images-1" style="width: 731px; height: 356px;" data-original-width="731" data-original-height="356"> <div class="tiled-gallery-item tiled-gallery-item-large" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"> <a href="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/membership-inference-uncertainty-and-accuracy-of-different-number-of-classes/" border="0" itemprop="url"> <meta itemprop="width" content="727"> <meta itemprop="height" content="352"> <img data-attachment-id="76" data-orig-file="https://yangsecurity.files.wordpress.com/2017/09/membership-inference-uncertainty-and-accuracy-of-different-number-of-classes.png" data-orig-size="1534,742" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="membership inference – uncertainty and accuracy of different number of classes" data-image-description="" data-medium-file="https://yangsecurity.files.wordpress.com/2017/09/membership-inference-uncertainty-and-accuracy-of-different-number-of-classes.png?w=300" data-large-file="https://yangsecurity.files.wordpress.com/2017/09/membership-inference-uncertainty-and-accuracy-of-different-number-of-classes.png?w=1024" src="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/membership-inference-uncertainty-and-accuracy-of-different-number-of-classes.png" width="727" height="352" data-original-width="727" data-original-height="352" itemprop="http://schema.org/image" title="membership inference - uncertainty and accuracy of different number of classes" alt="membership inference - uncertainty and accuracy of different number of classes" style="width: 727px; height: 352px;"> </a> </div> </div> <!-- close group --> </div> <!-- close row --> </div>
+<p style="text-align:center;"><strong>Figure 7.</strong> (a) Attack precision. (b) Performance of the targeted model which can explain why the attack works well when there are more classes.</p>
+<p>As you can see from Figure 7, when there are more classes, the discrepancy of histograms for targeted model’s prediction accuracy (uncertainty) between members and non-members is bigger, of which can be taken advantage by the adversarial performing the proposed attack.</p>
+<p>Since the adversary’s goal is to breach the identities of certain training data points and have no intention to alter the targeting system, this attack can be tagged “<span style="color:#3366ff;">exploratory</span>, <span style="color:#3366ff;">privacy</span>, <span style="color:#3366ff;">targeted</span>“.</p>
+<h2 style="text-align:left;"><span style="color:#333399;">Exploring &nbsp;Countermeasures</span></h2>
+<p>It is generally difficult to form an automatic defense strategy against attacks against machine learning and it is also an&nbsp;active research area. The general idea is to increase attackers’ cost and delay the time of breach. Here gives a non-exhaustive list of possible defense methods:</p>
+<p><strong>Robust features.</strong> Discarding trivial and non-representative features while adding more distinct and robust features.</p>
+<p><strong>Combined models.</strong> Using several different classifiers sequentially or in a more complex manner in the hope to aggregate edges of different models.</p>
+<p><strong>Randomization.</strong> Randomizing or altering the classification output to mislead the attacker while acquiring knowledge of the ML system.</p>
+<p><strong>Adversarial retraining.</strong> Actively retraining the ML model on possible adversarial data points.</p>
+<p><strong>Manual intervention.</strong> Hiring a human observer to manually detect anomalies and malicious sources.</p>
+<p>Although we have quite a few defense tools as above mentioned, it is important to know that the adversarial may as well adapt and develop new attacking strategies. Hence an “arm race” is a proper analogy for the feud between between the adversary and the targeted ML system.</p>
+<h2 style="text-align:left;"><span style="color:#000080;">End Notes</span></h2>
+<p>Perhaps you will never come to the case of building ML algorithms for classifying mutants for Prof. Xavier, nonetheless building a real-world machine learning system that is robust in adversarial settings is no less challenging. The research of adversarial machine learning still has a long way to go.</p>
+<h2 style="text-align:left;"><span style="color:#333399;">References</span></h2>
+<pre style="text-align:left;"><span style="color:#ff0000;">[1]</span>&nbsp;Biggio, Battista, Blaine Nelson, and Pavel Laskov. "Poisoning attacks against support vector machines." arXiv preprint arXiv:1206.6389 (2012).&nbsp;<a href="https://arxiv.org/pdf/1206.6389.pdf" target="_blank" rel="noopener">Link</a>
+<span style="color:#ff0000;">[2]</span>&nbsp;Dalvi, Nilesh, et al. "Adversarial classification." Proceedings of the tenth ACM SIGKDD international conference on Knowledge discovery and data mining. ACM, 2004.&nbsp;<a href="https://info.cs.uab.edu/zhang/Spam-mining-papers/Adversarial.Classification.pdf" target="_blank" rel="noopener">Link</a>
+<span style="color:#ff0000;">[3]</span>&nbsp;Huang, Ling, et al. "Adversarial machine learning." Proceedings of the 4th ACM workshop on Security and artificial intelligence. ACM, 2011.&nbsp;<a href="https://pdfs.semanticscholar.org/3212/929ad5121464ac49741dd3462a5d469e668d.pdf" target="_blank" rel="noopener">Link</a>
+<span style="color:#ff0000;">[4]</span>&nbsp;Sharif, Mahmood, et al. "Accessorize to a crime: Real and stealthy attacks on state-of-the-art face recognition." Proceedings of the 2016 ACM SIGSAC Conference on Computer and Communications Security. ACM, 2016.&nbsp;<a href="https://www.cs.unc.edu/~reiter/papers/2016/CCS2.pdf" target="_blank" rel="noopener">Link</a>
+<span style="color:#ff0000;">[5]</span> Shokri, Reza, et al. "Membership inference attacks against machine learning models."&nbsp;<i>Security and Privacy (SP), 2017 IEEE Symposium on</i>. IEEE, 2017. <a href="https://arxiv.org/pdf/1610.05820.pdf" target="_blank" rel="noopener">Link</a>
+<span style="color:#ff0000;">[6]</span>&nbsp;Tygar, J. D. "Adversarial machine learning." IEEE Internet Computing 15.5 (2011): 4-6.&nbsp;<a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=6015575" target="_blank" rel="noopener">Link</a>
+<span style="color:#ff0000;">[7]</span>&nbsp;Wikipedia - Adversarial machine learning.&nbsp;<a href="https://en.wikipedia.org/wiki/Adversarial_machine_learning" target="_blank" rel="noopener">Link</a>
+<span style="color:#ff0000;">[8]</span> Xu, Weilin, Yanjun Qi, and David Evans. "Automatically evading classifiers."&nbsp;<i>Proceedings of the 2016 Network and Distributed Systems Symposium</i>. 2016. <a href="https://pdfs.semanticscholar.org/6888/b8e3bdcb1d1427bfcf4a94b9d2f1fbc205c2.pdf" target="_blank" rel="noopener">Link</a></pre>
+<p>&nbsp;</p>
+<div id="jp-post-flair" class="sharedaddy sd-like-enabled sd-sharing-enabled"><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul><li class="share-press-this"><a rel="nofollow" data-shared="" class="share-press-this sd-button share-icon" href="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/?share=press-this&amp;nb=1" target="_blank" title="Click to Press This!"><span>Press This</span></a></li><li class="share-twitter"><a rel="nofollow" data-shared="sharing-twitter-20" class="share-twitter sd-button share-icon" href="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/?share=twitter&amp;nb=1" target="_blank" title="Click to share on Twitter"><span>Twitter</span></a></li><li class="share-facebook"><a rel="nofollow" data-shared="sharing-facebook-20" class="share-facebook sd-button share-icon" href="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/?share=facebook&amp;nb=1" target="_blank" title="Share on Facebook"><span>Facebook</span></a></li><li class="share-google-plus-1"><a rel="nofollow" data-shared="sharing-google-20" class="share-google-plus-1 sd-button share-icon" href="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/?share=google-plus-1&amp;nb=1" target="_blank" title="Click to share on Google+"><span>Google</span></a></li><li class="share-end"></li></ul></div></div></div><div class="sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-loaded" id="like-post-wrapper-136160788-20-59d96738828f8" data-src="//widgets.wp.com/likes/#blog_id=136160788&amp;post_id=20&amp;origin=yangsecurity.wordpress.com&amp;obj_id=136160788-20-59d96738828f8" data-name="like-post-frame-136160788-20-59d96738828f8"><h3 class="sd-title">Like this:</h3><div class="likes-widget-placeholder post-likes-widget-placeholder" style="height: 55px; display: none;"><span class="button"><span>Like</span></span> <span class="loading">Loading...</span></div><iframe class="post-likes-widget jetpack-likes-widget" name="like-post-frame-136160788-20-59d96738828f8" height="55px" width="100%" frameborder="0" src="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/saved_resource.html"></iframe><span class="sd-text-color"></span><a class="sd-link-color"></a></div></div>			</div><!-- .entry-content -->
+
+	<footer class="entry-meta">
+		
+			
+		<span class="edit-link"><a class="post-edit-link" href="https://wordpress.com/post/yangsecurity.wordpress.com/20">Edit</a></span>	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+				<nav role="navigation" id="nav-below" class="post-navigation">
+		<h1 class="screen-reader-text">Post navigation</h1>
+
+	
+		<div class="nav-previous"><a href="https://yangsecurity.wordpress.com/2017/09/24/first-blog-post/" rel="prev"><span class="meta-nav">←</span> A Glance at Internet-of-Things Security</a></div>		
+	
+	</nav><!-- #nav-below -->
+	
+			
+<div id="comments" class="comments-area">
+
+	
+	
+	
+		<div id="respond" class="comment-respond js">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/#respond" style="display:none;">Cancel reply</a></small></h3>			<form action="https://yangsecurity.wordpress.com/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate="">
+				<input type="hidden" id="highlander_comment_nonce" name="highlander_comment_nonce" value="6b1ea2beba"><input type="hidden" name="_wp_http_referer" value="/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/">
+<input type="hidden" name="hc_post_as" id="hc_post_as" value="wordpress">
+
+<div class="comment-form-field comment-textarea">
+	
+	<div id="comment-form-comment"><textarea tabindex="-1" style="position: absolute; top: -999px; left: 0px; right: auto; bottom: auto; border: 0px; padding: 0px; box-sizing: content-box; word-wrap: break-word; overflow: hidden; transition: none; height: 0px !important; min-height: 0px !important; font-family: Arial, Helvetica, Tahoma, Verdana, sans-serif; font-size: 14px; font-weight: 400; font-style: normal; letter-spacing: 0px; text-transform: none; text-decoration: none solid rgba(0, 0, 0, 0.7); word-spacing: 0px; text-indent: 0px; line-height: 21px; width: 1130.03px;" class="autosizejs "></textarea><textarea id="comment" name="comment" title="Enter your comment here..." placeholder="Enter your comment here..." style="height: 40px; overflow: hidden; word-wrap: break-word; resize: none;"></textarea></div>
+</div>
+
+<div id="comment-form-identity" style="display: none;">
+
+	<div id="comment-form-nascar" style="display: none;">
+		<p>Fill in your details below or click an icon to log in:</p>
+		<ul>
+			<li style="display:none;">
+				<a href="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/#comment-form-guest" id="postas-guest" title="Guest">
+					<span></span>
+				</a>
+			</li>
+			<li class="selected">
+				<a href="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/#comment-form-load-service:WordPress.com" id="postas-wordpress" title="WordPress.com">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a href="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/#comment-form-load-service:Twitter" id="postas-twitter" title="Twitter">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a href="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/#comment-form-load-service:Facebook" id="postas-facebook" title="Facebook">
+					<span></span>
+				</a>
+			</li>
+			<li>
+			<iframe id="googleplus-sign-in" name="googleplus-sign-in" src="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/saved_resource(7).html" width="24" height="24" scrolling="no" allowtransparency="true" seamless="seamless" frameborder="0"></iframe>
+			</li>
+		</ul>
+	</div>
+
+	<div id="comment-form-guest" class="comment-form-service" style="">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+<a href="https://gravatar.com/site/signup/" target="_blank">				<img src="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/ad516503a11cd5ca435acc9bb6523536" alt="Gravatar" width="25" class="no-grav">
+</a>			</div>
+
+				<div class="comment-form-fields">
+				<div class="comment-form-field comment-form-email">
+					<label for="email">Email <span class="required">(required)</span> <span class="nopublish">(Address never made public)</span></label>
+					<div class="comment-form-input"><input id="email" name="email" type="email" value=""></div>
+				</div>
+				<div class="comment-form-field comment-form-author">
+					<label for="author">Name <span class="required">(required)</span></label>
+					<div class="comment-form-input"><input id="author" name="author" type="text" value=""></div>
+				</div>
+				<div class="comment-form-field comment-form-url">
+					<label for="url">Website</label>
+					<div class="comment-form-input"><input id="url" name="url" type="url" value=""></div>
+				</div>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-wordpress" class="comment-form-service selected">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/c26465a2fa502cc237808b59e6869035" alt="Gravatar" width="25" class="no-grav">
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="wp_avatar" id="wordpress-avatar" class="comment-meta-wordpress" value="https://0.gravatar.com/avatar/c26465a2fa502cc237808b59e6869035?s=25&amp;d=https%3A%2F%2Fs2.wp.com%2Fwp-content%2Fmu-plugins%2Fhighlander-comments%2Fimages%2Fwplogo.png&amp;r=G">
+				<input type="hidden" name="wp_user_id" id="wordpress-user_id" class="comment-meta-wordpress" value="128381479">
+				<input type="hidden" name="wp_access_token" id="wordpress-access_token" class="comment-meta-wordpress" value="f522943052cd1b5d9b0a3e2d75f240acda7dff94">
+				<p class="comment-form-posting-as pa-wordpress"><strong>yangsecurity:</strong> You are commenting using your WordPress.com account. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( &#39;wordpress&#39; );">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-twitter" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/ad516503a11cd5ca435acc9bb6523536" alt="Twitter picture" width="25" class="no-grav">
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="twitter_avatar" id="twitter-avatar" class="comment-meta-twitter" value="">
+				<input type="hidden" name="twitter_user_id" id="twitter-user_id" class="comment-meta-twitter" value="">
+				<input type="hidden" name="twitter_access_token" id="twitter-access_token" class="comment-meta-twitter" value="">
+				<p class="comment-form-posting-as pa-twitter"><strong></strong> You are commenting using your Twitter account. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( &#39;twitter&#39; );">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-facebook" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/ad516503a11cd5ca435acc9bb6523536" alt="Facebook photo" width="25" class="no-grav">
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="fb_avatar" id="facebook-avatar" class="comment-meta-facebook" value="">
+				<input type="hidden" name="fb_user_id" id="facebook-user_id" class="comment-meta-facebook" value="">
+				<input type="hidden" name="fb_access_token" id="facebook-access_token" class="comment-meta-facebook" value="">
+				<p class="comment-form-posting-as pa-facebook"><strong></strong> You are commenting using your Facebook account. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( &#39;facebook&#39; );">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-googleplus" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/ad516503a11cd5ca435acc9bb6523536" alt="Google+ photo" width="25" class="no-grav">
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="googleplus_avatar" id="googleplus-avatar" class="comment-meta-googleplus" value="">
+				<input type="hidden" name="googleplus_user_id" id="googleplus-user_id" class="comment-meta-googleplus" value="">
+				<input type="hidden" name="googleplus_access_token" id="googleplus-access_token" class="comment-meta-googleplus" value="">
+				<p class="comment-form-posting-as pa-googleplus"><strong></strong> You are commenting using your Google+ account. <span class="comment-form-log-out">(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( &#39;googleplus&#39; );">Log&nbsp;Out</a>&nbsp;/&nbsp;<a href="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+
+	<div id="comment-form-load-service" class="comment-form-service">
+		<div class="comment-form-posting-as-cancel"><a href="javascript:HighlanderComments.cancelExternalWindow();">Cancel</a></div>
+		<p>Connecting to %s</p>
+	</div>
+
+</div>
+
+<script type="text/javascript">
+var highlander_expando_javascript = function(){
+	var input = document.createElement( 'input' ),
+	    comment = jQuery( '#comment' );
+
+	if ( 'placeholder' in input ) {
+		comment.attr( 'placeholder', jQuery( '.comment-textarea label' ).remove().text() );
+	}
+
+	// Expando Mode: start small, then auto-resize on first click + text length
+	jQuery( '#comment-form-identity' ).hide();
+	jQuery( '#comment-form-subscribe' ).hide();
+	jQuery( '#commentform .form-submit' ).hide();
+
+	comment.css( { 'height':'10px' } ).one( 'focus', function() {
+		var timer = setInterval( HighlanderComments.resizeCallback, 10 )
+		jQuery( this ).animate( { 'height': HighlanderComments.initialHeight } ).delay( 100 ).queue( function(n) { clearInterval( timer ); HighlanderComments.resizeCallback(); n(); } );
+		jQuery( '#comment-form-identity' ).slideDown();
+		jQuery( '#comment-form-subscribe' ).slideDown();
+		jQuery( '#commentform .form-submit' ).slideDown();
+	});
+}
+jQuery(document).ready( highlander_expando_javascript );
+</script>
+
+<div id="comment-form-subscribe" style="display: none;">
+	<p class="comment-subscription-form"><input type="checkbox" name="subscribe" id="subscribe" value="subscribe" style="width: auto;"> <label class="subscribe-label" id="subscribe-label" for="subscribe" style="display: inline;">Notify me of new comments via email.</label></p></div>
+
+<p class="form-submit" style="display: none;"><input name="submit" type="submit" id="comment-submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="20" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="c451d6cc3f"></p>
+<input type="hidden" name="genseq" value="1507419960">
+<p style="display: none;"></p>			<input type="hidden" id="ak_js" name="ak_js" value="1507419959717"></form>
+			</div><!-- #respond -->
+	<div style="clear: both"></div>
+</div><!-- #comments -->
+
+		
+		</main><!-- #main -->
+	</div><!-- #primary -->
+
+
+	</div><!-- #content -->
+
+	<footer id="colophon" class="site-footer" role="contentinfo">
+		<div class="site-info">
+						<a href="https://wordpress.com/?ref=footer_website">Create a free website or blog at WordPress.com.</a>
+			
+					</div><!-- .site-info -->
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+<!--  -->
+	<script type="text/javascript">
+	/* <![CDATA[ */
+		jQuery(document).ready( function($) {
+			function doFollowingHover() {
+				$('#wp-admin-bar-follow > a').unbind( '.unfollow' );
+
+				$('#wp-admin-bar-follow > a').bind( 'mouseover.unfollow', function() {
+
+					$(this).html( "Unfollow" ).parent( 'li' ).addClass( 'unfollow' );
+				});
+				$('#wp-admin-bar-follow > a').bind( 'mouseout.unfollow', function() {
+					$(this).html( "Following" ).parent( 'li' ).removeClass( 'unfollow' );
+				});
+			}
+							doFollowingHover();
+			
+			$('#wp-admin-bar-follow > a').click( function( e ) {
+				$('#wp-admin-bar-follow > a').unbind( '.unfollow' );
+
+				e.preventDefault();
+
+				var link = $( this ), li = $( '#wp-admin-bar-follow' ), timeout = 0;
+
+				if ( li.hasClass( 'subscribed' ) ) {
+					li.removeClass( 'subscribed' ).removeClass( 'unfollow' );
+					link.html( "Follow" );
+
+					$('body').append( $( 'div.wpcom-bubble' ).removeClass( 'fadein' ) ).off( 'click.bubble' );
+
+					var action = 'ab_unsubscribe_from_blog';
+				} else {
+					li.addClass( 'subscribed' ).removeClass( 'unfollow' );
+					link.html( "Following" );
+
+						var left = 131 - link.width();
+						li.append( $( 'div.wpcom-bubble' ).css( { left: '-' + left + 'px' } ) );
+						$( 'div.bubble-txt', 'div.wpcom-bubble' ).html( "New posts from this blog will now appear in <a target=\"_blank\" href=\"http:\/\/wordpress.com\/\">your reader<\/a>. You can manage email alerts from your <a target=\"_blank\" href=\"http:\/\/wordpress.com\/following\/edit\/\">subscriptions page<\/a>." );
+
+						$( 'div.wpcom-bubble.action-bubble' ).addClass( 'fadein' );
+
+						setTimeout( function() {
+							$('body').on( 'click.bubble touchstart.bubble', function(e) {
+								if ( !$(e.target).hasClass('wpcom-bubble') && !$(e.target).parents( 'div.wpcom-bubble' ).length )
+									hideBubble();
+							});
+							setTimeout( hideBubble, 15000 );
+						}, 500 );
+
+					var action = 'ab_subscribe_to_blog';
+					$('#wp-admin-bar-follow > a').bind( 'mouseout.shift', function() {
+						doFollowingHover();
+						$(this).unbind( '.shift' );
+					});
+				}
+
+				var nonce = link.attr( 'href' ).split( '_wpnonce=' );
+				nonce = nonce[1];
+
+				$.post( "https:\/\/yangsecurity.wordpress.com\/wp-admin\/admin-ajax.php", {
+					'action': action,
+					'_wpnonce': nonce,
+					'source': 'admin_bar',
+					'blog_id': 136160788				});
+			});
+		});
+	/* ]]> */
+	</script>
+<script type="text/javascript" src="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/gprofiles.js.download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":"c26465a2fa502cc237808b59e6869035"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/wpgroho.js.download"></script>
+
+	<script>
+		//initialize and attach hovercards to all gravatars
+		jQuery( document ).ready( function( $ ) {
+
+			if (typeof Gravatar === "undefined"){
+				return;
+			}
+
+			if ( typeof Gravatar.init !== "function" ) {
+				return;
+			}			
+
+			Gravatar.profile_cb = function( hash, id ) {
+				WPGroHo.syncProfileData( hash, id );
+			};
+			Gravatar.my_hash = WPGroHo.my_hash;
+			Gravatar.init( 'body', '#wp-admin-bar-my-account' );
+		});
+	</script>
+
+		<div style="display:none">
+	</div>
+
+	<div id="ab-reblog-box">
+		<form action="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/" name="reblog">
+			<textarea id="reblog-content" name="reblog-content" placeholder="Add your thoughts here... (optional)"></textarea>
+			<label for="blogid" id="lblogid">Post to</label>
+
+			<select name="to_blog_id" id="reblog-to-blog-id">
+														<option value="136160788">You are Secure with Yang</option>
+							</select>
+
+			<div class="submit">
+				<span class="canceltext"><a href="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/" class="cancel">Cancel</a></span>
+				<input type="submit" name="reblog-submit" class="button-primary" id="reblog-submit" value="Reblog Post">
+				<input type="hidden" id="original-blog-id" value="136160788">
+				<input type="hidden" id="original-post-id" value="20">
+			</div>
+
+			<input type="hidden" id="_wpnonce" name="_wpnonce" value="df992adfb6"><input type="hidden" name="_wp_http_referer" value="/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/">		</form>
+
+		<div class="arrow"></div>
+	</div>
+
+	<script type="text/javascript">
+	var wpcom_reblog = {
+		request: false,
+		source: 'toolbar',
+
+		init: function() {
+			// Click reblog button on post
+			jQuery(document).on( 'click', '#wpadminbar .reblog', function(e) {
+				e.preventDefault();
+				wpcom_reblog.source = 'toolbar';
+
+				if ( jQuery( '#wpadminbar #ab-reblog-box' ).is( ':visible' ) ) {
+					wpcom_reblog.cancel_reblog();
+				}
+				else {
+					wpcom_reblog.show_reblog_box();
+				}
+			} );
+
+			// Clicked reblog button on already reblogged post.
+			jQuery(document).on( 'click', '#wpadminbar .reblogged', function(e) {
+				e.preventDefault();
+			});
+
+			// Click cancel reblog button
+			jQuery(document).on( 'click', '#ab-reblog-box a.cancel', function(e) {
+				e.preventDefault();
+				wpcom_reblog.cancel_reblog();
+			});
+
+			// Submit reblog box
+			jQuery(document).on( 'click', '#ab-reblog-box input[type=submit]', function(e) {
+				e.preventDefault();
+				wpcom_reblog.submit_reblog( jQuery(this) );
+			});
+		},
+
+		show_reblog_box: function() {
+			return this.show_reblog_box_here(
+				'#wp-admin-bar-wpr-reblog',
+				'#wpadminbar'
+			);
+		},
+
+		toggle_reblog_box_flair: function( obj_id ) {
+			if ( jQuery( '#jp-post-flair #ab-reblog-box' ).is( ':visible' ) ) {
+				wpcom_reblog.cancel_reblog();
+			}
+			else {
+				wpcom_reblog.show_reblog_box_flair( obj_id );
+			}
+		},
+
+		show_reblog_box_flair: function( obj_id ) {
+			this.source = 'post_flair';
+			this.obj_id = obj_id;
+			return this.show_reblog_box_here(
+				'.post-likes-widget',
+				'body'
+			);
+		},
+
+		show_reblog_box_here: function(anchorId, parentId) {
+			var jq = jQuery,
+			    $anchor = jq( anchorId ),
+			    $parent = jq( parentId ),
+			    $window = jq( window ),
+			    $scroll = jq('html, body'),
+			    $reblog_box = jq( '#ab-reblog-box' ),
+			    offset = $anchor.offset(),
+			    left = offset.left + 'px',
+			    width = '500px',
+			    position,
+			    top;
+
+			if ( $parent.css( 'position' ) === 'fixed' ) {
+				position = 'fixed';
+				top = $parent.position().top + $parent.outerHeight();
+			}
+			else {
+				position = 'absolute';
+				top = offset.top + $anchor.outerHeight() + 'px';
+			}
+			$reblog_box.remove();
+			$parent.append( $reblog_box );
+			$anchor.addClass( 'selected' );
+
+			if ( jq( window ).innerWidth() < offset.left + 500 ) {
+				// Most likely mobile or tablet
+				left = '0px';
+				width = ( jq( window ).innerWidth() - 24 ) + 'px';
+			}
+
+			$reblog_box
+				.find('p.response').remove().end()
+				.find('div.submit, div.submit span.canceltext').show().end()
+				.find('div.submit input[type=submit]').prop('disabled',false).end()
+				.show()
+				.css({
+					top : top,
+					left : left,
+					width : width,
+					position: position,
+					'z-index': 10 // slide under twentyfourteen's fixed-positioned masthead
+				});
+
+			// Ensure we can see the whole reblog box
+			var docViewTop = $window.scrollTop(),
+			    windowHeight = $window.height(),
+			    docViewBottom = docViewTop + windowHeight,
+			    elemTop = $reblog_box.offset().top,
+			    elemHeight = $reblog_box.outerHeight() + 10,
+			    elemBottom = elemTop + elemHeight;
+			if ( docViewTop > elemTop ) {
+				// Need to scroll up
+				// leave 75px for toolbar + Reblog button + margin
+				$scroll.animate({scrollTop: elemTop - 75});
+			}
+			else if ( docViewBottom < elemBottom ) {
+				// Need to scroll down
+				$scroll.animate({scrollTop: elemBottom - windowHeight}, 100);
+			}
+		},
+
+		submit_reblog: function( input ) {
+			var jq = jQuery;
+			var self = this;
+			if ( typeof this.request == 'object' )
+				this.request.abort();
+
+			input.attr( 'value', 'Reblogging...' );
+			input.prop( 'disabled', true );
+
+			jq( '#ab-reblog-box div.submit span.canceltext' ).fadeOut( 150, function() {
+				input.before( '<span class="spinner"></span>' );
+			});
+
+			var note = jq('#ab-reblog-box textarea').val();
+
+			if ( jq('#default-reblog-note').val() == note )
+				note = "";
+
+			this.request = jq.get( '/wp-admin/admin-ajax.php', {
+				'action': 'post_reblog',
+				'original_blog_id': jq('#original-blog-id').val(),
+				'original_post_id': jq('#original-post-id').val(),
+				'blog_id': jq('#ab-reblog-box select').val(),
+				'note': note,
+				'_wpnonce': jq('#ab-reblog-box #_wpnonce').val(),
+				'reblog_source': this.source
+			},
+			function(result, status, jqxhr) {
+				if ( ! ( "type" in result ) ) {
+					alert( "Error: " + jqxhr.responseText );
+				}
+				else if ( "error" == result.type ) {
+					alert( result.message );
+				}
+				else {
+					if ( typeof pm === 'function' ) {
+						console.log(self);
+						pm({
+							target : window.frames['likes-master'],
+							type : 'likesMessage',
+							data : { event: 'didReblog', obj_id: self.obj_id },
+							origin : '*'
+						});
+					}
+
+					jq( '#ab-reblog-box' ).hide();
+					jq( '#wp-admin-bar-wpr-reblog' ).addClass( 'reblogged' ).removeClass( 'reblog' ).find( 'a:first' ).text( 'Reblogged' );
+				}
+			}, 'json' );
+		},
+
+		cancel_reblog: function() {
+			jQuery( '#ab-reblog-box' ).hide();
+			jQuery( '#wp-admin-bar-wpr-reblog' ).removeClass( 'selected' );
+		}
+	};
+
+	wpcom_reblog.init();
+	</script>
+<div id="report-form-window" style="display:none;"></div><script type="text/javascript">
+/* <![CDATA[ */
+var HighlanderComments = {"loggingInText":"Logging In\u2026","submittingText":"Posting Comment\u2026","postCommentText":"Post Comment","connectingToText":"Connecting to %s","commentingAsText":"%1$s: You are commenting using your %2$s account.","logoutText":"Log Out","loginText":"Log In","connectURL":"https:\/\/yangsecurity.wordpress.com\/public.api\/connect\/?action=request","logoutURL":"https:\/\/yangsecurity.wordpress.com\/wp-login.php?action=logout&_wpnonce=443f9ffb07","homeURL":"https:\/\/yangsecurity.wordpress.com\/","postID":"20","gravDefault":"identicon","enterACommentError":"Please enter a comment","enterEmailError":"Please enter your email address here","invalidEmailError":"Invalid email address","enterAuthorError":"Please enter your name here","gravatarFromEmail":"This picture will show whenever you leave a comment. Click to customize it.","logInToExternalAccount":"Log in to use details from one of these accounts.","change":"Change","changeAccount":"Change Account","comment_registration":"0","userIsLoggedIn":"1","isJetpack":"0","text_direction":"ltr"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/saved_resource(4)"></script>
+
+	<div id="carousel-reblog-box">
+		<form action="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/#" name="carousel-reblog">
+			<textarea id="carousel-reblog-content" name="carousel-reblog-content" placeholder="Add your thoughts here... (optional)"></textarea>
+			<label for="carousel-reblog-to-blog-id" id="carousel-reblog-lblogid">Post to</label>
+			<select name="carousel-reblog-to-blog-id" id="carousel-reblog-to-blog-id">
+							<option value="136160788">You are Secure with Yang</option>
+						</select>
+
+			<div class="submit">
+				<span class="canceltext"><a href="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/#" class="cancel">Cancel</a></span>
+				<input type="submit" name="carousel-reblog-submit" class="button" id="carousel-reblog-submit" value="Reblog Post">
+				<input type="hidden" id="carousel-reblog-blog-id" value="136160788">
+				<input type="hidden" id="carousel-reblog-blog-url" value="https://yangsecurity.wordpress.com">
+				<input type="hidden" id="carousel-reblog-blog-title" value="You are Secure with Yang">
+				<input type="hidden" id="carousel-reblog-post-url" value="">
+				<input type="hidden" id="carousel-reblog-post-title" value="">
+			</div>
+
+			<input type="hidden" id="_wpnonce" name="_wpnonce" value="df992adfb6"><input type="hidden" name="_wp_http_referer" value="/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/">		</form>
+
+		<div class="arrow"></div>
+	</div>
+
+	<script type="text/javascript">
+		window.WPCOM_sharing_counts = {"https:\/\/yangsecurity.wordpress.com\/2017\/09\/24\/can-you-fool-ai-a-guide-to-adversarial-machine-learning\/":20};
+	</script>
+		<script type="text/javascript">
+			var windowOpen;
+		jQuery(document).on( 'ready post-load', function(){
+			jQuery( 'a.share-twitter' ).on( 'click', function() {
+				if ( 'undefined' !== typeof windowOpen ){ // If there's another sharing window open, close it.
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery(this).attr( 'href' ), 'wpcomtwitter', 'menubar=1,resizable=1,width=600,height=350' );
+				return false;
+			});
+		});
+		</script>
+				<script type="text/javascript">
+			var windowOpen;
+		jQuery(document).on( 'ready post-load', function(){
+			jQuery( 'a.share-facebook' ).on( 'click', function() {
+				if ( 'undefined' !== typeof windowOpen ){ // If there's another sharing window open, close it.
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery(this).attr( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+				return false;
+			});
+		});
+		</script>
+				<script type="text/javascript">
+			var windowOpen;
+		jQuery(document).on( 'ready post-load', function(){
+			jQuery( 'a.share-google-plus-1' ).on( 'click', function() {
+				if ( 'undefined' !== typeof windowOpen ){ // If there's another sharing window open, close it.
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery(this).attr( 'href' ), 'wpcomgoogle-plus-1', 'menubar=1,resizable=1,width=480,height=550' );
+				return false;
+			});
+		});
+		</script>
+		<link rel="stylesheet" id="all-css-0-3" href="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/jetpack-carousel.css" type="text/css" media="all">
+<!--[if lte IE 8]>
+<link rel='stylesheet' id='jetpack-carousel-ie8fix-css'  href='https://s1.wp.com/wp-content/mu-plugins/carousel/jetpack-carousel-ie8fix.css?m=1412618825h&#038;ver=20121024' type='text/css' media='all' />
+<![endif]-->
+<link rel="stylesheet" id="all-css-2-3" href="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/tiled-gallery.css" type="text/css" media="all">
+<script type="text/javascript">
+/* <![CDATA[ */
+var thickboxL10n = {"next":"Next >","prev":"< Prev","image":"Image","of":"of","close":"Close","noiframes":"This feature requires inline frames. You have iframes disabled or your browser does not support them.","loadingAnimation":"https:\/\/s1.wp.com\/wp-includes\/js\/thickbox\/loadingAnimation.gif"};
+/* ]]> */
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var comment_like_text = {"loading":"Loading..."};
+/* ]]> */
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var wpNotesArgs = {"cacheBuster":"1.2.4-0-gbb441cc","iframeUrl":"https:\/\/widgets.wp.com\/notificationsbeta\/","iframeAppend":"2","iframeScroll":"no","wide":"1","beta":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var wpcom_tos_report_form = {"ajaxurl":"\/wp-admin\/admin-ajax.php","isLoggedoutUser":"","post_ID":"20","current_url":"https:\/\/yangsecurity.wordpress.com\/2017\/09\/24\/can-you-fool-ai-a-guide-to-adversarial-machine-learning","report_this_content":"Report this content"};
+/* ]]> */
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var actionbardata = {"siteID":"136160788","siteName":"You are Secure with Yang","siteURL":"http:\/\/yangsecurity.wordpress.com","icon":"<img alt='' src='https:\/\/yangsecurity.files.wordpress.com\/2017\/09\/logoyx.png?w=38' class='avatar avatar-50' height='50' width='50' \/>","canManageOptions":"1","canCustomizeSite":"1","isFollowing":"1","themeSlug":"pub\/kelly","signupURL":"https:\/\/wordpress.com\/start\/","loginURL":"https:\/\/yangsecurity.wordpress.com\/wp-login.php?redirect_to=https%3A%2F%2Fyangsecurity.wordpress.com%2F2017%2F09%2F24%2Fcan-you-fool-ai-a-guide-to-adversarial-machine-learning%2F","themeURL":"https:\/\/wordpress.com\/theme\/kelly\/","xhrURL":"https:\/\/yangsecurity.wordpress.com\/wp-admin\/admin-ajax.php","nonce":"b1c8366ad8","isSingular":"1","isFolded":"","isLoggedIn":"1","isMobile":"","subscribeNonce":"<input type=\"hidden\" id=\"_wpnonce\" name=\"_wpnonce\" value=\"c3f4969a0e\" \/>","referer":"https:\/\/yangsecurity.wordpress.com\/2017\/09\/24\/can-you-fool-ai-a-guide-to-adversarial-machine-learning\/","canFollow":"1","feedID":"72974962","statusMessage":"","customizeLink":"https:\/\/yangsecurity.wordpress.com\/wp-admin\/customize.php?url=https%3A%2F%2Fyangsecurity.wordpress.com%2F2017%2F09%2F24%2Fcan-you-fool-ai-a-guide-to-adversarial-machine-learning%2F","postID":"20","shortlink":"http:\/\/wp.me\/p9djDK-k","canEditPost":"1","editLink":"https:\/\/wordpress.com\/post\/yangsecurity.wordpress.com\/20","statsLink":"https:\/\/wordpress.com\/stats\/post\/20\/yangsecurity.wordpress.com","i18n":{"view":"View site","follow":"Follow","following":"Following","edit":"Edit","login":"Log in","signup":"Sign up","customize":"Customize","report":"Report this content","themeInfo":"Get help setting up your theme","shortlink":"Copy shortlink","copied":"Copied","followedText":"New posts from this site will now appear in your <a href=\"https:\/\/wordpress.com\/\">Reader<\/a>","foldBar":"Collapse this bar","unfoldBar":"Expand this bar","editSubs":"Manage subscriptions","viewReader":"View site in Reader","viewReadPost":"View post in Reader","subscribe":"Sign me up","enterEmail":"Enter your email address","followers":"","alreadyUser":"Already have a WordPress.com account? <a href=\"https:\/\/yangsecurity.wordpress.com\/wp-login.php?redirect_to=https%3A%2F%2Fyangsecurity.wordpress.com%2F2017%2F09%2F24%2Fcan-you-fool-ai-a-guide-to-adversarial-machine-learning%2F\">Log in now.<\/a>","stats":"Stats"}};
+/* ]]> */
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var jetpackCarouselStrings = {"widths":[370,700,1000,1200,1400,2000],"is_logged_in":"1","lang":"en","ajaxurl":"https:\/\/yangsecurity.wordpress.com\/wp-admin\/admin-ajax.php","nonce":"b2640bd808","display_exif":"1","display_geo":"1","single_image_gallery":"1","single_image_gallery_media_file":"","background_color":"black","comment":"Comment","post_comment":"Post Comment","write_comment":"Write a Comment...","loading_comments":"Loading Comments...","download_original":"View full size <span class=\"photo-size\">{0}<span class=\"photo-size-times\">\u00d7<\/span>{1}<\/span>","no_comment_text":"Please be sure to submit some text with your comment.","no_comment_email":"Please provide an email address to comment.","no_comment_author":"Please provide your name to comment.","comment_post_error":"Sorry, but there was an error posting your comment. Please try again later.","comment_approved":"Your comment was approved.","comment_unapproved":"Your comment is in moderation.","camera":"Camera","aperture":"Aperture","shutter_speed":"Shutter Speed","focal_length":"Focal Length","comment_registration":"0","require_name_email":"1","login_url":"https:\/\/yangsecurity.wordpress.com\/wp-login.php?redirect_to=https%3A%2F%2Fyangsecurity.wordpress.com%2F2017%2F09%2F24%2Fcan-you-fool-ai-a-guide-to-adversarial-machine-learning%2F","blog_id":"136160788","local_comments_commenting_as":"<p id=\"jp-carousel-commenting-as\">Commenting as yangsecurity<\/p>","reblog":"Reblog","reblogged":"Reblogged","reblog_add_thoughts":"Add your thoughts here... (optional)","reblogging":"Reblogging...","post_reblog":"Post Reblog","stats_query_args":"blog=136160788&v=wpcom&tz=-5&user=1&user_id=128381479&subd=yangsecurity","is_public":"1","reblog_enabled":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var sharing_js_options = {"lang":"en","counts":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/saved_resource(5)"></script><div id="actionbar" class="actnbr-pub-kelly actnbr-has-customize actnbr-has-edit"><ul><li class="actnbr-btn actnbr-customize"><a href="https://yangsecurity.wordpress.com/wp-admin/customize.php?url=https%3A%2F%2Fyangsecurity.wordpress.com%2F2017%2F09%2F24%2Fcan-you-fool-ai-a-guide-to-adversarial-machine-learning%2F"><svg class="gridicon gridicon__customize" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M2 6c0-1.505.78-3.08 2-4 0 .845.69 2 2 2 1.657 0 3 1.343 3 3 0 .386-.08.752-.212 1.09.74.594 1.476 1.19 2.19 1.81L8.9 11.98c-.62-.716-1.214-1.454-1.807-2.192C6.753 9.92 6.387 10 6 10c-2.21 0-4-1.79-4-4zm12.152 6.848l1.34-1.34c.607.304 1.283.492 2.008.492 2.485 0 4.5-2.015 4.5-4.5 0-.725-.188-1.4-.493-2.007L18 9l-2-2 3.507-3.507C18.9 3.188 18.225 3 17.5 3 15.015 3 13 5.015 13 7.5c0 .725.188 1.4.493 2.007L3 20l2 2 6.848-6.848c1.885 1.928 3.874 3.753 5.977 5.45l1.425 1.148 1.5-1.5-1.15-1.425c-1.695-2.103-3.52-4.092-5.448-5.977z" data-reactid=".2.1.1:0.1b.0"></path></g></svg><span>Customize<span></span></span></a></li><li class="actnbr-btn actnbr-edit"><a href="https://wordpress.com/post/yangsecurity.wordpress.com/20"><svg class="gridicon gridicon__pencil" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M13 6l5 5-9.507 9.507c-.686-.686-.69-1.794-.012-2.485l-.002-.003c-.69.676-1.8.673-2.485-.013-.677-.677-.686-1.762-.036-2.455l-.008-.008c-.694.65-1.78.64-2.456-.036L13 6zm7.586-.414l-2.172-2.172c-.78-.78-2.047-.78-2.828 0L14 5l5 5 1.586-1.586c.78-.78.78-2.047 0-2.828zM3 18v3h3c0-1.657-1.343-3-3-3z"></path></g></svg><span>Edit</span></a></li><li class="actnbr-btn actnbr-stats"><a href="https://wordpress.com/stats/post/20/yangsecurity.wordpress.com"><svg class="gridicon gridicon__stats-alt" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M21,21H3v-2h18V21z M8,10H4v7h4V10z M14,3h-4v14h4V3z M20,6h-4v11h4V6z"></path></g></svg><span>Stats</span></a></li><li class="actnbr-ellipsis actnbr-hidden"> 			  <svg class="gridicon gridicon__ellipsis" height="24" width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><circle cx="5" cy="12" r="2"></circle><circle cx="19" cy="12" r="2"></circle><circle cx="12" cy="12" r="2"></circle></g></svg> 			  <div class="actnbr-popover tip tip-top-left actnbr-more"> 			  	<div class="tip-arrow"></div> 			  	<div class="tip-inner"> 				  <ul> 				    <li class="actnbr-sitename"><a href="http://yangsecurity.wordpress.com/"><img alt="" src="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/logoyx.png" class="avatar avatar-50" height="50" width="50"> You are Secure with Yang</a></li> 				   	<li class="actnbr-folded-customize"><a href="https://yangsecurity.wordpress.com/wp-admin/customize.php?url=https%3A%2F%2Fyangsecurity.wordpress.com%2F2017%2F09%2F24%2Fcan-you-fool-ai-a-guide-to-adversarial-machine-learning%2F"><svg class="gridicon gridicon__customize" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M2 6c0-1.505.78-3.08 2-4 0 .845.69 2 2 2 1.657 0 3 1.343 3 3 0 .386-.08.752-.212 1.09.74.594 1.476 1.19 2.19 1.81L8.9 11.98c-.62-.716-1.214-1.454-1.807-2.192C6.753 9.92 6.387 10 6 10c-2.21 0-4-1.79-4-4zm12.152 6.848l1.34-1.34c.607.304 1.283.492 2.008.492 2.485 0 4.5-2.015 4.5-4.5 0-.725-.188-1.4-.493-2.007L18 9l-2-2 3.507-3.507C18.9 3.188 18.225 3 17.5 3 15.015 3 13 5.015 13 7.5c0 .725.188 1.4.493 2.007L3 20l2 2 6.848-6.848c1.885 1.928 3.874 3.753 5.977 5.45l1.425 1.148 1.5-1.5-1.15-1.425c-1.695-2.103-3.52-4.092-5.448-5.977z" data-reactid=".2.1.1:0.1b.0"></path></g></svg><span>Customize<span></span></span></a></li> 				    <li class="actnbr-folded-follow"><a class="actnbr-action actnbr-actn-following" href="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/"><svg class="gridicon gridicon__following" height="24px" width="24px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M23 13.482L15.508 21 12 17.4l1.412-1.388 2.106 2.188 6.094-6.094L23 13.482zm-7.455 1.862L20 10.89V2H2v14c0 1.1.9 2 2 2h4.538l4.913-4.832 2.095 2.176zM8 13H4v-1h4v1zm3-2H4v-1h7v1zm0-2H4V8h7v1zm7-3H4V4h14v2z"></path></g></svg><span>Following</span></a></li> 					 				     				    <li class="actnbr-theme"><a href="https://wordpress.com/theme/kelly/">Get help setting up your theme</a></li> 				    <li class="actnbr-shortlink"><a href="http://wp.me/p9djDK-k">Copy shortlink</a></li> 				     				    <li class="actnbr-reader"><a href="https://wordpress.com/read/blogs/136160788/posts/20">View post in Reader</a></li> 				    <li class="actnbr-follows"><a href="https://wordpress.com/following/edit">Manage subscriptions</a></li> 				     				    <li class="actnbr-fold"><a href="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/">Collapse this bar</a></li> 			      </ul> 			    </div> 		      </div> 		    </li> 	      </ul></div>
+<script type="text/javascript">
+// <![CDATA[
+(function() {
+try{
+  if ( window.external &&'msIsSiteMode' in window.external) {
+    if (window.external.msIsSiteMode()) {
+      var jl = document.createElement('script');
+      jl.type='text/javascript';
+      jl.async=true;
+      jl.src='/wp-content/plugins/ie-sitemode/custom-jumplist.php';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(jl, s);
+    }
+  }
+}catch(e){}
+})();
+// ]]>
+</script>		<iframe src="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/master.html" scrolling="no" id="likes-master" name="likes-master" style="display:none;"></iframe>
+		<div id="likes-other-gravatars"><div class="likes-text"><span>%d</span> bloggers like this:</div><ul class="wpl-avatars sd-like-gravatars"></ul></div>
+<script src="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/w.js.download" type="text/javascript" async="" defer=""></script>
+<script type="text/javascript">
+_tkq = window._tkq || [];
+_stq = window._stq || [];
+_tkq.push(['identifyUser', 128381479, 'yangsecurity']);
+_tkq.push(['storeContext', {'blog_id':'136160788','blog_tz':'-5','user_lang':'en','blog_lang':'en'}]);
+_stq.push(['view', {'blog':'136160788','v':'wpcom','tz':'-5','user':'1','user_id':'128381479','post':'20','subd':'yangsecurity'}]);
+_stq.push(['extra', {'crypt':'UE40eW5QN0p8M2Y/RE1zNDZ8S252Wis9XUQyb3YrcUVIU2R0VH5TdVc3aWJOWS5HUTZSRHNZdTIzLmN+VUZ8MnpYNlVPT3FVV3otTDNqVE51UlpOU21kX0Y0WVh3eTBkU3o0NWxkeUt+T1Vqby8xWF00R1tUX3F3aW8zYnlteUdOUGpvNF9hPSZPb3M1R3B0SVJ4W3UuTlc0TVl6NyxqUU5sfDh2X3JmV3x8dlgucHxlc1hmd1pnVVg5MFRsS0N1VXRab2E3b3dSNltCSGRQWS9xUU9JZ0VEK3QlcnVIcUItRHksdW1DS29iZVZdJVJbX29mZiwmZHxhamdPZyw3cFJuVDIrMXNV'}]);
+	</script>
+<noscript>&lt;img src="https://pixel.wp.com/b.gif?v=noscript" style="height:0px;width:0px;overflow:hidden" alt="" /&gt;</noscript>
+		<div id="wpadminbar" class="ltr">
+							<a class="screen-reader-shortcut" href="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/#wp-toolbar" tabindex="1">Skip to toolbar</a>
+						<div class="quicklinks" id="wp-toolbar" role="navigation" aria-label="Toolbar" tabindex="0">
+						<ul id="wp-admin-bar-root-default" class="ab-top-menu">
+			
+		<li id="wp-admin-bar-blog" class="menupop my-sites"><a class="ab-item" aria-haspopup="true" href="https://wordpress.com/stats/yangsecurity.wordpress.com">My Site</a>			<div class="ab-sub-wrapper">		<ul id="wp-admin-bar-blog-default" class="ab-submenu">
+			
+		<li id="wp-admin-bar-blog-info" class="has-blavatar"><a class="ab-item" href="https://yangsecurity.wordpress.com/"><div class="ab-site-icon"><img class="avatar" src="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/logoyx.png" alt="Current site avatar"> </div><span class="ab-site-title">You are Secure with …</span><span class="ab-site-description">yangsecurity.wordpress.com</span></a>		</li>
+		<li id="wp-admin-bar-blog-stats" class="mb-icon"><a class="ab-item" href="https://wordpress.com/stats/yangsecurity.wordpress.com">Stats <img style="width: 95px; margin: 0; float: right;" src="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/admin-bar-hours-scale-2x.php" alt="Stats" title="Showing site views per hour for the last 48 hours. Click for full Site Stats."></a>		</li>
+		<li id="wp-admin-bar-plan" class="inline-action">		<div class="ab-item ab-empty-item"><a href="https://wordpress.com/plans/yangsecurity.wordpress.com" class="ab-item ab-primary mb-icon" id="wp-admin-bar-plan">Plan</a><a href="https://wordpress.com/plans/yangsecurity.wordpress.com" class="ab-secondary" id="wp-admin-bar-plan-badge">Free</a></div>		</li>		</ul>
+			<ul id="wp-admin-bar-publish" class="ab-submenu">
+			
+		<li id="wp-admin-bar-publish-header" class="ab-submenu-header">		<div class="ab-item ab-empty-item">Manage</div>		</li>
+		<li id="wp-admin-bar-new-page" class="inline-action">		<div class="ab-item ab-empty-item"><a href="https://wordpress.com/pages/yangsecurity.wordpress.com" class="ab-item ab-primary mb-icon" id="wp-admin-bar-edit-page">Site Pages</a><a href="https://wordpress.com/page/yangsecurity.wordpress.com" class="ab-secondary" id="wp-admin-bar-new-page">Add</a></div>		</li>
+		<li id="wp-admin-bar-new-post" class="inline-action">		<div class="ab-item ab-empty-item"><a href="https://wordpress.com/posts/yangsecurity.wordpress.com" class="ab-item ab-primary mb-icon" id="wp-admin-bar-edit-post">Blog Posts</a><a href="https://wordpress.com/post/yangsecurity.wordpress.com" class="ab-secondary" id="wp-admin-bar-new-post">Add</a></div>		</li>
+		<li id="wp-admin-bar-new-attachment" class="inline-action">		<div class="ab-item ab-empty-item"><a href="https://wordpress.com/media/yangsecurity.wordpress.com" class="ab-item ab-primary mb-icon" id="wp-admin-bar-edit-attachment">Media</a><a href="https://wordpress.com/media/yangsecurity.wordpress.com" class="ab-secondary" id="wp-admin-bar-new-attachment">Add</a></div>		</li>
+		<li id="wp-admin-bar-comments" class="mb-icon"><a class="ab-item" href="https://wordpress.com/comments/yangsecurity.wordpress.com">Comments</a>		</li>		</ul>
+			<ul id="wp-admin-bar-look-and-feel" class="ab-submenu">
+			
+		<li id="wp-admin-bar-look-and-feel-header" class="ab-submenu-header">		<div class="ab-item ab-empty-item">Personalize</div>		</li>
+		<li id="wp-admin-bar-themes" class="inline-action">		<div class="ab-item ab-empty-item"><a href="https://wordpress.com/design/yangsecurity.wordpress.com" class="ab-item ab-primary mb-icon" id="wp-admin-bar-themes">Themes</a><a href="https://yangsecurity.wordpress.com/wp-admin/customize.php?url=https%3A%2F%2Fyangsecurity.wordpress.com%2F2017%2F09%2F24%2Fcan-you-fool-ai-a-guide-to-adversarial-machine-learning%2F" class="ab-secondary" id="wp-admin-bar-cmz">Customize</a></div>		</li>		</ul>
+			<ul id="wp-admin-bar-configuration" class="ab-submenu">
+			
+		<li id="wp-admin-bar-configuration-header" class="ab-submenu-header">		<div class="ab-item ab-empty-item">Configure</div>		</li>
+		<li id="wp-admin-bar-sharing" class="mb-icon"><a class="ab-item" href="https://wordpress.com/sharing/yangsecurity.wordpress.com">Sharing</a>		</li>
+		<li id="wp-admin-bar-users-toolbar" class="inline-action">		<div class="ab-item ab-empty-item"><a href="https://wordpress.com/people/team/yangsecurity.wordpress.com" class="ab-item ab-primary mb-icon" id="wp-admin-bar-people">People</a><a href="https://wordpress.com/people/new/yangsecurity.wordpress.com" class="ab-secondary" id="wp-admin-bar-people-add">Add</a></div>		</li>
+		<li id="wp-admin-bar-plugins"><a class="ab-item" href="https://wordpress.com/plugins/wpcom-masterbar-redirect/yangsecurity.wordpress.com">Plugins</a>		</li>
+		<li id="wp-admin-bar-domains" class="inline-action">		<div class="ab-item ab-empty-item"><a href="https://wordpress.com/domains/yangsecurity.wordpress.com" class="ab-item ab-primary mb-icon" id="wp-admin-bar-domains">Domains</a><a href="https://wordpress.com/domains/add/yangsecurity.wordpress.com" class="ab-secondary" id="wp-admin-bar-domains-add">Add</a></div>		</li>
+		<li id="wp-admin-bar-blog-settings" class="mb-icon"><a class="ab-item" href="https://wordpress.com/settings/general/yangsecurity.wordpress.com">Settings</a>		</li>
+		<li id="wp-admin-bar-new-site"><a class="ab-item" href="https://wordpress.com/start?ref=admin-bar-logged-in">+ Add New WordPress</a>		</li>		</ul>
+	</div>		</li>
+		<li id="wp-admin-bar-jumptotop-button-menu"><a class="ab-item" href="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/#"><div id="jumptotop"><span class="noticon noticon-top"></span></div></a>		</li>
+		<li id="wp-admin-bar-newdash" class="menupop"><a class="ab-item" aria-haspopup="true" href="https://wordpress.com/">Reader</a>			<div class="ab-sub-wrapper">		<ul id="wp-admin-bar-newdash-default" class="ab-submenu">
+			
+		<li id="wp-admin-bar-streams-header" class="ab-submenu-header">		<div class="ab-item ab-empty-item">Streams</div>		</li>
+		<li id="wp-admin-bar-following" class="inline-action">		<div class="ab-item ab-empty-item"><a href="https://wordpress.com/" class="ab-item ab-primary mb-icon" id="wp-admin-bar-followed-sites">Followed Sites</a><a href="https://wordpress.com/following/edit" class="ab-secondary" id="wp-admin-bar-reader-followed-sites-manage">Manage</a></div>		</li>
+		<li id="wp-admin-bar-discover-discover" class="mb-icon-spacer"><a class="ab-item" href="https://wordpress.com/discover">Discover</a>		</li>
+		<li id="wp-admin-bar-discover-search" class="mb-icon-spacer"><a class="ab-item" href="https://wordpress.com/read/search">Search</a>		</li>
+		<li id="wp-admin-bar-my-activity-my-likes" class="mb-icon-spacer"><a class="ab-item" href="https://wordpress.com/activities/likes">My Likes</a>		</li>		</ul>
+	</div>		</li>
+		<li id="wp-admin-bar-admin-bar-likes-widget" style="">		<div class="ab-item ab-empty-item"></div><iframe class="admin-bar-likes-widget jetpack-likes-widget" scrolling="no" frameborder="0" name="admin-bar-likes-widget" src="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/saved_resource(8).html"></iframe>		</li>		</ul>
+			<ul id="wp-admin-bar-top-secondary" class="ab-top-secondary ab-top-menu">
+			
+		<li id="wp-admin-bar-notes" class="menupop">		<div class="ab-item ab-empty-item"><span id="wpnt-notes-unread-count" class="wpnt-loading wpn-read"><span class="noticon noticon-notification"></span></span><span class="noticon noticon-bell"></span><span class="ab-text">Notifications</span></div><div id="wpnt-notes-panel2" style="display:none" lang="en" dir="ltr" class="wide"><iframe style="" id="wpnt-notes-iframe2" frameborder="0" allowtransparency="true" scrolling="no" src="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/saved_resource(9).html" class="wide wpnt-is-beta"></iframe></div>		</li>
+		<li id="wp-admin-bar-my-account" class="menupop with-avatar no-grav"><a class="ab-item" aria-haspopup="true" href="https://wordpress.com/me/"><img alt="" src="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/c26465a2fa502cc237808b59e6869035(1)" class="avatar avatar-32" height="32" width="32"><span class="ab-text">Me</span></a>			<div class="ab-sub-wrapper">		<ul id="wp-admin-bar-user-actions" class="ab-submenu">
+			
+		<li id="wp-admin-bar-user-info" class="user-info user-info-item">		<div class="ab-item ab-empty-item" tabindex="-1"><img alt="" src="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/c26465a2fa502cc237808b59e6869035(2)" class="avatar avatar-128" height="128" width="128"><span class="display-name">yangsecurity</span><a class="username" href="http://gravatar.com/yangsecurity">@yangsecurity</a><form action="https://yangsecurity.wordpress.com/wp-login.php?action=logout&amp;redirect_to=https%3A%2F%2Fwordpress.com%2F%3Fapppromo&amp;_wpnonce=443f9ffb07" method="post"><button class="ab-sign-out" type="submit">Sign Out</button></form></div>		</li>
+		<li id="wp-admin-bar-profile-header" class="ab-submenu-header">		<div class="ab-item ab-empty-item">Profile</div>		</li>
+		<li id="wp-admin-bar-my-profile" class="mb-icon"><a class="ab-item" href="https://wordpress.com/me">My Profile</a>		</li>
+		<li id="wp-admin-bar-account-settings" class="mb-icon"><a class="ab-item" href="https://wordpress.com/me/account">Account Settings</a>		</li>
+		<li id="wp-admin-bar-billing" class="mb-icon"><a class="ab-item" href="https://wordpress.com/me/purchases">Manage Purchases</a>		</li>
+		<li id="wp-admin-bar-security" class="mb-icon"><a class="ab-item" href="https://wordpress.com/me/security">Security</a>		</li>
+		<li id="wp-admin-bar-notifications" class="mb-icon"><a class="ab-item" href="https://wordpress.com/me/notifications">Notifications</a>		</li>
+		<li id="wp-admin-bar-special-header" class="ab-submenu-header">		<div class="ab-item ab-empty-item">Special</div>		</li>
+		<li id="wp-admin-bar-get-apps" class="mb-icon"><a class="ab-item" href="https://wordpress.com/me/get-apps">Get Apps</a>		</li>
+		<li id="wp-admin-bar-next-steps" class="mb-icon"><a class="ab-item" href="https://wordpress.com/me/next">Next Steps</a>		</li>
+		<li id="wp-admin-bar-help" class="mb-icon"><a class="ab-item" href="https://wordpress.com/help">Help</a>		</li>		</ul>
+	</div>		</li>
+		<li id="wp-admin-bar-ab-new-post"><a class="ab-item" href="https://wordpress.com/post/yangsecurity.wordpress.com"><span>Write</span></a>		</li>		</ul>
+				</div>
+							<a class="screen-reader-shortcut" href="https://yangsecurity.wordpress.com/wp-login.php?action=logout&amp;_wpnonce=443f9ffb07">Log Out</a>
+					</div>
+
+	
+<img src="./Can You Fool an AI_ A Beginner’s Guide to Adversarial Machine Learning – You are Secure with Yang_files/g.gif" alt=":)" id="wpstats"><script type="text/javascript">
+/* <![CDATA[ */
+var clickDebugLink;
+
+jQuery(document).ready( function($) {
+	var single = true, w = 1000,
+		supe = false;
+
+	$(document.body).load(function(){ $('#wpadminbar img.grav-hashed').removeClass('grav-hashed'); }); // hack to hide the gravatar hovercard
+
+	if ( single && supe )
+		w = 1385;
+	else if ( supe )
+		w = 1200;
+
+	// debug bar extra
+	clickDebugLink = function( parent_id, obj ) {
+
+		$('#'+parent_id).children('div').hide();
+
+		document.getElementById( obj.href.substr( obj.href.indexOf( '#' ) + 1 ) ).style.display = 'block';
+		$( obj.href.substr( obj.href.indexOf( '#' ) ) ).show()
+
+		$(obj).parent().addClass('current').siblings('li').removeClass('current');
+
+		return false;
+	};
+
+	$( '#wpadminbar #wp-admin-bar-shortlink' ).click( function() {
+		$( '#adminbar-shortlink-input' ).select();
+	});
+
+	// skip tap-to-hover on site switcher for mobile
+	if ( 'ontouchstart' in window ) {
+		$('#wp-admin-bar-switch-site').on( 'touchstart', function( event ) {
+			if ( $( window ).width() > 782 ) {
+				return;
+			}
+			event.stopPropagation();
+			$( event.target ).first( 'a' ).click();
+		});
+	}
+
+});
+/* ]]> */
+</script>
+	<div class="wpcom-bubble action-bubble">
+		<div class="bubble-txt"></div>
+	</div>
+	<script type="text/javascript">function hideBubble() { jQuery('body').append( jQuery( 'div.wpcom-bubble' ).removeClass( 'fadein' ) ).off( 'click.bubble touchstart.bubble' ); jQuery(document).off( 'scroll.bubble' ); };</script>
+		<script type="text/javascript">
+	jQuery( '#wp-admin-bar-jumptotop-button-menu a' ).click( function( e ) {
+		e.preventDefault();
+		jQuery( 'html, body' ).animate( { scrollTop: 0 }, 'fast' );
+	} );
+	function hideShowTbJumpToTop() {
+		var total_width = 0;
+		// Calculate total width taken by items minus our button to see if it'll
+		// overlap with other toolbar menus.
+		jQuery( '#wp-admin-bar-root-default > li' ).each( function() {
+			var self = jQuery( this );
+			if ( 'wp-admin-bar-jumptotop-button-menu' != self.attr( 'id' ) )
+				total_width += self.width();
+		});
+		if ( jQuery( '#wp-admin-bar-jumptotop-button-menu' ).position()['left'] - total_width < 10 ) {
+			jQuery( '#jumptotop' ).animate( { 'top': '-50px' }, 'fast' );
+		} else if (  jQuery( window ).scrollTop() >= 350 && parseInt( jQuery( '#jumptotop' ).css( 'top' ) ) < 0 ) {
+			if ( jQuery( '#wp-admin-bar-jumptotop-button-menu' ).position()['left'] - total_width < 10 )
+			   return;
+			jQuery( '#jumptotop' ).animate( { 'top': 0 }, 'fast' );
+		} else if (  jQuery( window ).scrollTop() < 1 && parseInt( jQuery( '#jumptotop' ).css( 'top' ) ) >= 0 ) {
+			jQuery( '#jumptotop' ).animate( { 'top': '-50px' }, 'fast' );
+		}
+	}
+	// handle on page load if auto scrolling to a position
+	hideShowTbJumpToTop();
+	// bind to scrolll event
+	var jumpToTopTimer = null;
+	jQuery( window ).scroll( function() {
+		clearTimeout( jumpToTopTimer );
+		jumpToTopTimer = setTimeout( jumpToTopRefresh, 150 );
+	} );
+	var jumpToTopRefresh = function() {
+		hideShowTbJumpToTop();
+	};
+	</script>
+	<script>
+if ( 'object' === typeof wpcom_mobile_user_agent_info ) {
+
+	wpcom_mobile_user_agent_info.init();
+	var mobileStatsQueryString = "";
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedPlatformName )
+		mobileStatsQueryString += "&x_" + 'mobile_platforms' + '=' + wpcom_mobile_user_agent_info.matchedPlatformName;
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedUserAgentName )
+		mobileStatsQueryString += "&x_" + 'mobile_devices' + '=' + wpcom_mobile_user_agent_info.matchedUserAgentName;
+	
+	if( wpcom_mobile_user_agent_info.isIPad() )
+		mobileStatsQueryString += "&x_" + 'ipad_views' + '=' + 'views';
+
+	if( "" != mobileStatsQueryString ) {
+		new Image().src = document.location.protocol + '//pixel.wp.com/g.gif?v=wpcom-no-pv' + mobileStatsQueryString + '&baba=' + Math.random();
+	}
+	
+}
+</script>
+
+<div class="comment-likes-overlay" style="display: none;"></div></body></html>
