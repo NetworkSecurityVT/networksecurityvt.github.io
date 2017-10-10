@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<title>CS/ECE 5584: Network Security, Fall 2017</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #990000;
+    color: white;
+}
+
+.tabstyle { display: inline-block; width: 150px; }
+
+
+</style>
+
+<script>
+  function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+  }
+ 
+  function w3_close() {
+      document.getElementById("mySidebar").style.display = "none";
+      document.getElementById("myOverlay").style.display = "none";
+  }
+</script>
+
+<body>
+
+
+
+<!-- Sidebar/menu -->
+
+
+<nav class="w3-sidebar w3-black w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>Network<br>Security</b></h3>
+  </div>
+  <div class="w3-bar-block">
+    <a href="../index.html#Announcements"   onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Announcements</a> 
+    <a href="../index.html#Syllabus"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Syllabus</a> 
+    <a href="../index.html#Schedule"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Schedule</a> 
+    <a href="../index.html#Projects"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Projects</a> 
+    <a href="../index.html#Readings"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Readings</a>
+    <a href="../index.html"                 onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Blogs</a>  
+    <a href="../index.html#Ethics"          onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Ethics</a> 
+  </div>
+</nav>
+
+<!-- Header -->
+  
+  <!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-black w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-black w3-margin-right" onclick="w3_open()">☰</a>
+  <span>Network Security</span>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+  <div class="w3-container" id="PRMitM" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-gray"><b>The Password Reset Man in the Middle Attack</b></h1>
+    <h2 class="w3-xlarge w3-text-gray"><i><b>
+         A summary of the attack presented in this
+           <a href="https://www.ieee-security.org/TC/SP2017/papers/207.pdf"> paper</a> 
+    </b></i></h2>
+    <hr style="width:50px;border:5px solid #990000" class="w3-round">
+
+    
+
+
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Posted by Kate Nguyen</span></div>
+<b id="docs-internal-guid-6541b086-756f-55af-a3b1-a0a0709119ce" style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; ">
+<h3>Introduction </h3>
+<p>Passwords prevail as the most common and well-known method of authentication, essentially all websites that have user accounts will require a password for log-in. Many security countermeasures are taken to prevent the theft of passwords, including strong encryption methods and secure password storage. However, these countermeasures are futile if the user for which a password is designated does not have proper digital hygiene. For example, cryptography doesn’t protect against weak or common passwords that can be easily brute forced. Many attackers take advantage of the carelessness of users to gain access to their account and information. </p>  
+<p>One attack that has come to light recently is the Password Reset Man in the Middle (PRMitM) attack, presented at the 2017 IEEE Security and Privacy Conference [1]. The PRMitM attack takes advantage of the similarities between the account creation and password reset processes to gain access to user accounts. The attack even overcomes security measures such as two-factor authentication. </p>
+
+<h3 dir="ltr" style="line-height: 1.38; margin-bottom: 4pt; margin-top: 16pt;">
+Description of Attack</h3>
+Account registration often asks users many of the same questions that are used in the password reset process such as: <ul>
+<li>Name </li>
+<li>Username </li>
+<li>Email </li>
+<li>Phone Number </li>
+<li>Security Questions </li>
+</ul>
+Not to mention the creation of a password, which may even be the same password used in the target account for which the attacker is trying to gain access. <br>
+<center><img src="img/Fig_1.JPG"></center>
+<p>The authors of this paper identified the similarities between the information used in the two procedures to launch the PRMitM attack. The first step of PRMitM attack is creating a website the entices users into registering for an account on the website. When the user registers for the fake website, the attacker can forward them any questions or “challenges” that are required by the password reset procedure on the target website. The attacker acts as the man in the middle, taking user responses to the fake website registration process and forwarding them to the password reset of the target website. Figure 1 shows the example of an attack which asks for the victim’s email, CAPTCHA response and security question information. Upon completing these challenges and the attacker is authenticated as the user and is prompted to create a new password. </p>
+
+<p>The password reset challenge presented in Figure 1 is simple and nowadays most websites use more difficult challenges to authenticate users. However, this paper references or demonstrates vulnerabilities in these challenges and shows that even the most popular websites in the world, such as Google and Facebook, are vulnerable to their attack. Most websites will have users authenticate themselves by either clicking a link sent to their email or entering a code provided through automated SMS or a phone call. The password reset procedure for email service providers is more often the latter challenge. Therefore, the authors focus on exploiting the password reset through SMS messages or phone calls because gaining access to a user’s email account would allow an attacker to replicate this attack for other accounts that require email-reset challenges. </p>
+
+<h3>Failure of the Password Reset Process</h3>
+When a user is unable to provide their password, websites must find another way to authenticate. 
+As we’ve discussed in the class, the common ways to authenticate a user are based in one of the three: <ul>
+<li>What you know (passwords, security questions)</li>
+<li>What you are (biometrics)</li>
+<li>What you have (cell phone or security tokens or email account access) </li>
+</ul>
+<p>
+Most users don’t have a straightforward way to provide biometric authentication on the computer, so most common websites do not use this method of authentication. The easiest and most common methods of alternative authentication are through an email link or phone code. Security questions are less common now as a single method of authentication since questions tend to be reused across websites and the information required to answer these questions are easily obtained. </p>
+<center>
+<img src="img/Table_1.JPG"><br>Table 1: Alternative Authentication Methods used by Popular Websites</center><br>
+Table 1 shows which alternative authentication methods are used by popular websites. 
+<p>The authors go on to show that most users who anticipate a SMS or phone call with a verification code will ignore the information within the rest of the message and proceed to entering the code. Therefore, an attacker can ask users registering for the fake website to enter an access code sent to their phones while simultaneously initialize the two-factor authentication procedure of the target website. The user overlooks the details of the message sent to them and will enter in the access code of the target website into the fake website, which the attacker can then forward on to complete the password reset process. </p>
+<p>There are many limitations to a SMS code reset procedure. SMS messages are limited to 160 ASCII characters and messages may not be able to provide sufficient information that informs users about the context of the message. Also, SMS messages from companies usually come from a number not saved by users so it is difficult to identify who the message is coming from. Websites may also offer their services in multiple languages but do not carry this feature over to SMS messages. Therefore, users who receive a message in another language will ignore the message body altogether and only look for the code. </p>
+
+<h3>Evaluation Conducted</h3>
+<p>The authors of this paper evaluate their attack by experimenting the attack’s effectiveness with real participants. They conduct experiments with security questions, SMS code and phone call codes. Participants were asked to complete the registration process for a website set up by the authors which included questions corresponding to the challenges they were trying to overcome in the target website. </p>
+<p>
+For the security question evaluation, participants were asked to provide their mother’s maiden name. After the experiment, participants were asked whether they provided truthful answers. The authors found that 76.9% of participants provided the correct answer to the questions. They also asked participants about what security questions they asked in previous registrations and found that most users did not remember which questions they had been asked previously and what answers they had provided. </p>
+<center><img src="img/Fig_2.jpg"><br>Figure 2: The SMS verification code sent by popular websites</center>
+
+<p>The second experiment the authors conducted evaluated a SMS code challenge. Participants were led to believe that they were conducting an experiment evaluating memory skills and were asked to stop the experiment at any time they encountered a problem. The experiment page itself asked users to provide their phone numbers so they could receive a SMS message with a code that should be entered into the website.  Half of the group received a SMS message from a real attack on their Facebook pages and the other half were given a spoofed more detailed message saying: “ *WARNING* Someone requested to reset your Facebook password. DO NOT SHARE THIS CODE with anyone or type it outside Facebook. The password reset code is XXXXXX.” Figure 2 shows the real SMS text verification message for Facebook and other popular websites.</p>
+<p> The end results were astonishing, showing that the attack was successful on 90.5% of participants who received a real Facebook reset code and 79.5% that received the spoofed detailed SMS code. When participants were asked why they did not notice the attack, users said they either disregarded the content of the message or believed that the experiment was being done though a “login with Facebook” mechanism that is used by many websites. </p> 
+
+<p>The third experiment evaluated password reset through phone calls. Compared to SMS messages, phone calls have a few advantages. Phone calls do not have a message limitation and typically require more attention from the users to listen to the message of the call. Also, phone calls are less likely to suffer from a language limitation because users need to understand the language of the call to interpret the code being provided.</p>
+<p> This experiment was like that of the SMS experiment except the password reset process was conducted in Google instead of Facebook and none of the calls were spoofed, all calls came from legitimate Google password reset processes. 68 different volunteers participated in the phone call reset experiment. The final results showed that only 18% of participants successfully blocked the attack. Again, participants said that they were not paying attention or not enough information was provided for them to detect the attack. </p>
+<p>The authors clearly demonstrate that the PRMitM is practical and that user inattentiveness can defeat the security of SMS and phone call two-factor authentication. </p>
+
+<h3>Possible Defenses</h3>
+Defenses that may protect against the PRMitM attack include: 
+<ul>
+<li>Better security questions that relate directly to usage of the website. For example, asking about which services a user is subscribed to or which friends or contacts they have on the website. </li><br>
+<li>Using links instead of codes in SMS messages. Users are less likely to copy an entire link and enter it into a third-party website. Links will direct users straight to the target website being reset without interference of a man in the middle. </li><br>
+<li>Elimination of SMS password reset. The US National Institute of Standards and Technology (NIST) has declared in their Digital Authentication Guideline that SMS passwords are insecure and vulnerable to spoofing or hijacking [2]. They recommend that SMS no longer be used as a method of authentication </li><br>
+<li>More user interaction in phone calls. Phone calls should require interaction such as pressing a button before receiving reset codes. This will force users to be more vigilant in their phone calls and aid in understanding the context of the call. </li>  
+</ul>
+
+
+<h3>Discussion and Thoughts</h3>
+<p>I found the attack presented by this paper very interesting because it was so simple yet effective on many popular websites and it went along well with the authentication unit we have been discussing in class. Password reset is delicate because websites protects users without overcomplicating the reset procedure and making it too hard for a user to regain access. It’s ironic that forcing users to create stronger, more unique passwords often causes them to forget their passwords and go through the reset process.</p> 
+<p>SMS and phone call verifications seem like good authentication platforms in concept because it’s much more difficult for attackers to steal a user’s phone. However, this paper shows that failure to factor in user actions leads to vulnerabilities. Security professionals must make more of an effort to take user behavior into account when designing their systems. They must interpret where user negligence may occur and taking additional steps to remedy these vulnerabilities. 
+ </p>
+Discussion Questions: <br>
+<ul>
+  <li>The author’s found vulnerabilities in some of the most popular websites in the world. Although most of these websites have taken steps to mitigate the PRMitM attack, how many other smaller scale websites out there are vulnerable to this attack? </li><br>
+<li>Are well-known websites that are used in account creation for other websites more vulnerable to this attack? For example, many websites have a “login with Facebook” or “login with Google” option. This establishes more of a norm for third party sites to interact with popular websites and users will think less when they receive a password reset  </li><br>
+<li>Can we design better ways for the normal user to authenticate themselves when they do not have their passwords?</li><br>
+<li>To what extent are companies responsible for protecting users from attacks that take advantage of user inattention? If a company has a detailed phone call reset procedure but users still fail to pay attention, what more can and should be done to protect users? </li>
+</ul>
+
+<h3>Citations</h3>
+[1] “The Password Reset MitM Attack”. N. Gelernter, S. Kalma, B. Magnezi and H. Porcilan. 2017 IEEE Symposium on Security and Privacy (SP), San Jose, CA, 2017, pp. 251-267. http://ieeexplore.ieee.org.ezproxy.lib.vt.edu/stamp/stamp.jsp?tp=&arnumber=7958581&isnumber=7958557
+<br>
+[2] “Digital Identity Guidelines”. National Institute of Standards and Technology. https://pages.nist.gov/800-63-3/sp800-63b.html
+
+</span></div>
+
+
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;"> </span></div>
+<div>
+<span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;"><br></span></div>
+<div style="clear: both;"></div>
+</div>
+
+
+
+
+
+
+
+  </div>
+</div>
+<!-- End page content -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- W3.CSS Container -->
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px">
+<p class="w3-right"> CS/ECE 5584: Network Security, Fall 2017, <a href="http://ningzhang.info" target="_blank" class="w3-hover-opacity">Ning Zhang</a>
+</p></div>
+
+
+
+</body>
+
+</html>
