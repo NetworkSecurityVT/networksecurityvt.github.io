@@ -1,0 +1,298 @@
+﻿
+<!DOCTYPE html>
+<html>
+<title>CS/ECE 5584: Network Security, Fall 2017</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #990000;
+    color: white;
+}
+
+.tabstyle { display: inline-block; width: 150px; }
+</style>
+
+<script>
+  function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+  }
+ 
+  function w3_close() {
+      document.getElementById("mySidebar").style.display = "none";
+      document.getElementById("myOverlay").style.display = "none";
+  }
+</script>
+
+<body>
+
+
+
+<!-- Sidebar/menu -->
+
+
+<nav class="w3-sidebar w3-black w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>Network<br>Security</b></h3>
+  </div>
+  <div class="w3-bar-block">
+    <a href="../index.html#Announcements"   onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Announcements</a> 
+    <a href="../index.html#Syllabus"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Syllabus</a> 
+    <a href="../index.html#Schedule"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Schedule</a> 
+    <a href="../index.html#Projects"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Projects</a> 
+    <a href="../index.html#Readings"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Readings</a>
+    <a href="../index.html"                 onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Blogs</a>  
+    <a href="../index.html#Ethics"          onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Ethics</a> 
+  </div>
+</nav>
+
+<!-- Header -->
+  
+  <!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-black w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-black w3-margin-right" onclick="w3_open()">☰</a>
+  <span>Network Security</span>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+  <div class="w3-container" id="Can You Fool an AI? A Beginner’s Guide to Adversarial Machine Learning" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-gray"><b>Can You Fool an AI? A Beginner’s Guide to Adversarial Machine Learning</b></h1>
+    <h2 class="w3-xlarge w3-text-gray"><i><b>
+        <a href="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/" 
+        target="_blank" class="w3-hover-opacity"> 
+            Blog Post Originally From yangsecurity </a> 
+    </b></i></h2>
+    <hr style="width:50px;border:5px solid #990000" class="w3-round">
+
+
+
+<div class="entry-content">
+
+
+
+
+<p>Let&#8217;s say you are a good friend of Professor Xavier and you want to build an AI for him so he won&#8217;t suffer from using the gigantic <a href="https://en.wikipedia.org/wiki/Cerebro" target="_blank" rel="noopener">Cerebro</a> machine. Just like what Prof. X can do with Cerebro, your machine is expected to locate, recognize, and classify every mutants on the earth, and you are quite sure that some wily-and-naughty mutants like the Wolverine are trying to evade the detection of your machine. They may simply hide themselves to avoid brainwave scanning, disguise a human being by attaching more human features, or even &#8220;poison&#8221; your machine&#8217;s database by feed it with long-term fake data, just like what the Magneto&#8217;s legion would do.</p>
+<p>Yes, I was talking about adversarial machine learning, for a fictional AI that would help in the X-Men comic series. So what is the exact meaning of adversarial machine learning?</p>
+<p>&nbsp;</p>
+
+
+
+
+<h2 style="text-align:left;"><span style="color:#333399;">Adversarial Machine Learning</span></h2>
+<p>Formally speaking, adversarial machine learning is the study of effective machine learning techniques in adversarial settings, typically against an adversarial opponent <span style="color:#ff0000;">[6][7]</span>.</p>
+<p>Since machine learning has become ubiquitous in most technological sectors of modern society, there are various adversarial settings to consider. To name a few, email spammers are sending complicate and byzantine contents to evade spam filters, hackers are trying new intrusion patterns to dodge network intrusion detectors, and some powerful attackers such as enterprise-level opponents and state-sponsored hacking groups can &#8220;poison&#8221; a targeted ML system by feeding it with nuanced and imperceptible malicious training samples. Additionally, as machine learning techniques has become an important tool for building secured systems, the adversary only knows too well that crushing the machine learning component is essential to its ultimate goal of bringing down the entire target system.</p>
+<p>&nbsp;</p>
+
+
+
+
+<h2 style="text-align:left;"><span style="color:#333399;">Attack Taxonomy</span></h2>
+<p>To categorize possible attacks against machine learning, <span style="color:#ff0000;">[3]</span> provides a taxonomy based on the three properties: <strong>influence</strong>, <strong>security violation</strong>, and <strong>specificity</strong>.</p>
+<p style="text-align:center;"><img data-attachment-id="26" data-permalink="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/three-properties/" data-orig-file="https://yangsecurity.files.wordpress.com/2017/09/three-properties2.png" data-orig-size="1344,484" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="three properties" data-image-description="" data-medium-file="https://yangsecurity.files.wordpress.com/2017/09/three-properties2.png?w=300" data-large-file="https://yangsecurity.files.wordpress.com/2017/09/three-properties2.png?w=653&#038;h=235" class="aligncenter  wp-image-26" src="https://yangsecurity.files.wordpress.com/2017/09/three-properties2.png?w=653&#038;h=235" alt="three properties" width="653" height="235" srcset="https://yangsecurity.files.wordpress.com/2017/09/three-properties2.png?w=653&amp;h=235 653w, https://yangsecurity.files.wordpress.com/2017/09/three-properties2.png?w=1306&amp;h=470 1306w, https://yangsecurity.files.wordpress.com/2017/09/three-properties2.png?w=150&amp;h=54 150w, https://yangsecurity.files.wordpress.com/2017/09/three-properties2.png?w=300&amp;h=108 300w, https://yangsecurity.files.wordpress.com/2017/09/three-properties2.png?w=768&amp;h=277 768w, https://yangsecurity.files.wordpress.com/2017/09/three-properties2.png?w=1024&amp;h=369 1024w" sizes="(max-width: 653px) 100vw, 653px" /></p>
+<p style="text-align:center;"><strong>Figure 1.</strong> Three properties of an attack against machine learning</p>
+<p>&nbsp;</p>
+<p><strong>Causative</strong> attacks will cause changes in the target ML model, while <strong>exploratory</strong> attacks only seek to fool the ML detection system without altering them. <strong>Integrity</strong> attacks aim to lead the target system to classify an adversarial data point as benign (false negative). <strong>Availability</strong> attacks will eventually results in blocking the ML system from performing normal tasks. While <strong>privacy</strong> attacks focus on obtaining the ML system users&#8217; private information. <strong>Targeted</strong> attacks are against a particular data point or class, while <strong>indiscriminate</strong> attacks will profit from any false negative.</p>
+<p>To facilitate the understanding of these properties, the next section gives three attack examples from three research papers.</p>
+<p>&nbsp;</p>
+
+
+
+
+<h2 style="text-align:left;"><span style="color:#000080;">Three Attack Examples</span></h2>
+
+
+<h4 style="text-align:left;"><span style="color:#0000ff;">Example 1: <span style="color:#000000;">Evading Facial Recognition Systems</span></span> <span style="color:#ff0000;">[4]</span></h4>
+<p>A facial recognition system (FRS) is a device that identify the person to whom a given face image belongs. Previously the commonly used ML algorithm for FRS is Support Vector Machine (SVM), while in recent years systems based on <a href="https://en.wikipedia.org/wiki/Deep_learning" target="_blank" rel="noopener">Deep Neural Networks</a> (DNN) became the state-of-the-art.</p>
+<p>The adversary wishes to pass the FRS without triggering any suspicion. Sh/e can achieve it by either dodging or impersonation. The adversary&#8217;s general strategy is to disguise a malicious face image by altering it on the pixel level in the hope that it will be accepted by the FRS. Assuming the target FRS is based on a well-designed DNN that is transparent to the adversary (white box).  The adversary can directly formulate an optimization problem which outputs a best disguise for any input image. And of course dodging and impersonation will have different target functions based on their objectives. Here are a dodging attack and a impersonation attack against a transfer-learned DNN FRS in <span style="color:#ff0000;">[4]</span>:</p>
+<p style="text-align:center;"><img data-attachment-id="57" data-permalink="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/dogding-frs/" data-orig-file="https://yangsecurity.files.wordpress.com/2017/09/dogding-frs.png?w=1200" data-orig-size="735,240" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="dogding FRS" data-image-description="" data-medium-file="https://yangsecurity.files.wordpress.com/2017/09/dogding-frs.png?w=1200?w=300" data-large-file="https://yangsecurity.files.wordpress.com/2017/09/dogding-frs.png?w=1200?w=735" class=" size-full wp-image-57 aligncenter" src="https://yangsecurity.files.wordpress.com/2017/09/dogding-frs.png?w=1200" alt="dogding FRS" srcset="https://yangsecurity.files.wordpress.com/2017/09/dogding-frs.png 735w, https://yangsecurity.files.wordpress.com/2017/09/dogding-frs.png?w=150 150w, https://yangsecurity.files.wordpress.com/2017/09/dogding-frs.png?w=300 300w" sizes="(max-width: 735px) 100vw, 735px"   /></p>
+<p style="text-align:center;"><strong>Figure 2.</strong> A dodging attack by perturbing an entire face. Left: a face image of Julia Jones. Middle: image after perturbation. Right: pixels perturbed.</p>
+<p style="text-align:center;"><img data-attachment-id="58" data-permalink="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/impersonation/" data-orig-file="https://yangsecurity.files.wordpress.com/2017/09/impersonation.png?w=1200" data-orig-size="721,229" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="impersonation" data-image-description="" data-medium-file="https://yangsecurity.files.wordpress.com/2017/09/impersonation.png?w=1200?w=300" data-large-file="https://yangsecurity.files.wordpress.com/2017/09/impersonation.png?w=1200?w=721" class=" size-full wp-image-58 aligncenter" src="https://yangsecurity.files.wordpress.com/2017/09/impersonation.png?w=1200" alt="impersonation" srcset="https://yangsecurity.files.wordpress.com/2017/09/impersonation.png 721w, https://yangsecurity.files.wordpress.com/2017/09/impersonation.png?w=150 150w, https://yangsecurity.files.wordpress.com/2017/09/impersonation.png?w=300 300w" sizes="(max-width: 721px) 100vw, 721px"   /></p>
+<p style="text-align:center;"><strong>Figure 3.</strong> An impersonation attack with eyeglass frames. Left: a face image of Kaylee Defer. Middle: image after adding a frame. Right: Nancy Travis, the impersonation target.</p>
+<p>&nbsp;</p>
+<p>As you can see in Figure 2 and Figure 3, altering a small portion of a benign image can mislead the FRS to miss the detection or classify it as another face.</p>
+<p>Since the attack is designed to pass adversarial data points through the FRS without altering it, and either dodging or impersonation can be used, this attack can be tagged by &#8220;<span style="color:#3366ff;">exploratory</span>, <span style="color:#3366ff;">integrity</span>, <span style="color:#3366ff;">targeted</span> or <span style="color:#3366ff;">indiscriminate</span>&#8220;.</p>
+<p>&nbsp;</p>
+
+
+<h4 style="text-align:left;"><span style="color:#0000ff;">Example 2: <span style="color:#000000;">Poisoning Support Vector Machines</span></span> <span style="color:#ff0000;">[1]</span></h4>
+<p><a href="https://en.wikipedia.org/wiki/Support_vector_machine" target="_blank" rel="noopener">Support vector machine</a> (SVM) was the most popular image recognition ML algorithm before the thriving of deep neural networks. Briefly speaking, a typical SVM classifier consists of an optimal subset of its training data set which provides the best separating hyperplane for the training data.</p>
+<p>In this example, rather than merely evading classification, the adversary schemes to alter the SVM classifier itself by chronically feeding it carefully designed training data points. After adequate rounds of feeding, the target SVM will become poisoned so deeply that it will produce false negatives with high probability and eventually be abandoned by its users.</p>
+<p>Figure 4 shows a specific example how the adversary generates a optimal poisoning training data point for a single iteration. The adversary first chooses a support vector from the attacked class (red), re-labels it as the attacking class (blue), then performs <a href="https://en.wikipedia.org/wiki/Gradient_descent" target="_blank" rel="noopener">gradient ascent</a> to relocate it to a local maximum with respect to a certain classification error measure.</p>
+<p style="text-align:center;"><img data-attachment-id="60" data-permalink="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/poisoning-svm-kernelized/" data-orig-file="https://yangsecurity.files.wordpress.com/2017/09/poisoning-svm-kernelized.png?w=1200" data-orig-size="726,299" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="poisoning SVM &#8211; kernelized" data-image-description="" data-medium-file="https://yangsecurity.files.wordpress.com/2017/09/poisoning-svm-kernelized.png?w=1200?w=300" data-large-file="https://yangsecurity.files.wordpress.com/2017/09/poisoning-svm-kernelized.png?w=1200?w=726" class=" size-full wp-image-60 aligncenter" src="https://yangsecurity.files.wordpress.com/2017/09/poisoning-svm-kernelized.png?w=1200" alt="poisoning SVM - kernelized" srcset="https://yangsecurity.files.wordpress.com/2017/09/poisoning-svm-kernelized.png 726w, https://yangsecurity.files.wordpress.com/2017/09/poisoning-svm-kernelized.png?w=150 150w, https://yangsecurity.files.wordpress.com/2017/09/poisoning-svm-kernelized.png?w=300 300w" sizes="(max-width: 726px) 100vw, 726px"   /></p>
+<p style="text-align:center;"><strong>Figure 4. </strong>Behavior of the gradient-based attack on the Gaussian data sets for the SVM with RBF kernel. Red: the attacking class. Blue: the attacked class.</p>
+<p>&nbsp;</p>
+<p>Figure 5 shows the result after many iterations of the above poisoning operation. The error rate of the SVM classification increases with more iterations of poisoning. As you may know that a 25% error rate is high enough for <a href="http://yann.lecun.com/exdb/mnist/" target="_blank" rel="noopener">MNIST</a> data set to declare the classification system fails.</p>
+<p style="text-align:center;"><img data-attachment-id="62" data-permalink="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/poisoning-svm-example-9-vs-8/" data-orig-file="https://yangsecurity.files.wordpress.com/2017/09/poisoning-svm-example-9-vs-8.png?w=1200" data-orig-size="794,286" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="poisoning SVM example &#8211; 9 vs 8" data-image-description="" data-medium-file="https://yangsecurity.files.wordpress.com/2017/09/poisoning-svm-example-9-vs-8.png?w=1200?w=300" data-large-file="https://yangsecurity.files.wordpress.com/2017/09/poisoning-svm-example-9-vs-8.png?w=1200?w=794" class=" size-full wp-image-62 aligncenter" src="https://yangsecurity.files.wordpress.com/2017/09/poisoning-svm-example-9-vs-8.png?w=1200" alt="poisoning SVM example - 9 vs 8" srcset="https://yangsecurity.files.wordpress.com/2017/09/poisoning-svm-example-9-vs-8.png 794w, https://yangsecurity.files.wordpress.com/2017/09/poisoning-svm-example-9-vs-8.png?w=150 150w, https://yangsecurity.files.wordpress.com/2017/09/poisoning-svm-example-9-vs-8.png?w=300 300w, https://yangsecurity.files.wordpress.com/2017/09/poisoning-svm-example-9-vs-8.png?w=768 768w" sizes="(max-width: 794px) 100vw, 794px"   /></p>
+<p style="text-align:center;"><strong>Figure 5 (a). </strong>Modifications to the initial (mislabeled) attack point</p>
+<p style="text-align:center;"><img data-attachment-id="66" data-permalink="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/poisoning-svm-example-9-vs-8-percentage-of-attack-points/" data-orig-file="https://yangsecurity.files.wordpress.com/2017/09/poisoning-svm-example-9-vs-8-percentage-of-attack-points2.png?w=1200" data-orig-size="429,341" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="poisoning SVM example &#8211; 9 vs 8 percentage of attack points" data-image-description="" data-medium-file="https://yangsecurity.files.wordpress.com/2017/09/poisoning-svm-example-9-vs-8-percentage-of-attack-points2.png?w=1200?w=300" data-large-file="https://yangsecurity.files.wordpress.com/2017/09/poisoning-svm-example-9-vs-8-percentage-of-attack-points2.png?w=1200?w=429" class=" size-full wp-image-66 aligncenter" src="https://yangsecurity.files.wordpress.com/2017/09/poisoning-svm-example-9-vs-8-percentage-of-attack-points2.png?w=1200" alt="poisoning SVM example - 9 vs 8 percentage of attack points" srcset="https://yangsecurity.files.wordpress.com/2017/09/poisoning-svm-example-9-vs-8-percentage-of-attack-points2.png 429w, https://yangsecurity.files.wordpress.com/2017/09/poisoning-svm-example-9-vs-8-percentage-of-attack-points2.png?w=150 150w, https://yangsecurity.files.wordpress.com/2017/09/poisoning-svm-example-9-vs-8-percentage-of-attack-points2.png?w=300 300w" sizes="(max-width: 429px) 100vw, 429px"   /></p>
+<p style="text-align:center;"><strong>Figure 5 (b).</strong> Attack performance increases with percentage of attack points</p>
+<p>&nbsp;</p>
+<p>Since the attack causes degradation of the machine learning model, affects the classification accuracy and system usability, and target the training data set as a whole, thus this attack can be tagged as &#8220;<span style="color:#3366ff;">causative</span>, <span style="color:#3366ff;">integrity</span> and <span style="color:#3366ff;">availability</span>, <span style="color:#3366ff;">indiscriminate</span>&#8220;.</p>
+<p>&nbsp;</p>
+
+
+<h4 style="text-align:left;"><span style="color:#0000ff;">Example 3:</span> Membership Inference <span style="color:#ff0000;">[5]</span></h4>
+<p>For some <a href="https://en.wikipedia.org/wiki/Supervised_learning" target="_blank" rel="noopener">supervised learning</a> tasks, it is essential to keep the training data set secret. A well known example is the clinical study of genetic disease, where patients&#8217; gene data records are used for building a statistical model. And any patient&#8217;s gene data should be kept secret. In this scenario, the adversary&#8217;s goal is to infer whether a certain data record was used for training the ML model.</p>
+<p>Different from the previous two examples, the adversary in this example treats the machine learning system as an oracle and have no knowledge on its internal mechanisms. In other words, the attack is &#8220;black-box&#8221;. Figure 6 provides a conceptual attack model:</p>
+<p style="text-align:center;"><img data-attachment-id="72" data-permalink="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/membership-inference-black-box/" data-orig-file="https://yangsecurity.files.wordpress.com/2017/09/membership-inference-black-box.png?w=1200" data-orig-size="706,309" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="membership inference &#8211; black-box" data-image-description="" data-medium-file="https://yangsecurity.files.wordpress.com/2017/09/membership-inference-black-box.png?w=1200?w=300" data-large-file="https://yangsecurity.files.wordpress.com/2017/09/membership-inference-black-box.png?w=1200?w=706" class=" size-full wp-image-72 aligncenter" src="https://yangsecurity.files.wordpress.com/2017/09/membership-inference-black-box.png?w=1200" alt="membership inference - black-box" srcset="https://yangsecurity.files.wordpress.com/2017/09/membership-inference-black-box.png 706w, https://yangsecurity.files.wordpress.com/2017/09/membership-inference-black-box.png?w=150 150w, https://yangsecurity.files.wordpress.com/2017/09/membership-inference-black-box.png?w=300 300w" sizes="(max-width: 706px) 100vw, 706px"   /></p>
+<p style="text-align:center;"><strong>Figure 6 (a). </strong>Black-box membership inference attack model.</p>
+<p style="text-align:center;"><img data-attachment-id="73" data-permalink="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/shadow-model/" data-orig-file="https://yangsecurity.files.wordpress.com/2017/09/shadow-model.png?w=1200" data-orig-size="550,450" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="shadow model" data-image-description="" data-medium-file="https://yangsecurity.files.wordpress.com/2017/09/shadow-model.png?w=1200?w=300" data-large-file="https://yangsecurity.files.wordpress.com/2017/09/shadow-model.png?w=1200?w=550" class=" size-full wp-image-73 aligncenter" src="https://yangsecurity.files.wordpress.com/2017/09/shadow-model.png?w=1200" alt="shadow model" srcset="https://yangsecurity.files.wordpress.com/2017/09/shadow-model.png 550w, https://yangsecurity.files.wordpress.com/2017/09/shadow-model.png?w=150 150w, https://yangsecurity.files.wordpress.com/2017/09/shadow-model.png?w=300 300w" sizes="(max-width: 550px) 100vw, 550px"   /></p>
+<p style="text-align:center;"><strong>Figure 6 (b). </strong>Training a bank of shadow models that approximate the target model.</p>
+<p>&nbsp;</p>
+<p>To evaluate the attack proposed in <span style="color:#ff0000;">[5]</span>, the author tested it against a purchased data set trained on a targeted Google&#8217;s ML model. Figure 7 presents the attack result and a explanatory illustration on why this attack works.</p>
+<p style="text-align:center;"><img data-attachment-id="75" data-permalink="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/membership-inference-attack-result/" data-orig-file="https://yangsecurity.files.wordpress.com/2017/09/membership-inference-attack-result.png?w=1200" data-orig-size="699,529" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="membership inference &#8211; attack result" data-image-description="" data-medium-file="https://yangsecurity.files.wordpress.com/2017/09/membership-inference-attack-result.png?w=1200?w=300" data-large-file="https://yangsecurity.files.wordpress.com/2017/09/membership-inference-attack-result.png?w=1200?w=699" class=" size-full wp-image-75 aligncenter" src="https://yangsecurity.files.wordpress.com/2017/09/membership-inference-attack-result.png?w=1200" alt="membership inference - attack result" srcset="https://yangsecurity.files.wordpress.com/2017/09/membership-inference-attack-result.png 699w, https://yangsecurity.files.wordpress.com/2017/09/membership-inference-attack-result.png?w=150 150w, https://yangsecurity.files.wordpress.com/2017/09/membership-inference-attack-result.png?w=300 300w" sizes="(max-width: 699px) 100vw, 699px"   /></p>
+<p style="text-align:center;"><strong>Figure 7(a).</strong> Attack precision.</p>
+<p style="text-align:center;"><img data-attachment-id="76" data-permalink="https://yangsecurity.wordpress.com/2017/09/24/can-you-fool-ai-a-guide-to-adversarial-machine-learning/membership-inference-uncertainty-and-accuracy-of-different-number-of-classes/" data-orig-file="https://yangsecurity.files.wordpress.com/2017/09/membership-inference-uncertainty-and-accuracy-of-different-number-of-classes.png?w=1200" data-orig-size="1534,742" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="membership inference &#8211; uncertainty and accuracy of different number of classes" data-image-description="" data-medium-file="https://yangsecurity.files.wordpress.com/2017/09/membership-inference-uncertainty-and-accuracy-of-different-number-of-classes.png?w=1200?w=300" data-large-file="https://yangsecurity.files.wordpress.com/2017/09/membership-inference-uncertainty-and-accuracy-of-different-number-of-classes.png?w=1200?w=1024" class=" size-full wp-image-76 aligncenter" src="https://yangsecurity.files.wordpress.com/2017/09/membership-inference-uncertainty-and-accuracy-of-different-number-of-classes.png?w=1200" alt="membership inference - uncertainty and accuracy of different number of classes" srcset="https://yangsecurity.files.wordpress.com/2017/09/membership-inference-uncertainty-and-accuracy-of-different-number-of-classes.png?w=1200 1200w, https://yangsecurity.files.wordpress.com/2017/09/membership-inference-uncertainty-and-accuracy-of-different-number-of-classes.png?w=150 150w, https://yangsecurity.files.wordpress.com/2017/09/membership-inference-uncertainty-and-accuracy-of-different-number-of-classes.png?w=300 300w, https://yangsecurity.files.wordpress.com/2017/09/membership-inference-uncertainty-and-accuracy-of-different-number-of-classes.png?w=768 768w, https://yangsecurity.files.wordpress.com/2017/09/membership-inference-uncertainty-and-accuracy-of-different-number-of-classes.png?w=1024 1024w, https://yangsecurity.files.wordpress.com/2017/09/membership-inference-uncertainty-and-accuracy-of-different-number-of-classes.png 1534w" sizes="(max-width: 1200px) 100vw, 1200px"   /></p>
+<p style="text-align:center;"><strong>Figure 7(b).</strong> Performance of the targeted model which can explain why the attack works well when there are more classes.</p>
+<p>&nbsp;</p>
+<p>As you can see from Figure 7, when there are more classes, the discrepancy of histograms for targeted model&#8217;s prediction accuracy (uncertainty) between members and non-members is bigger, of which can be taken advantage by the adversarial performing the proposed attack.</p>
+<p>Since the adversary&#8217;s goal is to breach the identities of certain training data points and have no intention to alter the targeting system, this attack can be tagged &#8220;<span style="color:#3366ff;">exploratory</span>, <span style="color:#3366ff;">privacy</span>, <span style="color:#3366ff;">targeted</span>&#8220;.</p>
+<p>&nbsp;</p>
+
+
+
+
+<h2 style="text-align:left;"><span style="color:#333399;">Exploring  Countermeasures</span></h2>
+<p>It is generally difficult to form an automatic defense strategy against attacks against machine learning and it is also an active research area. The general idea is to increase attackers&#8217; cost and delay the time of breach. Here gives a non-exhaustive list of possible defense methods:</p>
+<p><strong>Robust features.</strong> Discarding trivial and non-representative features while adding more distinct and robust features.</p>
+<p><strong>Combined models.</strong> Using several different classifiers sequentially or in a more complex manner in the hope to aggregate edges of different models.</p>
+<p><strong>Randomization.</strong> Randomizing or altering the classification output to mislead the attacker while acquiring knowledge of the ML system.</p>
+<p><strong>Adversarial retraining.</strong> Actively retraining the ML model on possible adversarial data points.</p>
+<p><strong>Manual intervention.</strong> Hiring a human observer to manually detect anomalies and malicious sources.</p>
+<p>Although we have quite a few defense tools as above mentioned, it is important to know that the adversarial may as well adapt and develop new attacking strategies. Hence an &#8220;arm race&#8221; is a proper analogy for the feud between between the adversary and the targeted ML system.</p>
+<p>&nbsp;</p>
+
+
+
+
+<h2 style="text-align:left;"><span style="color:#000080;">End Notes</span></h2>
+<p>Perhaps you will never come to the case of building ML algorithms for classifying mutants for Prof. Xavier, nonetheless building a real-world machine learning system that is robust in adversarial settings is no less challenging. The research of adversarial machine learning still has a long way to go.</p>
+<p>&nbsp;</p>
+
+
+
+
+<h2 style="text-align:left;"><span style="color:#333399;">References</span></h2>
+<pre style="text-align:left;"><span style="color:#ff0000;">[1]</span> Biggio, Battista, Blaine Nelson, and Pavel Laskov. "Poisoning attacks against support vector machines." arXiv preprint arXiv:1206.6389 (2012). <a href="https://arxiv.org/pdf/1206.6389.pdf" target="_blank" rel="noopener">Link</a>
+<span style="color:#ff0000;">[2]</span> Dalvi, Nilesh, et al. "Adversarial classification." Proceedings of the tenth ACM SIGKDD international conference on Knowledge discovery and data mining. ACM, 2004. <a href="https://info.cs.uab.edu/zhang/Spam-mining-papers/Adversarial.Classification.pdf" target="_blank" rel="noopener">Link</a>
+<span style="color:#ff0000;">[3]</span> Huang, Ling, et al. "Adversarial machine learning." Proceedings of the 4th ACM workshop on Security and artificial intelligence. ACM, 2011. <a href="https://pdfs.semanticscholar.org/3212/929ad5121464ac49741dd3462a5d469e668d.pdf" target="_blank" rel="noopener">Link</a>
+<span style="color:#ff0000;">[4]</span> Sharif, Mahmood, et al. "Accessorize to a crime: Real and stealthy attacks on state-of-the-art face recognition." Proceedings of the 2016 ACM SIGSAC Conference on Computer and Communications Security. ACM, 2016. <a href="https://www.cs.unc.edu/~reiter/papers/2016/CCS2.pdf" target="_blank" rel="noopener">Link</a>
+<span style="color:#ff0000;">[5]</span> Shokri, Reza, et al. "Membership inference attacks against machine learning models." <i>Security and Privacy (SP), 2017 IEEE Symposium on</i>. IEEE, 2017. <a href="https://arxiv.org/pdf/1610.05820.pdf" target="_blank" rel="noopener">Link</a>
+<span style="color:#ff0000;">[6]</span> Tygar, J. D. "Adversarial machine learning." IEEE Internet Computing 15.5 (2011): 4-6. <a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=6015575" target="_blank" rel="noopener">Link</a>
+<span style="color:#ff0000;">[7]</span> Wikipedia - Adversarial machine learning. <a href="https://en.wikipedia.org/wiki/Adversarial_machine_learning" target="_blank" rel="noopener">Link</a>
+<span style="color:#ff0000;">[8]</span> Xu, Weilin, Yanjun Qi, and David Evans. "Automatically evading classifiers." <i>Proceedings of the 2016 Network and Distributed Systems Symposium</i>. 2016. <a href="https://pdfs.semanticscholar.org/6888/b8e3bdcb1d1427bfcf4a94b9d2f1fbc205c2.pdf" target="_blank" rel="noopener">Link</a></pre>
+<p>&nbsp;</p>		
+
+
+
+</div><!-- .entry-content -->
+
+
+
+
+
+
+
+  </div>
+</div>
+<!-- End page content -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- W3.CSS Container -->
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px">
+<p class="w3-right"> CS/ECE 5584: Network Security, Fall 2017, <a href="http://ningzhang.info" target="_blank" class="w3-hover-opacity">Ning Zhang</a>
+</p></div>
+
+
+
+</body>
+
+</html>
