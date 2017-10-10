@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html>
+<title>CS/ECE 5584: Network Security, Fall 2017</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #990000;
+    color: white;
+}
+
+.tabstyle { display: inline-block; width: 150px; }
+</style>
+
+<script>
+  function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+  }
+ 
+  function w3_close() {
+      document.getElementById("mySidebar").style.display = "none";
+      document.getElementById("myOverlay").style.display = "none";
+  }
+</script>
+
+<body>
+
+<!-- Sidebar/menu -->
+
+<nav class="w3-sidebar w3-black w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()"
+      class="w3-button w3-hide-large w3-display-topleft"
+      style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>Network<br>Security</b></h3>
+  </div>
+  <div class="w3-bar-block">
+    <a href="../index.html#Announcements"   onclick="w3_close()"
+        class="w3-bar-item w3-button w3-hover-white">Announcements</a> 
+    <a href="../index.html#Syllabus"        onclick="w3_close()"
+        class="w3-bar-item w3-button w3-hover-white">Syllabus</a> 
+    <a href="../index.html#Schedule"        onclick="w3_close()"
+        class="w3-bar-item w3-button w3-hover-white">Schedule</a> 
+    <a href="../index.html#Projects"        onclick="w3_close()"
+        class="w3-bar-item w3-button w3-hover-white">Projects</a> 
+    <a href="../index.html#Readings"        onclick="w3_close()" 
+        class="w3-bar-item w3-button w3-hover-white">Readings</a>
+    <a href="../index.html"                 onclick="w3_close()" 
+        class="w3-bar-item w3-button w3-hover-white">Blogs</a>  
+    <a href="../index.html#Ethics"          onclick="w3_close()"
+        class="w3-bar-item w3-button w3-hover-white">Ethics</a> 
+  </div>
+</nav>
+
+<!-- Header -->
+  
+  <!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-black w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-black w3-margin-right"
+      onclick="w3_open()">☰</a>
+  <span>Network Security</span>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" 
+    style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+  <div class="w3-container" id="Trust Issues: Exploiting TrustZone TEEs" 
+      style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-gray">
+        <b>Cyber-attack Detection and Characterization Using Social Media</b>
+    </h1>
+    <hr style="width:50px;border:5px solid #990000" class="w3-round">
+
+<!-- !INTRODUCTION! -->
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline; white-space:
+    pre-wrap;">Posted by Taoran Ji</span></div>
+<b id="docs-internal-guid-6541b086-756f-55af-a3b1-a0a0709119ce"
+    style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial; 
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; 
+    text-decoration: none; vertical-align: baseline;">
+    Recent years, cyber-attacks are gaining increasing attention from the public
+    because these attack events are occurring more frequently, with greater
+    scale and more severe damage or influence. In fact, last year, in a lot of
+    news report for data crime, we can see the words "biggest", "largest" or
+    "in the history".  In particular, only in 2016, we saw Democratic National
+    Committee (DNC) email leak which revealed a sophisticated understanding of
+    politics, Yahoo data breach which affected over 1 billion accounts, massive
+    DDoS attacks targeting major DNS provider Dyn which impacts the Internet
+    service in the US east. In the last several months of 2017, we saw the
+    WannaCry which spread around the world, and Equifax data breach which leaked
+    around 143 million sensitive information including social security numbers
+    and other personal information. The leaked data from government agencies and
+    large enterprises like Equifax are usually sensitive personal information
+    which may cause further loss of personal property.
+</span>
+</div>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+    Unfortunately, though leaked data may cause further cyber crimes,
+    organizations being attacked usually choose not to notify the public at the
+    first time due to business factors, and it may take very long time for the
+    news report to be involved since they have to collect information which
+    originates outside these organizations. For instance, Yahoo data breach,
+    occurring earlier around August 2013, was only reported in December 2016
+    though it affected over 1 billion user accounts.
+</span>
+</div>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+    In response to the situations mentioned above, cyber-attack detection and
+    characterization using social media, as a research interest, aims to detect
+    and characterize the ongoing or happened cyber attacks by leveraging
+    conversations and discussions posted on the public social media platforms
+    like Facebook and Twitter. In this blog post, I'll reveal the motivation of
+    the usage of social media and explore the several works done by other
+    researchers.
+</span>
+</div>
+
+<!-- !EXPLORATION! -->
+<h3 dir="ltr" style="line-height: 1.38; margin-bottom: 4pt; margin-top: 16pt;">
+<span style="background-color: transparent; color: #434343; font-family: Arial;
+    font-size: 14pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+    Motivation: Why use social media?
+</span>
+</h3>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+    The motivation of using social media data is that people will report or
+    complain about the abnormal behaviors (eg., login location and time) of
+    their account as well the unhappy user experience of internet services,
+    which can be potential indicators for an ongoing cyber attack. For instance,
+    on Oct 21, Spotify, Netflix along with other online websites suffered a mass
+    DDOS attack which dramatically impacts the access speed. The following
+    screenshots are people reporting and complaining about slow internet on
+    Twitter.
+</span>
+</div>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;
+    text-align: center;">
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline; white-space:
+    pre-wrap;"><img alt="context_map.png" src="./img/network_slow1.png"
+    style="-webkit-transform: rotate(0.00rad); border: none; transform:
+    rotate(0.00rad);" ></span></div>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;
+    text-align: center;">
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline; white-space:
+    pre-wrap;"><img alt="context_map.png" src="./img/network_slow2.png"
+    style="-webkit-transform: rotate(0.00rad); border: none; transform:
+    rotate(0.00rad);" ></span></div>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;
+    text-align: center;">
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline; white-space:
+    pre-wrap;"><img alt="context_map.png" src="./img/network_slow3.png"
+    style="-webkit-transform: rotate(0.00rad); border: none; transform:
+    rotate(0.00rad);" ></span></div>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+    Another case is Yahoo data breach. As I mentioned, though Yahoo data breach
+    occurred earlier around August 2013, it was officially confirmed in December
+    2016 which is over three years later. On Twitter, there already have many
+    signals showing that many users' Yahoo accounts have abnormal login
+    behaviors, as shown in figures below.
+</span>
+</div>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;
+    text-align: center;">
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+    <img alt="context_map.png" src="./img/yahoo1.png" style="-webkit-transform:
+    rotate(0.00rad); border: none; transform: rotate(0.00rad);" >
+</span>
+</div>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;
+    text-align: center;">
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+    <img alt="context_map.png" src="./img/yahoo2.png" style="-webkit-transform:
+    rotate(0.00rad); border: none; transform: rotate(0.00rad);" >
+</span>
+</div>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;
+    text-align: center;">
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+    <img alt="context_map.png" src="./img/yahoo3.png" style="-webkit-transform:
+    rotate(0.00rad); border: none; transform: rotate(0.00rad);" >
+</span>
+</div>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+    In fact, social media, which is believed to have the ability to turn users
+    into social sensors and empower them to participate in an online ecosystem,
+    has been used in many event detection tasks such as disease outbreaks, civil
+    unrest, and earthquakes. Thus, intuitively, we believe that analysis of such
+    online media can provide insight into a broader range of cyber-attacks such
+    as data breaches, account hijacking.
+</span>
+</div>
+<h3 dir="ltr" style="line-height: 1.38; margin-bottom: 4pt; margin-top: 16pt;">
+<span style="background-color: transparent; color: #434343; font-family: Arial;
+    font-size: 14pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+    Exploration of Solutions
+</span>
+</h3>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+    It seems that the problem can be easily solved by mining tweets which
+    contain some keywords about cyber-attack events. What a straightforward,
+    simple and beautiful method! But it will never work. Come on. This is social
+    media we are talking about. It never works as you think. Working in social
+    media data is never a trivial task considering the noisy environment
+    provided by the online platform. On Twitter, people will use slang, informal
+    language, hashtags, make up words and misspellings are common things.
+</span>
+</div>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;
+    text-align: center;">
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+    <img alt="context_map.png" src="./img/misspell1.png"
+    style="-webkit-transform: rotate(0.00rad); border: none; 
+    transform: rotate(0.00rad);">
+</span>
+</div>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;
+    text-align: center;">
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+    <img alt="context_map.png" src="./img/misspell2.png"
+    style="-webkit-transform: rotate(0.00rad); border: none; 
+    transform: rotate(0.00rad);">
+</span>
+</div>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+    What do you see in the above two tweets? <strong>Netlix</strong>,
+    <strong>Twier</strong>, <strong>#twitterislife</strong> and slow. They are
+    signals what we want, but the machine doesn't know what's Netlix, Twier or
+    #twitterislife since they are not in the dictionary. What's more, even 
+    though Twitter users write tweets very carefully and double check the
+    spelling before posting, it still won't work. Every word can be ambiguous
+    online. The following two tweets show that how keyword <strong>hack</strong>
+    is used to express the different meaning.
+</span>
+</div>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;
+    text-align: center;">
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+    <img alt="context_map.png" src="./img/ambiguous1.png"
+    style="-webkit-transform: rotate(0.00rad); border: none;
+    transform: rotate(0.00rad);" >
+</span>
+</div>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;
+    text-align: center;">
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+    <img alt="context_map.png" src="./img/ambiguous2.png"
+    style="-webkit-transform: rotate(0.00rad); border: none;
+    transform: rotate(0.00rad);" >
+</span>
+</div>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+    Now let's see other researchers' work. Most existing work focuses on 
+    technology blogs and tweets from security professionals to extract useful 
+    information. For instance, Liao et al. build text mining tools to extract
+    key attack identifiers (IP, MD5 hashes) from security tech blogs in their
+    paper "Acing the IOC Game: Toward Automatic Discovery and Analysis of
+    Open-Source Cyber Threat Intelligence". 
+</span>
+</div>
+<h4 dir="ltr" style="line-height: 1.38; margin-bottom: 4pt; margin-top: 14pt;">
+<span style="background-color: transparent; color: #666666; font-family: Arial; 
+    font-size: 12pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+    IOC Game
+</span>
+</h4>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+    This paper focuses on the automatic discovery and analysis of IOC
+    (Indicators of Compromise) information presented by security professionals
+    in public sources (e.g., blogs, forums, tweets, etc.). In particular, the
+    authors propose iACE, a framework which can locate an IOC token, get its
+    context, and further analyze their relations through NLP techniques. The
+    following figure is iACE's architecture. 
+</span>
+</div>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;
+    text-align: center;">
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+    <img alt="context_map.png" src="./img/iACE_arch.png"
+    style="-webkit-transform: rotate(0.00rad); border: none;
+    transform: rotate(0.00rad);" >
+</span>
+</div>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+    As we can see, the system keeps collecting technical blogs using Blog
+    Scraper (BS), which is essentially a web crawler designed to monitor the
+    rapidly evolving online content. Though technical blogs are less noisy than
+    the Twitter environment, there are still many materials unrelated with IOC,
+    e.g., product promotion, news or software update. Thus Blog Preprocessor
+    (BP) is required to perform pre-processing on the data collection to extract
+    and normalize only technical related content from crawled pages and filter
+    out non-IOC articles. Relevant Content Picker (RCP) will further use context
+    terms and regexes to locate the sentences likely to contain IOC information.
+    In a nutshell, for each IOC blog, BP and RCP's job is to identify and pick
+    sentences, tables, and lists which are likely to include IOCs. Though
+    context terms and regexes can help to find sentences likely involving IOCs,
+    they are insufficient for detection IOCs with high accuracy. Therefore in
+    Relation Checker (RC), dependency tree technique is adopted to improve the
+    accuracy. In participate, the presence of IOC relations between a context
+    term and an IOC candidate within a sentence is examined though a customized
+    kernel classifier which calculates the similarity between two dependency
+    subgraphs based on the point-wise distance. The RC workflow is shown below.   
+</span>
+</div>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;
+    text-align: center;">
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+    <img alt="context_map.png" src="./img/RC.png"
+    style="-webkit-transform: rotate(0.00rad); border: none;
+    transform: rotate(0.00rad);" >
+</span>
+</div>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+    In the evaluation, the authors run their framework on 71,000 articles
+    collected from 45 technical blogs and get a remarkable performance. iACE
+    generates 900K OpenIOC items with a precision of 95% and a recall over 90%,
+    which overperforms other state-of-the-art approaches. In summary, one major
+    technical contribution of this paper is to use dependency parser to identify
+    the IOC item instead of using context terms or regexes alone, and it does
+    dramatically improve the identification accuracy. 
+</span>
+</div>
+<h3 dir="ltr" style="line-height: 1.38; margin-bottom: 4pt; margin-top: 16pt;">
+<span style="background-color: transparent; color: #434343; font-family: Arial;
+    font-size: 14pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+    Afterword
+</span>
+</h3>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+    Cyber-attack detection and characterization using open-source data is still
+    a new but interesting research problem. It's based on the assumption that
+    security professionals or normal web service users will exchange, share
+    their knowledge, experience, and information through social media.
+    Furthermore, the assumption is also proved to work in other papers, e.g., 
+    "Vulnerability Disclosure in the Age of Social Media: Exploiting Twitter for
+    Predicting Real-World Exploits" and "Weakly Supervised Extraction of 
+    Computer Security Events from Twitter". Anyway, this problem can be further
+    divided into several more detailed subproblems, e.g, what information to
+    extract from open source data like IOC item, named entitied, how to get the
+    target "particle", and how to use extracted knowledge elements. 
+</span>
+</div>
+<br>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+</span>
+</div>
+<div>
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+    <br>
+</span>
+</div>
+
+<div style="clear: both;"></div>
+</div>
+</div>
+</div>
+<!-- End page content -->
+
+<!-- W3.CSS Container -->
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px">
+<p class="w3-right"> CS/ECE 5584: Network Security, Fall 2017, <a href="http://ningzhang.info" target="_blank" class="w3-hover-opacity">Ning Zhang</a>
+</p></div>
+</body>
+</html>
