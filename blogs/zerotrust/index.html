@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<title>CS/ECE 5584: Network Security, Fall 2017</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #990000;
+    color: white;
+}
+
+.tabstyle { display: inline-block; width: 150px; }
+</style>
+
+<script>
+  function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+  }
+ 
+  function w3_close() {
+      document.getElementById("mySidebar").style.display = "none";
+      document.getElementById("myOverlay").style.display = "none";
+  }
+</script>
+
+<body>
+
+
+
+<!-- Sidebar/menu -->
+
+
+<nav class="w3-sidebar w3-black w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>Network<br>Security</b></h3>
+  </div>
+  <div class="w3-bar-block">
+    <a href="../index.html#Announcements"   onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Announcements</a> 
+    <a href="../index.html#Syllabus"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Syllabus</a> 
+    <a href="../index.html#Schedule"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Schedule</a> 
+    <a href="../index.html#Projects"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Projects</a> 
+    <a href="../index.html#Readings"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Readings</a>
+    <a href="../index.html"                 onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Blogs</a>  
+    <a href="../index.html#Ethics"          onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Ethics</a> 
+  </div>
+</nav>
+
+<!-- Header -->
+  
+  <!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-black w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-black w3-margin-right" onclick="w3_open()">☰</a>
+  <span>Network Security</span>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+  <div class="w3-container" id="Zero-Trust: An Alternative to Perimeter Defense" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-gray"><b>Zero-Trust: An Alternative to Perimeter Defense</b></h1>
+    <h2 class="w3-xlarge w3-text-gray"><i><b>
+        <a href="http://shop.oreilly.com/product/0636920052265.do" 
+        target="_blank" class="w3-hover-opacity"> 
+            Based on Zero Trust Networks by Evan Gilman and Doug Barth</a> 
+    </b></i></h2>
+    <hr style="width:50px;border:5px solid #990000" class="w3-round">
+
+    
+<p> Here's the scenario: you are deploying a simple network, with only a few local machines that can connect
+	to the Internet through your router. You want these machines to communicate locally with one another, and 
+	to websites located on external networks, but you don't want connections to be established from outside
+	the network. You, a capable sys admin, deploy a firewall between the local network and the Internet to
+	protect your network. All is well, and your network seems to be secure. </p>
+	
+	<div class="image" style="text-align: center;">
+	<img alt="perimeter-firewall.png" src = "./img/perimeter-firewall.png" width=50%>
+	<div> <b>Figure 1. A traditional network defended by a single firewall</b> </div>
+	</div>
+	
+<p> Now you need to deploy a web server on your network that is accesible from beyond your router.
+	Now you change settings in your firewall that allow external connections to a server on your network on
+	port 80. The first hole of many in your defenses. </p>
+	
+<p> You continue expanding your network, setting up more public resources, adding in VPN's, and creating 
+	more openings for malicious traffic to enter your network. Your firewall is beginning to look more like
+	fishing net, capable of stopping larger and more obvious attacks, but with enough gaps to give opportunities
+	to allow something through. </p>
+	
+<p> This is the <b>perimeter defense</b> approach to protecting networks. With this security scheme, all attacks
+	are hopefully stopped at the firewall. But what happens if an attacker makes it through? What happens if an 
+	attack is an insider in your network? A traditional firewall does not defend against these scenarios, but
+	can only alert after the damage is already done. </p>
+
+<p> In the figure below, an attacker compromises a network through a phishing email, and is able to escalate
+	privileges to access a resource that should be unavailable. The firewall is easily bypassed and by compromising
+	specific machines to get root provileges, the attacker has full reign in the network. </p>
+	
+	<div class="image" style="text-align: center;">
+	<img alt="perimeter-attack.png" src = "./img/perimeter-attack.png" width=50%>
+	<div> <b>Figure 2. An attacker bypasses a perimeter defense scheme</b> </div>
+	</div>
+	
+<p> Enter the <b> zero trust </b> framework. This scheme for designing and maintaining networks assumes that ALL network
+	traffic is malicious or untrusted until proven otherwise. If a packet cannot be authenticated and authorized,
+	then it is dropped by the controller. Originally <a href="https://www.nist.gov/sites/default/files/documents/2017/06/05/040813_forrester_research.pdf">
+	proposed by Forrester Research, Inc. </a> to the National Institute
+	of Science and Technology (NIST) in 2013, this concept builds on top of a software-defined network, and describes
+	the protocols and schemes needed to verify and authorize all traffic within a network. </p>
+	
+<p> In a software-defined network, the network functions are split into two domains: the control plane and the data plane.
+	The control plane is the software and managing functions that determines where traffic should switched or routed to. 
+	The data plane is the hardware functions of a switch that physically moves the packets from one location to another. 
+	On traditional switches, these functions are combined into one device. In a software-defined network, a sysadmin is 
+	able to use the control plane to manage the traffic flows from a family of switches, rather than needing to 
+	manage each switch individually. In an SDN, a switch forwards all traffic up to a controller for flow analysis, and
+	then routes the data received from the controller to the appropriate source. </p>
+	
+<p>	A zero trust network utilizes this controller to operate the authorization and authentication of all traffic. If
+	the controller cannot verify the trustworthiness of the traffic, the packet is simply dropped. Trust is calculated
+	using three different types of authentication: device, user, and application authentication. In many situations, 
+	specifically in automated software, the user and the application are the same entity.</p>
+	
+	<!-- DEVICE AUTHENTICATION -->
+	<h3> Trusting Devices </h3>
+<p> There are a few ways to calculate a level of trust for a specific device, the first of which is the <b> time since
+	image </b>. The longer a device has been in use, the more likely it is to have been tampered with.
+
+<p> A controller can calculate a level of trust based on the <b> history of access </b> for a particular device. An old
+	device that has not authenticated in a long time may be met with skepticism if it attempts to access a newer resource. 
+	Frequency of operation can also be used to calculate trust, as a device making an abormal number of requests could 
+	be compromised.</p>
+	
+<p> While a rather difficult piece to observer, the <b> location </b> of a device can be used to gather some information
+	about trustworthiness. With IP spoofing being rather simple for most attackers, this concept is not to be leaned on 
+	as the only way of calculating trust. In some situations, location can help. For example, a device is authenticated once 
+	in the United States, and then the same device certificate is used in Europe. </p>
+	
+	<!-- USER/APPLICATION AUTHENTICATION -->
+<h3> Trusting Users </h3>
+<p> Trusting a user is a difficult task. When sitting across the table from someone, you can know with some certainty that
+	they are who they say they are. However, it is difficult to know if someone on the other side of a computer is who they
+	say they are. This is why it is especially important, not just in a zero trust model but in general, to protect any
+	information that could be used to authenticate you as a user, whether that is a password, U2F token, or cell phone. </p>
+
+<p> In a zero trust model, a user identity is built around a number of characteristics of the user. This can range from simply
+	name and phone number to things as complex as current location and the details of the security certificate they are using
+	to authenticate into the network. The identity of the user and the method they use to authenticate will give a certain level
+	of trust for a particular resource. If a user is not trusted enough to access a resource due to their identity, they may 
+	be prompted to provide more information to verify their identity to ensure they have authorization and trust to access that
+	resource. </p>
+	
+<p> Signals of trust for a user are similar to a device, as a user is often tied to a number of devices. Location, access history, 
+	and frequency of use can be indicators of whether a particular user can be trusted to access a resource. </p>
+
+<h3> Trusting Applications </h3>
+<p> Trusting applications can be rather difficult, due to the many steps taken in their development and deployment. Version
+	control systems help hold developers accountable and can be used to manage access to software in development. Compiling
+	software on a trusted device helps improve trust for the software. In the build process, all configurations and build tools
+	should be protected to prevent any outside interference in the process. </p>
+	
+<p>	By using <b> reproducible builds </b>, multiple users can compile the same code on different machines produce the same output. 
+	This is helpful in verifying that the build process was not tampered with, as any build that is not like the others was likely
+	interfered with and should not be trusted. </p>
+	
+	<!-- TRUST CALCULATION -->
+	<h3> Trust Calculation </h3>
+<p> Using multiple avenues of gathering trust, a score is calculated. It is up to the managers of the network to determine which 
+	signals of trust have more of an impact on the score. The score then determines whether the user/application that is authenticating
+	has permission to access a particular resource. In some cases, a user/application may not have access to a resource, even if it
+	is trusted enough. This is similar to a standard perimeter defense model with different security zones, in that different groups
+	have access to different groups of resources. </p>
+	
+	The trust score is calculated at the controller, which contacts the different databases and services to verify the validity of
+	certificates, locations, or passwords. If the controller allows the connection, it returns the packets to the switch with a
+	command to pass the packets along to its destination. Otherwise, the controller simply drops the packet and disallows the connection.</p>
+	
+	<!-- TROUBLE WITH ZERO-TRUST -->
+	<h3> Issues and Future Work </h3>
+<p> Zero trust is not a new concept, as it was initially proposed over 4 years ago. Many large corporations, including <a href="https://cloud.google.com/beyondcorp/"> 
+	Google </a>, have implemented zero trust networks into their infrastructures. This means that many issues with zero trust have been
+	recognized and dealt with. One of the initial issues that could be recognized with a zero trust network is the use of a single controller.
+	This produces a single point of failure where a simple DDoS attack would disrupt an entire network. However, the use of distributed computing
+	and multiple nodes for this controller mitigates the damage done by any attempts to disrupt availability. </p>
+	
+<p> With some research, there was little found on the feasibility of producing small-scale zero trust networks. For smaller businesses or even
+	home networks, it would be difficult to manage security certificates for the devices connecting to a network, especially with the use of 
+	WiFi. An exploration into the ways of deploying a zero trust model into small networks would be worthwhile. </p>
+	
+<p> Another field of exploration would be to look at how the controller calculates the trust score. Determining which signs are the most viable
+	best indicators of trust would help sysadmins focus their time on securing a particular signal, such as device history of access. </p>
+
+
+	
+	
+
+  </div>
+</div>
+<!-- End page content -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- W3.CSS Container -->
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px">
+<p class="w3-right"> CS/ECE 5584: Network Security, Fall 2017, <a href="http://ningzhang.info" target="_blank" class="w3-hover-opacity">Ning Zhang</a>
+</p></div>
+
+
+
+</body>
+
+</html>
