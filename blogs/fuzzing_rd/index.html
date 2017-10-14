@@ -47,7 +47,7 @@ th {
     <a href="#Schedule"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Schedule</a> 
     <a href="#Projects"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Projects</a> 
     <a href="#Readings"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Readings</a>
-    <a href="blogs/index.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Blogs</a>  
+    <a href="../index.html"    onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Blogs</a>  
     <a href="#Ethics"          onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Ethics</a> 
   </div>
 </nav>
@@ -66,8 +66,7 @@ th {
 
   <!-- Header -->
   <div class="w3-container" style="margin-top:80px" id="showcase">
-    <h1 class="w3-xxxlarge"><b>#1 modern fuzzing technologies
-</b>  </h1>
+    <h1 class="w3-xxxlarge"><b>Modern fuzzing technologies</b>  </h1>
   </div>
   <div class="w3-container" id="Ethics" style="margin-top:75px">
     <p>Fuzzing is a technology used in nowadays to find interesting crash inside an application. An interesting crash potentially will potentially be a dangerous bug. The general idea of fuzzing is make some test cases as input, and then feed these test cases into the binary program being tested. If the program generate a unique crash then the fuzzer record it. If not, the fuzzer mutate the test cases according to some information. This information can be feed back from the instrumented binary program. This blog discuss about the underlying technology of three modern fuzzing technologies, AFL, Driller and VUzzer. I will first introduce the high level ideas of these three fuzzers following with their strength and drawbacks. Every intro will come with experiments as example. At the end, I will discuss what we can do in the future.<br>
