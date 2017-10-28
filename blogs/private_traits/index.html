@@ -1,0 +1,200 @@
+﻿
+<!DOCTYPE html>
+<html>
+<title>CS/ECE 5584: Network Security, Fall 2017</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #990000;
+    color: white;
+}
+
+.tabstyle { display: inline-block; width: 150px; }
+</style>
+
+<script>
+  function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+  }
+ 
+  function w3_close() {
+      document.getElementById("mySidebar").style.display = "none";
+      document.getElementById("myOverlay").style.display = "none";
+  }
+</script>
+
+<body>
+
+
+
+<!-- Sidebar/menu -->
+
+
+<nav class="w3-sidebar w3-black w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>Network<br>Security</b></h3>
+  </div>
+  <div class="w3-bar-block">
+    <a href="../index.html#Announcements"   onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Announcements</a> 
+    <a href="../index.html#Syllabus"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Syllabus</a> 
+    <a href="../index.html#Schedule"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Schedule</a> 
+    <a href="../index.html#Projects"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Projects</a> 
+    <a href="../index.html#Readings"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Readings</a>
+    <a href="index.html"                    onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Blogs</a>  
+    <a href="../index.html#Ethics"          onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Ethics</a> 
+  </div>
+</nav>
+
+<!-- Header -->
+  
+  <!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-black w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-black w3-margin-right" onclick="w3_open()">☰</a>
+  <span>Network Security</span>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+<h1 id="private-traits-and-attributes-are-predictable-from-digital-records-of-human-behavior"><a class="anchor hidden-xs" href="#private-traits-and-attributes-are-predictable-from-digital-records-of-human-behavior" title="private-traits-and-attributes-are-predictable-from-digital-records-of-human-behavior"><span class="octicon octicon-link"></span></a>Private traits and attributes are predictable from digital records of human behavior</h1><hr><h2 id="introduction"><a class="anchor hidden-xs" href="#introduction" title="introduction"><span class="octicon octicon-link"></span></a>Introduction</h2><p>Social media sits and apps have become an important part of many people’s life. These people live not only in the real world but also the cyber space of social media sits. From the point view of data sciences, an important difference of real world and cyber space is that data in cyber space can be easily recorded and analyzed. As a result, by using machine learning techniques, it is possible to predict social media users’ private traits and attributes which they didn’t intend to release. The following picture shows the different words used by social media users with different ages, which means that even you didn’t fill in your age information on the website, it’s still not a secret for data scientists.</p><p><img src="https://i.imgur.com/7fhBw96.png" alt="" width="50%" height="50%"></p><p>Private trait predicting on social media is still a new research area where many problems are not researched or discussed. As the accuracy of predictions is being updated in many papers, it’s unknown to what extent our private traits can be predicted. On the other hand, since the data used for the prediction are all from users’ public data, the ethics problem is also hard to give a simple answer.</p><p>There are mainly three steps to build a predictor for private traits and attributes for social media users by using their public data, including data collection, feature extraction, and models training.</p><h2 id="data-collection"><a class="anchor hidden-xs" href="#data-collection" title="data-collection"><span class="octicon octicon-link"></span></a>Data Collection</h2><p>There are two types of data needed for the research of social media users’ private traits predicting, including social media data (e.g. texts, photos, egocentric network, activities) and labels of interests. The social media data can be downloaded in two ways in general. The first method is using a webpage crawler to download the html data. On the other hand, it’s also possible to download the data through an official interface. An OAuth authorization is often required for using the official interfaces. A limit of frequency on downloading is another limitation, which can be solved by using multiple tokens and IP addresses.</p><h2 id="feature-extraction"><a class="anchor hidden-xs" href="#feature-extraction" title="feature-extraction"><span class="octicon octicon-link"></span></a>Feature Extraction</h2><p>The data exist on social media are complex heterogeneous data which are composed with texts, images, network data, temporal data, and so on. To apply machine learning techniques on such datasets, it’s necessary to extract features and form a structured dataset.</p><h3 id="text-data"><a class="anchor hidden-xs" href="#text-data" title="text-data"><span class="octicon octicon-link"></span></a>Text data</h3><p>Text data are the most common data used on social media. The regular way to extract features from texts are all based on bag-of-words model, that is, a text (such as a post on Twitter) is represented as the bag (multiset) of its words, disregarding grammar and even word order but keeping multiplicity. Following are several specific methods:</p><ul>
+<li>Lexicon based methods. Such methods are based on lexicons with domain knowledge. One example is sentiment lexicon which can be used to identify the positive/negative emotions of social media users. Another example is LIWC, which is a psychological lexicon that has more than 80 classes of keywords. By using lexicon based methods, features can be extracted by just counting the frequencies of different classes of keywords in the lexicons.</li>
+<li>Topic model. LDA is the most popular topic model. A LDA model can be trained on a large corpus and then be used to extract features from texts.</li>
+<li>Open vocabulary method. This method is proposed by Prof. Schwartz in his paper <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0073791" target="_blank">Personality, Gender, and Age in the Language of Social Media: The Open-Vocabulary Approach</a>. It’s called open because it’s compared with the traditional lexicon based methods which have fixed number of features. This method actually extracts a mixture of topic and keywords by calculating the correlation coefficient between the features and the target variables.</li>
+</ul><p><img src="https://i.imgur.com/zdAM52r.png" alt="" width="50%" height="50%"></p><h3 id="images"><a class="anchor hidden-xs" href="#images" title="images"><span class="octicon octicon-link"></span></a>Images</h3><p>Nowadays the image feature extraction has been mostly occupied by deep leaning methods. Pre-trained CNN models (e.g. VGG16/19, GoogleNet, resnet) can be used to extract image features with a fixed number a dimensions. The regular way is to just ignore the last layer (the original prediction layer) and use the other last several layers (fully connected layers) as features layers. It has proven that pre-trained model can be used to extract features and be used to work with another domain without problems.</p><h3 id="platform-specific-features"><a class="anchor hidden-xs" href="#platform-specific-features" title="platform-specific-features"><span class="octicon octicon-link"></span></a>Platform Specific Features</h3><p>Different platforms have different functions, and as a result each platform has its own specific features.</p><p><img src="https://i.imgur.com/7yxduoq.png" alt="" width="70%" height="70%"></p><p>A good example is the feature of Facebook Likes. This picture shows the method to extract structured features from Facebook Likes. It has proven that by using only the Likes data, it’s possible to predict a wide range of people’s private traits.</p><h2 id="model-training"><a class="anchor hidden-xs" href="#model-training" title="model-training"><span class="octicon octicon-link"></span></a>Model Training</h2><p>After the features are extracted, regular supervised machine learning methods can be used to train a prediction model. The most commonly used supervised learning algorithms are SVM and Random Forest, which are both nonlinear algorithms. They are most commonly used because they are normally the best performed ready-to-use algorithms in most tasks.</p><p>A more advanced way to train a models is to formalize the problem based on the characters of each problem, instead of just using supervised learning algorithms as a black box. Take depression prediction as an example, considering people behave differently on work and off work, two groups of features can be extracted based the working time. Then a lose function can be written based on the psychological assumptions regarding to the working time and depression. At last, an optimization method need to be proposed to find the solution.</p><h2 id="discussion"><a class="anchor hidden-xs" href="#discussion" title="discussion"><span class="octicon octicon-link"></span></a>Discussion</h2><p>How can we prevent privacy disclosure on social media? My answer is there’s no way. As long as you have posted enough texts or have enough activities on social media website, you have already released too much information to the public. And as long as the data scientist gather enough labelled data, which is <a href="http://mypersonality.org/wiki/doku.php" target="_blank">already there</a>, a prediction model can be trained to predict a wide range of privacy of yours that you don’t want people to know.</p>
+
+
+
+<!-- End page content -->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- W3.CSS Container -->
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px">
+<p class="w3-right"> CS/ECE 5584: Network Security, Fall 2017, <a href="http://ningzhang.info" target="_blank" class="w3-hover-opacity">Ning Zhang</a>
+</p></div>
+
+
+
+</body>
+
+</html>
