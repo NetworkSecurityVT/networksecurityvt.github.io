@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html>
+<title>CS/ECE 5584: Network Security, Fall 2017</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+
+<head>
+	
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #990000;
+    color: white;
+}
+
+.tabstyle { display: inline-block; width: 150px; }
+.paragraph {background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;}
+.line {line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt}
+.img {background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;}
+</style>
+
+<!-- <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript" async src="./MathJax.js?config=TeX-MML-AM_CHTML"></script> -->
+
+
+<!-- <script>
+  function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+  }
+ 
+  function w3_close() {
+      document.getElementById("mySidebar").style.display = "none";
+      document.getElementById("myOverlay").style.display = "none";
+  }
+</script> -->
+
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+</head>
+
+
+<!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/0.1/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script> -->
+<body>
+	
+<!-- Sidebar/menu -->
+
+
+<nav class="w3-sidebar w3-black w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>Network<br>Security</b></h3>
+  </div>
+  <div class="w3-bar-block">
+    <a href="../../index.html#Announcements"   onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Announcements</a> 
+    <a href="../../index.html#Syllabus"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Syllabus</a> 
+    <a href="../../index.html#Schedule"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Schedule</a> 
+    <a href="../../index.html#Projects"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Projects</a> 
+    <a href="../../index.html#Readings"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Readings</a>
+    <a href="../index.html"                 onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Blogs</a>  
+    <a href="../../index.html#Ethics"          onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Ethics</a> 
+  </div>
+</nav>
+
+<!-- Header -->
+  
+  <!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-black w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-black w3-margin-right" onclick="w3_open()">☰</a>
+  <span>Network Security</span>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+  <div class="w3-container" id="Trust Issues: Exploiting TrustZone TEEs" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-gray"><b>What is Tor?</b></h1>
+    <h2 class="w3-xlarge w3-text-gray"><i><b>
+        <!-- <a href="https://googleprojectzero.blogspot.com/2017/07/trust-issues-exploiting-trustzone-tees.html" 
+        target="_blank" class="w3-hover-opacity"> 
+            Blog Post Originally From Google Project Zero Blog </a>  -->
+    </b></i></h2>
+    <hr style="width:50px;border:5px solid #990000" class="w3-round">
+
+
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Posted by Ya Xiao</span></div>
+
+<b id="docs-internal-guid-6541b086-756f-55af-a3b1-a0a0709119ce" style="font-weight: normal;"><br></b>
+
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Have you heard of "Tor"? This blog aims to give you a brief understanding of Tor.</span>
+ </div>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">“Tor” comes from an acronym of a project named “The Onion Router”, which aims at researching, designing, building, and analyzing anonymous communications systems. The Tor network is a group of volunteer-operated servers that allows people to improve their privacy and security on the Internet. Tor's users employ this network by connecting through a series of virtual tunnels rather than making a direct connection, thus allowing both organizations and individuals to share information over public networks without compromising their privacy. Along the same line, Tor is an effective censorship circumvention tool, allowing its users to reach otherwise blocked destinations or content. Tor can also be used as a building block for software developers to create new communication tools with built-in privacy features.
+</span>
+ </div>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">An initial design for Onion Routing was published at the first Information Hiding Workshop and deployed in mid 1996. However, the current word “Tor” usually refers to the second generation onion router which began in mid 2002 while the previous works tended to be called the first generation design. The latest onion routing system is freely available and runs on most common operating systems. There is a Tor network of several hundred nodes, processing traffic from hundreds of thousands of unknown users.
+</span>
+ </div>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Below, I will introduce the Tor network from two aspects, technology aspect and controvercy aspect.</span>
+ </div>
+<b style="font-weight: normal;"><br></b>
+<h3 dir="ltr" style="line-height: 1.38; margin-bottom: 4pt; margin-top: 16pt;">
+  <span style="background-color: transparent; color: #434343; font-family: Arial; font-size: 14pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;"> 1. Technologies of Tor </span>
+</h3>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">How does Tor make anonymity possible? Figure 1 below may give you a brief overview of the main idea of Tor.</span>
+</div>
+
+<p style="text-align:center;"><img src="https://github.com/YaXiao-Ariel/yaxiao-ariel.github.io/blob/master/images/Figure1.png?raw=true" alt="Overview of Tor network" width=90%></p>
+<p style="text-align:center;"><strong>Figure 1.</strong> Overview of Tor network</p>
+<p>&nbsp;</p>
+
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">At a high level the main idea behind Tor is to transmit traffic of users through bunch of different nodes such that each node has no information about where the packet is coming from, and where it is going to. To achieve this, Tor uses onion routing. In an onion network, messages (packets) are enclosed in layers of encryption, called Onions (due to their layered architecture). Each node in this network is called an onion router (OR), and each OR is responsible to peel away a single layer (decrypts), uncovering the data for the next node in the network.</span>
+ </div>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">To go down to a more detailed explaination of the mechanism of Tor, there are some conceptions needed to be clarified:</span>
+ </div>
+<b style="font-weight: normal;"><br></b>
+ <li>Cells</li>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">In Tor network, traffic passes along connections in fixed-size cells. Each cell is 512 bytes and contains a header and a payload. The header includes some important auxiliary information like ID and Command. The payload is the data of communications.</span>
+ </div>
+<b style="font-weight: normal;"><br></b>
+ <li>Circuit</li>
+ <div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">The communication in Tor network is circuit-based. Each circuit is a connection path along which cells are forwarded from the sender to the destination. Before each communication, a circuit consisting of router nodes is built by the sender. In Figure 1, the transmission route A-D-B-C-F is exactly a circuit.</span>
+ </div>
+<b style="font-weight: normal;"><br></b>
+ <li>Onion Router (OR)</li>
+
+ <div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Onion Proxy (OP): In Tor network, each user runs a local software called onion proxy (OP). An OP works to build circuit for communication, fetch directories and handle connections from user applications. In Figure 1, the sender, the left lady in blue suit, can be regarded as an OP.</span>
+ </div>
+ <b style="font-weight: normal;"><br></b>
+<h4 dir="ltr" style="line-height: 1.38; margin-bottom: 4pt; margin-top: 14pt;">
+<span style="background-color: transparent; color: #666666; font-family: Arial; font-size: 12pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">1.1 Cell Structure</span>
+</h4>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Cells are the minimal transmitted unit of Tor communication. There are two kind of different cells. One is control cells and the other is relay cells.</span>
+ </div>
+ <b style="font-weight: normal;"><br></b>
+ <ul>
+ <li>Control Cell
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Control cells are used to notify some control information and interpreted by the node that receives them. Its structure looks like Figure 2:</span>
+ </div>
+ <b style="font-weight: normal;"><br></b>
+<p style="text-align:center;"><img src="https://raw.githubusercontent.com/YaXiao-Ariel/yaxiao-ariel.github.io/master/images/Figure2.png" alt="Structure o Control Cells" width=90%></p>
+<p style="text-align:center;"><strong>Figure 2.</strong> Structure of Control Cells</p>
+<p>&nbsp;</p>
+
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">The CircID is a circuit identifier that specifies which circuit the cell refers to.</span>
+ </div>
+<b style="font-weight: normal;"><br></b>
+ <div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">The CMD is used to describe what to do with the cell’s payload. The control cell commands include: </span>
+ </div>
+<b style="font-weight: normal;"><br></b>
+<ul>
+<li>
+ <div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">padding: currently used for keepalive, but also usable for link padding</span>
+ </div>
+</li>
+
+<li>
+ <div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">create or created: used to set up a new circuit</span>
+ </div>
+</li>
+
+<li>
+ <div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">destroy: to tear down a circuit</span>
+ </div>
+</li>
+</li>
+</ul>
+<b style="font-weight: normal;"><br></b>
+<li>Relay Cell
+
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Relay cells carry end-to-end stream data. Its structure is shown as follows:
+</span>
+ </div>
+
+<b style="font-weight: normal;"><br></b>
+ <p style="text-align:center;"><img src="https://raw.githubusercontent.com/YaXiao-Ariel/yaxiao-ariel.github.io/master/images/Figure3.png" alt="Structure of Relay Cells" width=90%></p>
+<p style="text-align:center;"><strong>Figure 3.</strong> Structure of Relay Cells</p>
+<p>&nbsp;</p>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Compared to the structure of control cells, there is an additional relay header which contains information like a streamID, an end-to-end checksum for integrity checking, the length of relay payload and a relay command. In the transmission process, the relay header, as well as the relay payload is encrypted or decrypted when the cell moves along the circuit.</span>
+ </div>
+<b style="font-weight: normal;"><br></b>
+ <div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">The relay commands include:</span>
+ </div>
+
+<b style="font-weight: normal;"><br></b>
+<ul>
+<li>
+ <div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">relay data: for data flowing down the stream</span>
+ </div>
+</li>
+
+<li>
+ <div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">relay begin: to open a stream</span>
+ </div>
+</li>
+
+<li>
+ <div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">relay end: to close a stream cleanly</span>
+ </div>
+</li>
+
+<li>
+ <div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">relay teardown: to close a broken stream</span>
+ </div>
+</li>
+
+<li>
+ <div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">relay connected: to notify the OP that a relay begin has succeeded</span>
+ </div>
+</li>
+
+<li>
+ <div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">relay extend and relay extended: to extend the circuit by a hop, and to acknowledge</span>
+ </div>
+</li>
+
+<li>
+ <div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">relay truncate and relay truncated: to tear down only part of the circuit, and to acknowledge</span>
+ </div>
+</li>
+
+<li>
+ <div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">relay send: used for congestion control</span>
+ </div>
+</li>
+
+<li>
+ <div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">relay drop: used to implement long-range dummies</span>
+ </div>
+</li>
+</ul>
+</li>
+</ul>
+<b style="font-weight: normal;"><br></b>
+<h4 dir="ltr" style="line-height: 1.38; margin-bottom: 4pt; margin-top: 14pt;">
+<span style="background-color: transparent; color: #666666; font-family: Arial; font-size: 12pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">1.2 Circuit Construction</span>
+</h4>
+<b style="font-weight: normal;"><br></b>
+ <div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Before data transmission, OP needs to establish the circuit and negotiate a symmetric key with each OR on the circuit. It incrementally builds a circuit of encrypted connections through relays on the network. The circuit is extended one hop at a time, and each relay along the way knows only which relay gave it data and which relay it is giving data to. No individual relay ever knows the complete path that a data packet has taken. OP negotiates a separate set of encryption keys for each hop along the circuit to ensure that each hop can't trace these connections as they pass through.</span>
+ </div>
+<b style="font-weight: normal;"><br></b>
+ <div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">This process can be shown as:</span>
+ </div>
+<b style="font-weight: normal;"><br></b>
+<p style="text-align:center;"><img src="https://raw.githubusercontent.com/YaXiao-Ariel/yaxiao-ariel.github.io/master/images/Figure4.png" alt="Circuit Construction Step 1" width=90%></p>
+<p style="text-align:center;"><strong>Figure 4.</strong> Circuit Construction Step 1</p>
+<p>&nbsp;</p>
+
+ <div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">The OP randomly selects the next OR and negotiates the common symmetric key with it. This key is used as session key to encrypt data.</span>
+ </div>
+<b style="font-weight: normal;"><br></b>
+<p style="text-align:center;"><img src="https://raw.githubusercontent.com/YaXiao-Ariel/yaxiao-ariel.github.io/master/images/Figure5.png" alt="Circuit Construction Step 2" width=90%></p>
+<p style="text-align:center;"><strong>Figure 5.</strong> Circuit Construction Step 2</p>
+<p>&nbsp;</p>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">The OP extends the circuit by adding a hop. It passes information to OR1 and OR1 helps OP and OR2 to negotiate a shared session key.</span>
+ </div>
+<b style="font-weight: normal;"><br></b>
+<p style="text-align:center;"><img src="https://raw.githubusercontent.com/YaXiao-Ariel/yaxiao-ariel.github.io/master/images/Figure6.png" alt="Circuit Construction Step 3" width=90%></p>
+<p style="text-align:center;"><strong>Figure 6.</strong> Circuit Construction Step 3</p>
+<p>&nbsp;</p>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;"> Up to now, a complete circuit has been built.</span>
+ </div>
+<b style="font-weight: normal;"><br></b>
+ <div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">The detailed information of key negotiation in this process can be shown in Figure 7.</span>
+</div>
+<b style="font-weight: normal;"><br></b>
+<p style="text-align:center;"><img src="https://raw.githubusercontent.com/YaXiao-Ariel/yaxiao-ariel.github.io/master/images/Figure7.png" alt="Detailed Infromation of Circuit Establishment" width=90%></p>
+<p style="text-align:center;"><strong>Figure 7.</strong> Detailed Infromation of Circuit Establishment</p>
+<p>&nbsp;</p>
+
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">OP negotiates session key with each OR by Diffie-Hellman handshake.</span>
+</div>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">$OP\rightarrow OR1$ : c1, $E_{pk_{OR1}}(g^{x_1})$</span>
+</div>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">$OR1 \rightarrow OP$ : c1, $g^{y_1}, H(K_1||'handshake')$</span>
+</div>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">From the above handshake, OP and OR establish their shared session key: $K_1 = g^{x_1y_1}$.</span>
+</div>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">In the next step, OP extends circuit by one hop through the help of OR1:</span>
+</div>
+
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">$OP \rightarrow OR1$ : c1, $E_{K_1}(OR2,E_{pk_{OR2}}(g^{x_2}))$</span>
+</div>
+
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">$OR1 \rightarrow OR2$ : c2, $E_{pk_{OR2}}(g^{x_2})$</span>
+</div>
+
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">$OR2 \rightarrow OR1$ : c2, $g^{y_2},H(K_2||'handshake')$</span>
+</div>
+
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">$OR1 \rightarrow OP$ : c1, $E_{K_1}(g^{y_2},H(K_2||'handshake'))$</span>
+</div>
+
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">OP sends the encrypted handshake information to OR1 and OR1 decrypts it and changes the circuit ID then relays to OR2. After receiving OR2’s response, it encrypts these information and sends it back to OP. </span>
+</div>
+
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">The OR3 is also extended in the same way. OP sends information which is multilayer encrypted iteratively by $K_2$, $K_1$. OR1 decrypts one layer by K_1 and relays it to OR2. OR decrypts another layer then relays it to OR3. The response of OR3 is also multilayer encrypted by the session key of each node on the circuit when fowarded towards OP.</span>
+</div>
+
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">The asymmetric cryptography in this process helps to avoid man-in-the-middle attack of Diffie-Hellman protocol. OR1 relaying cells between OP and OR2 ensures that OR2 doesn't know the hop nodes previous of OR1. Therefore, no single OR has the knowledge of the whole path.</span>
+</div>
+
+<b style="font-weight: normal;"><br></b>
+<h4 dir="ltr" style="line-height: 1.38; margin-bottom: 4pt; margin-top: 14pt;">
+<span style="background-color: transparent; color: #666666; font-family: Arial; font-size: 12pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">1.3 Traffic Relay</span>
+</h4>
+
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">After establishing the circuit, the end-to-end stream data can be transmitted anonymously by this circuit. At present, the OP knows all shared keys with each OR while OR only knows its last hop OR and next hop OR and doesn’t know other information like who is the OP.</span>
+</div>
+
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">This process is similar to the process of circuit establishment. OP multilayer encrypts a cell with the session keys shared with ORs according the order from farthest to closest one. Then, OP sends it to the first OR node of the circuit.
+</span>
+</div>
+
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Upon receiving a relay cell, an OR looks up the corresponding circuit, and decrypts the relay header and payload with the session key for that circuit. Then, the OR checks its digest and see if the digest is a valid one. If this OR is not the last hop, the digest shows a unmeaningful value since it is encrypted. Therefore, the OR looks up the circus and OR for the next step in the circuit, replaces the circus as appropriate, and sends the decrypted relay cell to the next OR. </span>
+</div>
+
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">When an OR then replies to OP with a relay cell, it encrypts cell’s relay header and payload with the single key shared with OP, and sends it back toward OP along the circuit. Subsequent ORs add further layers o encryption as they relay the cell back to OP. </span>
+</div>
+
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">OP treats incoming relay cells similarly: it iteratively unwraps the relay header and payload with the session keys shared with each OR on the circuit, from closest to farthest. If at any stage the digest is valid, the cell must have originated at the OR whose encryption has just been removed.</span>
+</div>
+
+<b style="font-weight: normal;"><br></b>
+<h4 dir="ltr" style="line-height: 1.38; margin-bottom: 4pt; margin-top: 14pt;">
+<span style="background-color: transparent; color: #666666; font-family: Arial; font-size: 12pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">1.4 Location Hidden Services</span>
+</h4>
+
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Using the above design, Tor can help users to achieve anonymity. There is also anonymity demand of the responder. The location hidden services which allow a server to provide a TCP service to a user without revealing the IP address of the server can also be achieved in Tor network.</span>
+</div>
+
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Goals of location hidden services include:</span>
+</div>
+
+<b style="font-weight: normal;"><br></b>
+<ul>
+<li>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Access Control: The server needs a way to filter incoming requests, so an attacker cannot flood it simply by making many connections to him.</span>
+</div>
+</li>
+
+<li>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Robustness:  The server should be able to maintain a long-term pseudonymous indentity even in the presence of router failure.</span>
+</div>
+</li>
+
+<li>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Smear-resistance: A social attacker should not be able to “frame” a rendezvous router by offering an illegal or disreputable location-hidden service and making observers believe the router created  that service.</span>
+</div>
+</li>
+
+<li>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Application transparency: although users are required to run special software to access location-hidden servers, the modification of their application must not be required.</span>
+</div>
+</li>
+</ul>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">The process to achieve it can be summarized as follows (where Bob is the server and Alice represents the user’s OP):</span>
+</div>
+
+<b style="font-weight: normal;"><br></b>
+<ul>
+<li>Bob
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Bob chooses some introduction points, and advertises them on the lookup service. Bob builds a circuit to each of his introduction points and tells them to wait for requests.</span>
+</div>
+
+<b style="font-weight: normal;"><br></b>
+<p style="text-align:center;"><img src="https://raw.githubusercontent.com/YaXiao-Ariel/yaxiao-ariel.github.io/master/images/Figure8.png" alt="Steps of Bob 1" width=90%></p>
+<p style="text-align:center;"><strong>Figure 8.</strong> Steps of Bob 1</p>
+<p>&nbsp;</p>
+</li>
+<li>Alice
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Alice learns about Bob’s service. She retrieves the details of Bob’s service from the lookup service.</span>
+</div>
+<b style="font-weight: normal;"><br></b>
+<p style="text-align:center;"><img src="https://raw.githubusercontent.com/YaXiao-Ariel/yaxiao-ariel.github.io/master/images/Figure9.png" alt="Steps of Alice 1" width=90%></p>
+<p style="text-align:center;"><strong>Figure 9.</strong> Steps of Alice 1</p>
+<p>&nbsp;</p>
+
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Alice chooses an OR as the rendezvous point(RP) for her connection to Bob’s service, just like Figure 10 below.</span>
+</div>
+
+<b style="font-weight: normal;"><br></b>
+<p style="text-align:center;"><img src="https://raw.githubusercontent.com/YaXiao-Ariel/yaxiao-ariel.github.io/master/images/Figure10.png" alt="Steps of Alice 2" width=90%></p>
+<p style="text-align:center;"><strong>Figure 10.</strong> Steps of Alice 2</p>
+<p>&nbsp;</p>
+
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Alice opens anonymous stream to one of Bob’s introduction points.gives it a message telling it about herself, her RP and start of a DH handshake.</span>
+</div>
+<b style="font-weight: normal;"><br></b>
+<p style="text-align:center;"><img src="https://raw.githubusercontent.com/YaXiao-Ariel/yaxiao-ariel.github.io/master/images/Figure11.png" alt="Steps of Alice 3" width=90%></p>
+<p style="text-align:center;"><strong>Figure 11.</strong> Steps of Alice 3</p>
+<p>&nbsp;</p>
+</li>
+
+<li>Bob
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+ <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">If bob wants to talk to Alice, he builds Tor connection with Alice’s RP and accomplish the DH handshake. Now, the RP connects Alice’s circuit to Bob’s. And RP can’t recognize Alice, Bob or the data they transmit.</span>
+</div>
+<b style="font-weight: normal;"><br></b>
+<p style="text-align:center;"><img src="https://raw.githubusercontent.com/YaXiao-Ariel/yaxiao-ariel.github.io/master/images/Figure12.png" alt="Steps of Bob 2" width=90%></p>
+<p style="text-align:center;"><strong>Figure 12.</strong> Steps of Bob 2</p>
+<p>&nbsp;</p>
+</li>
+</ul>
+<h3 dir="ltr" style="line-height: 1.38; margin-bottom: 4pt; margin-top: 16pt;">
+  <span style="background-color: transparent; color: #434343; font-family: Arial; font-size: 14pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">2. Controversies on Tor</span>
+</h3>
+<b style="font-weight: normal;"><br></b>
+
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">The real purpose of the Tor network is to keep your browsing habits anonymous and protect your privacy. By passing web traffic through a series volunteer relays, and encrypting the information at each stop, Tor keeps the origin of internet traffic much more difficult to trace.</span>
+</div>
+
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">An anonymous and private online experience is of value to many people including:</span>
+</div>
+
+<b style="font-weight: normal;"><br></b>
+<li>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Parents seeking to protect their children from predators</span>
+</div>
+</li>
+<li>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Anyone accessing sensitive, personal information</span>
+</div>
+</li>
+<li>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Freedom fighters, whistle-blowers and journalists protecting themselves and their sources</span>
+</div>
+</li>
+<li>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Citizens of countries where censorship restricts internet access</span>
+</div>
+</li>
+<li>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Government agents handling classified information</span>
+</div>
+</li>
+<li>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Criminals seeking to deal in illegal goods or services</span>
+</div>
+</li>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">However, in the public mind, the Tor network is typified by black market sites that law enforcement agencies attempt to locate and shut down. Not everyone using Tor has innocent motives. Some of Tor’s dark reputation is true, since the anonymity it grants can provide a haven for criminals. </span>
+</div>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Perhaps the most notable examples are dark markets, such as the Silk Road, Alphabay or Hansa – all now closed down by authorities. But the demand for it never disappears. While the Silk Road was live, it processed an estimated $15 million in transactions each year. These used Tor hidden services to connect customers with merchants, overwhelmingly for illegal goods such as drugs, fake IDs and similar, and cryptocurrencies such as Bitcoin to facilitate payments.</span>
+</div>
+
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">But Tor has been used for other malicious ends as well. Over the years, law enforcement agencies have discovered and taken down sites that trade in child abuse imagery and others that offer illegal hacking services on the dark web. Terrorists have also been experimenting with the service, although the surprisingly low-tech approach of many would-be murderers reportedly puts them off such secure solutions.</span>
+</div>
+
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">One 2015 survey of the dark web put the proportion of illicit content at around 40%.</span>
+</div>
+
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Such figures have led nations such as France to wonder if banning the service might be a possibility, but proponents say the 60% of sites that are perfectly legitimate are important to defend.</span>
+</div>
+
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">It seems to be a double-edged sword which people may love it while hate it at the same time. What do you think of the Tor network?</span>
+</div>
+<!-- W3.CSS Container -->
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px">
+<p class="w3-right"> CS/ECE 5584: Network Security, Fall 2017, <a href="http://ningzhang.info" target="_blank" class="w3-hover-opacity">Ning Zhang</a>
+</p></div>
+
+</body>
+
+</html>
