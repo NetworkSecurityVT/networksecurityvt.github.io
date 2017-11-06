@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html>
+   <title>CS/ECE 5584: Network Security, Fall 2017</title>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+   <style>
+      body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+      body {font-size:16px;}
+      .w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+      .w3-half img:hover{opacity:1}
+      table {
+      border-collapse: collapse;
+      width: 100%;
+      }
+      th, td {
+      text-align: left;
+      padding: 8px;
+      }
+      tr:nth-child(even){background-color: #f2f2f2}
+      th {
+      background-color: #990000;
+      color: white;
+      }
+      .tabstyle { display: inline-block; width: 150px; }
+      h3{
+         line-height: 1.38; margin-bottom: 4pt; margin-top: 16pt;
+      }
+      h3 span{
+         background-color: transparent; color: #434343; font-family: Arial; font-size: 14pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline;
+      }
+      h4 span{
+         background-color: transparent; color: #434343; font-family: Arial; font-size: 12pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline;
+      }
+      .para{
+         line-height: 1.38; margin-bottom: 0pt; margin-bottom: 23pt;
+      }
+      .para span{
+         background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline;
+      }
+      a span{
+         background-color: transparent; color: #1155cc; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: underline; vertical-align: baseline;
+      }
+      .pictur{
+         line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt; text-align: center;
+      }
+      .picture span{
+         background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;
+      }
+      .picture img{
+         width: 50%;
+         margin-left: 20%;
+         -webkit-transform: rotate(0.00rad); border: none; transform: rotate(0.00rad);
+      }
+      .caption{
+         line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt; text-indent: 36pt;
+      }
+      .caption span{
+         background-color: transparent; color: #666666; font-family: Arial; font-size: 9pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;
+      }
+   </style>
+   <script>
+      function w3_open() {
+        document.getElementById("mySidebar").style.display = "block";
+        document.getElementById("myOverlay").style.display = "block";
+      }
+      
+      function w3_close() {
+          document.getElementById("mySidebar").style.display = "none";
+          document.getElementById("myOverlay").style.display = "none";
+      }
+   </script>
+   <body>
+      <!-- Sidebar/menu -->
+      <nav class="w3-sidebar w3-black w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar">
+         <br>
+         <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+         <div class="w3-container">
+            <h3 class="w3-padding-64"><b>Network<br>Security</b></h3>
+         </div>
+         <div class="w3-bar-block">
+            <a href="../index.html#Announcements"   onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Announcements</a> 
+            <a href="../index.html#Syllabus"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Syllabus</a> 
+            <a href="../index.html#Schedule"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Schedule</a> 
+            <a href="../index.html#Projects"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Projects</a> 
+            <a href="../index.html#Readings"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Readings</a>
+            <a href="../index.html"                 onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Blogs</a>  
+            <a href="../index.html#Ethics"          onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Ethics</a> 
+         </div>
+      </nav>
+      <!-- Header -->
+      <!-- Top menu on small screens -->
+      <header class="w3-container w3-top w3-hide-large w3-black w3-xlarge w3-padding">
+         <a href="javascript:void(0)" class="w3-button w3-black w3-margin-right" onclick="w3_open()">☰</a>
+         <span>Network Security</span>
+      </header>
+      <!-- Overlay effect when opening sidebar on small screens -->
+      <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+      <!-- !PAGE CONTENT! -->
+      <div class="w3-main" style="margin-left:340px;margin-right:40px">
+         <div class="w3-container" id="Trust Issues: Exploiting TrustZone TEEs" style="margin-top:75px">
+            <h1 class="w3-xxxlarge w3-text-gray"><b>A Forensic Analysis of Residual Artifacts From Private and Portable Web Browsing Sessions</b></h1>
+            <hr style="width:50px;border:5px solid #990000" class="w3-round">
+            <div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+               <span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline;">Posted by Kaidi Wang</span>
+            </div>
+         
+            <h3>
+               <span>Introduction</span>
+            </h3>
+            <div class="para">
+               <span>
+                  Nowadays, people are enjoying the convenience internet brings to us. But sometimes they don't want to leave their footprint in internet. So most browsers have developed the features to provide us with private browsing mode. But do you believe in it? How difficult would it be to trace you for forensic analyst?
+               </span>
+            </div>
+            <div class="para">
+               <span>
+                  As is mentioned in [1], the private mode works mainly in two ways: removing information after session or not writing the data at all. Two goals of the method include browsing internet without leaving any trace and browsing the internet anonymously.
+               </span>
+            </div>
+            <div class="para">
+               <span>
+                  To meet the privacy demand, portable browsers came out, which are installed on USB flash drive. But do they really leave nothing in the target computer?
+               </span>
+            </div>
+            <div class="para">
+               <span>
+                  The web browsing artifacts such as usernames, browsing history may contain significant evidence to examiner. So if we are able to find residual artifacts in the target computer, it may provide pivotal evidence on court even if criminals delete browsing history or use portable browsers. This blog would give you a brief introduction of a paper named 《 Do private and portable web browsers leave incriminating evidence?: a forensic analysis of residual artifacts from private and portable web browsing sessions 》.
+               </span>
+            </div>
+            <h3>
+               <span>
+                  Background
+               </span>
+            </h3>
+            <div class="para">
+               <span>
+                  To make it easier for you to understand the research, I list some terms and definitions in the table below.
+               </span>
+            </div>
+               <table class="para">
+                  <tr>
+                     <th>Term</th>
+                     <th>Definition</th>
+                  </tr>
+                  <tr>
+                     <td>
+                        Residual artifacts
+                     </td>
+                     <td>
+                        Remaining data such as files, images, documents, and web content
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        ISO image
+                     </td>
+                     <td>
+                        A computer file that is an exact copy of an existing file, CD, DVD, etc.
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        Browser cache
+                     </td>
+                     <td>
+                        Temporary Internet files (storage) for increasing speed
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        RAM
+                     </td>
+                     <td>
+                        Working memory that is volatile
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>Slack space/file slack</td>
+                     <td>Unused space in a disk cluster (area between end of file and end of disk cluster)</td>
+                  </tr>
+               </table>
+            <h3>
+               <span>Related Work</span>
+            </h3>   
+            <div class="para">
+               <span>
+                  According to [2], private browsing modes have two main goals: leave no trace to web and leave no trace to local machine. Also, extensions can weaken private browsing modes. However, the study ignored volatile memory, which is introduced when operating system caches DNS solutions. By analysing cache and TTL values, a examiner can learn if the user visited some websites and when.
+               </span>
+            </div>
+            <div class="para">
+               <span>
+                  [3] explained that portable browsers mainly store browsing artifacts in installation folder. Even if it is possible to discover residual artifacts by analysing Windows Registry and Windows Prefetch files, investigators cannot trace any further information if the portable disk is not available to them. However, this statement is against our experiment.
+               </span>
+            </div>
+            <div class="para">
+               <span>
+                  Sandisk and Microsoft worked together many year ago on a project called U3 technology, which meant to allow users to carry a portable disk containing personalized files and browsers. There are two partions to the U3 flash drive structure: mass storage device and virtual CD-ROM. In [4], U3 identifiers were discovered by analysing Windows Registry and Windows Prefetch files. The majority of traces were located within slack space and free space of the hard drive.
+               </span>
+            </div>
+            <h3>
+               <span>
+                  Major Browsers and Private Browsing
+               </span>
+            </h3>
+            <div class="para">
+               <span>
+                  Lists of areas where the browsers' web browsing artifacts are located can be found in the original paper. I just summarize the private browsing features in the blog according to the paper.
+               </span>
+            </div>
+         
+            <div class="para">
+               <li>IE</li>
+               <span>
+                  IE offers users a private browsing feature called InPrivate Browsing. When users use InPrivate Browsing, temporary files and cookies would be temporarily stored and discarded after session ends.
+               </span>
+            </div>
+
+            <div class="para">
+               <li>Google Chrome</li>
+               <span>
+                  Chrome offers Incognito Mode to allow users browse internet in a private setting. According to Google [5], Incognito mode does not record any browsing or download histories, and all created cookies will be removed when exiting a session completely.
+               </span>
+            </div>
+           
+            <div class="para">
+               <li>Mozilla Firefox</li>
+               <span>
+                  Firefox offers a discreet browsing mode called Private Browsing. Mozilla explained that Private Browsing mode allows users to surf the Internet without saving any information about visited sites or pages but don't make users anonymous from web sites, ISP's and networks.
+               </span>
+            </div>
+            <div class="para">
+               <li>Apple Safari</li>
+               <span>
+                  According to Apple, Private Browsing mode ensures that web pages are not added to the history list, cookie changes are discarded, searches are not added to the search fields, and websites cannot modify information stored on the computer.
+               </span>
+            </div>
+
+            <h3>
+               <span>
+                  Implementations and Experiments
+               </span>
+            </h3>
+            <h4>
+               <span>Tools and Setup</span>
+            </h4>
+            <div class="para">
+               <span>
+                  Hardware
+                  <li>1- Desktop (PC - forensic workstation - 4-GB RAM)</li>
+                  <li>1- Laptop (PC - forensic workstation - 6-GB RAM)</li>
+                  <li>8–160 GB SATA Hard Drives (one dedicated drive for lab)</li>
+                  <li>1- USB Flash Drive (8 GB)</li>
+                  <li>1- USB External Drive (1 TB WD Passport)</li>
+                  <li>1- SATA to USB Adapter</li>
+                  <li>1- Tableau USB Write Blocker (IDE/SATA)</li>
+                  <li>Antistatic Bags and Antistatic Wrist Strap</li>
+               </span>
+            </div>
+            <div class="para">
+               <span>
+                  Software
+                  <li>Microsoft Windows 7 Professional (64)</li>
+                  <li>Internet Explorer, Firefox, Safari, Chrome</li>
+                  <li>VMware - virtualization software</li>
+                  <li>DaemonFS - file integrity monitoring program</li>
+                  <li>Disk Wipe - to replace data on disk with zeros</li>
+                  <li>Nirsoft Internet Tools - history, cache, and cookie viewers</li>
+                  <li>Live View - Java based tool to convert .dd to .vmdk</li>
+                  <li>PortableApps - portable application Launchpad</li>
+                  <li>Firefox Portable, Chrome Portable, Opera Portable</li>
+                  <li>FTK Imager - used to create forensic images</li>
+                  <li>FTK Imager Lite - portable version</li>
+                  <li>AccessData FTK version 3.2 (Licensed) - used to analyze forensic images and organize information</li>
+               </span>
+            </div>
+            <div class="para">
+               <span>
+                  To conduct a standardized test across multiple controlled environments was the key to the research. At the beginning, all disks were wiped using Disk Wipe and DoD Algorithm. After that, all disks were installed with Windows 7 Professional - 64 bits.
+               </span>
+            </div>
+            <div class="para">
+               <span>
+                  Next, each disk was installed with only one specific Internet browser pre-loaded from an external hard drive as shown in picture below. 
+               </span>
+            </div>
+            <div dir="ltr" class="picture">
+              <span><img src="./images/Canvas 1.png"></span>
+            </div>
+            <h4>
+               <span>Preliminary Analysis</span>
+            </h4>
+            <div class="para">
+               <span>
+                  While the disks were being developed, DaemonFS installed on a laptop with VMware would monitor the file integrity. After the logical parameter was set, each web browser was individually launched and tested using a series of standardized steps. These steps included article searches, image searches, video searches, email account logins, bank account logins, and online purchase attempts. Results are shown in tables below.
+               </span>
+            </div>
+
+            <div class="para">
+               <span>
+                  <table>
+                  <caption>Browser analysis during normal browsing sessions</caption>
+                  <tr>
+                     <th>Browser</th>
+                     <th>Primary Changes</th>
+                  </tr>
+                  <tr>
+                     <td>
+                        IE 8.0
+                     </td>
+                     <td>
+                        Temp File Directory files (Content.IE, History.IE5, Cookies, Recovery, Custom Destinations, Index.dat) are created, modified, and deleted
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>Google chrome 23.0.1271.95</td>
+                     <td>Directory Chrome\User Data (Safe Browsing Whitelist, Default\ Cache, Current Session, Default\History, Default\Session Storage) files are created, modified, and deleted</td>
+                  </tr>
+                  <tr>
+                     <td>Firefox 17.0.1</td>
+                     <td>
+                        Directory Firefox\Profiles (Cache, jumpListCache, etc.) and Win CustomDestinations, files are created, modified, and deleted
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>Safari 5.1.7</td>
+                     <td>
+                        Directory AppleComputer\Safari (Cache, History, Webpage Previews, Cookies, WebpageIcons.db) files are created, modified, and deleted
+                     </td>
+                  </tr>
+               </table>
+               </span>
+            </div>
+            <div class="para">
+               <span>
+                   <table>
+                  <caption>Browser analysis during private browsing sessions</caption>
+                  <tr>
+                     <th>Private browser</th>
+                     <th>Noticeable change</th>
+                  </tr>
+                  <tr>
+                     <td>
+                        IE InPrivate Browsing
+                     </td>
+                     <td>
+                        Everything gets deleted when exiting the browser and the entire session is terminated
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        Google Chrome Incognito Mode
+                     </td>
+                     <td>
+                        Safe Browsing databases, Cookies, and History are modified, no changes during session but the chrome_shutdown_ms.txt is replaced with a new timestamp when session ends
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>Firefox Private Browsing</td>
+                     <td>
+                        Safe Browsing database gets modified, nothing appears to be written while surfing, but when session ends, some Firefox\Profile files are modified
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>Safari Private Browsing</td>
+                     <td>
+                        Only NTuser.dat appears to be modified
+                     </td>
+                  </tr>
+               </table>
+               </span>
+            </div>
+            <h4>
+               <span>Private Browsing Experiment</span>
+            </h4>
+            <div class="para">
+               <span>
+                  To begin the main experiments, each disk was separately utilized as a single primary drive. After each session was completed, the RAM would be dumped into a file using FTK imager Lite as shown in picture below. Not only was the memory dumped but Registry files were obtained, the pagefile.sys was extracted, and an .ad1 image file of the RAM was created as well. 
+               </span>
+            </div>
+            <div class="picture">
+               <span>
+                  <img src="./images/Canvas 2.png">
+               </span>
+            </div>
+            <h4>
+               <span>
+                  Portable Browsing Experiment
+               </span>
+            </h4>
+            <div class="para">
+               <span>
+                  Next three disks were used with portable browsers running from a USB flash drive. The flash drive was installed with PortableApps which allows to run differen programs from flash drive. Each hard disk was used as the primary hard drive and the browsers perform the same session steps as the previous experiment. When a disk was complete, it is sealed into a antistatic bag and into a cool dry place for storage. The procedure is shown in picture below.
+               </span>
+            </div>
+            <div class="picture">
+               <span>
+                  <img src="./images/Canvas 3.png">
+               </span>
+            </div>
+
+            <h4>
+               <span>Forensic Acquisition and Analysis</span>
+            </h4>
+            <div class="para">
+               <span>
+                  The last hard disk was developed with Windows 7 and FTK 3.2 to make it a dedicated computer forensic workstation. Each disk was individually connected to the Desktop using a hardware-based write blocker (Tableau), to protect any data from being altered by the computer. Using FTK Imager, a bit stream image of each evidence disk was created as a compressed E01 image file and was verified by several different hashes. This was illustrated in picture below.
+               </span>
+            </div>
+            <div class="picture">
+               <span>
+                  <img src="./images/Canvas 4.png">
+               </span>
+            </div>
+            <h4>
+               <span>
+                  Result Analysis
+               </span>
+            </h4>
+            <div class="para">
+               <span>
+                  Private browsing mode and portable browsers do leave incriminating evidence. But it depends on browsers. The general result is shown in figure below.
+               </span>
+            </div>
+            <div class="picture">
+               <span>
+                  <img style="width: 60%; margin-left: 10%;"  src="./images/residual evidence chart.png">
+               </span>
+            </div>
+            <div class="para">
+               <li>Installed IE</li>
+               <span>
+                  Out of the four browsers, IE provided the most residual artifacts. Everything was recoverable except for palyable videos. Most of the data was found in slack space and RAM. But sufficient data was found in allocated spaces as well. There was a [InPrivate] indicator in RAM prior to online search hacking as shown in figure below.
+               </span>
+            </div>
+            <div class="picture">
+               <span>
+                  <img src="./images/inprivate indicator.png">
+               </span>
+            </div>
+
+            <div class="para">
+               <span>
+                  The overall best way to recover residual artifacts is to obtain RAM or working memory, which is not always possible.
+               </span>
+            </div>
+            <div class="para">
+               <li>Installed Chrome &amp; Firefox</li>
+               <span>
+                  For Chrome Incognito artifacts, there were many browsing indicators and timestamp changes. However, it is difficult to establish affirmative link between user and the session because none of username and other historical information was accessible. The same resulted for Firefox.
+               </span>
+            </div>
+
+            <div class="para">
+               <li>Installed Apple Safari</li>
+               <span>
+                  The easiest way to view the browsing history for private sessions was to locate the ‘WebpageIcons’ database under Safari artifacts. This database provided a good log of every visited URL along with other pertinent information.
+               </span>
+            </div>
+
+            <div class="para">
+               <li>Google Chrome Portable</li>
+               <span>
+                  Google Chrome Portable left the most residual artifacts on the host machine. The recovery seemed as if Chrome was installed on the machine itself. Almost all artifacts to include images, browsing history, browsing method, and usernames with associated accounts, were located on the disk. Also note, these recovered artifacts were obtained without the flash drive.
+               </span>
+            </div>
+            <div class="para">
+               <li>Opera Portable &amp; Firefox</li>
+               <span>
+                  here were many portable browsing indicators but most history artifacts were limited; none of the usernames or accounts could be recovered. Firefox Portable resulted in similar findings; however, some user activity was found to be recoverable. All of the usernames associated with their respected email accounts were recovered along with Firefox browsing indicators.
+               </span>
+            </div>
+
+            <h3>
+               <span>
+                  Conclusion
+               </span>
+            </h3>
+            <div class="para">
+               <span>
+                  The majority of recovered artifacts were discovered in RAM, slack/free space, and FTK [Orphan] directories. That being said, information was still obtained within allocated space. Our research clearly shows that further data can still be recovered on host machines without the portable storage device being present. These residual artifacts may or may not be important to a case, but on the other hand it may be the only way to explain certain results.
+               </span>
+            </div>
+
+            <h3>
+               <span>Reference</span>
+            </h3>
+            <div class="para">
+               <span>
+                  [1] Ohana, D. J., &amp; Shashidhar, N. (2013). Do private and portable web browsers leave incriminating evidence?: a forensic analysis of residual artifacts from private and portable web browsing sessions. EURASIP Journal on Information Security, 2013(1), 6.
+               </span>
+            </div>
+            <div class="para">
+               <span>
+                  [2] Burzstein, G. A. E., Jackson, C., &amp; Boneh, D. (2010, August). An analysis of private browsing modes in modern browsers. In Proceedings of the 19th USENIX Security Symposium.
+               </span>
+            </div>
+            <div class="para">
+               <span>
+                  [3] Choi, J. H., Lee, K. G., Park, J., Lee, C., &amp; Lee, S. (2012). Analysis framework to detect artifacts of portable web browser. Information Technology Convergence, Secure and Trust Computing, and Data Management, 207-214.
+               </span>
+            </div>
+            <div class="para">
+               <span>
+                  [4] Bosschert, T. (2007). Battling anti-forensics: beating the U3 stick. Journal of Digital Forensic Practice, 1(4), 265-273.
+               </span>
+            </div>
+            <div class="para">
+               <span>
+                  [5] <a href="https://www.google.com/intl/en/chrome/browser/features.html#privacy">Google, Incognito mode, 2012.</a>
+               </span>
+            </div>
+         </div>
+      </div>
+   </div>
+      <!-- End page content -->
+      <!-- W3.CSS Container -->
+      <div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px">
+         <p class="w3-right"> CS/ECE 5584: Network Security, Fall 2017, <a href="http://ningzhang.info" target="_blank" class="w3-hover-opacity">Ning Zhang</a></p>
+      </div>
+   </body>
+</html>
