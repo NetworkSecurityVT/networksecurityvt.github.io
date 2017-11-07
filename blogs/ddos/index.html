@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<title>CS/ECE 5584: Network Security, Fall 2017</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #990000;
+    color: white;
+}
+
+.tabstyle { display: inline-block; width: 150px; }
+</style>
+
+<script>
+  function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+  }
+ 
+  function w3_close() {
+      document.getElementById("mySidebar").style.display = "none";
+      document.getElementById("myOverlay").style.display = "none";
+  }
+</script>
+
+<body>
+
+
+
+<!-- Sidebar/menu -->
+
+
+<nav class="w3-sidebar w3-black w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>Network<br>Security</b></h3>
+  </div>
+  <div class="w3-bar-block">
+    <a href="../index.html#Announcements"   onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Announcements</a> 
+    <a href="../index.html#Syllabus"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Syllabus</a> 
+    <a href="../index.html#Schedule"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Schedule</a> 
+    <a href="../index.html#Projects"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Projects</a> 
+    <a href="../index.html#Readings"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Readings</a>
+    <a href="index.html"                    onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Blogs</a>  
+    <a href="../index.html#Ethics"          onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Ethics</a> 
+  </div>
+</nav>
+
+<!-- Header -->
+  
+  <!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-black w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-black w3-margin-right" onclick="w3_open()">☰</a>
+  <span>Network Security</span>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+<h1 id="ddos-resilience-in-cloud"><a class="anchor hidden-xs" href="#ddos-resilience-in-cloud" title="ddos-resilience-in-cloud"><span class="octicon octicon-link"></span></a>DDoS Resilience in Cloud</h1><h2 id="ddos-attack"><a class="anchor hidden-xs" href="#ddos-attack" title="ddos-attack"><span class="octicon octicon-link"></span></a>DDoS Attack</h2><p>DDoS attack is perpetrated by one or more compromised systems controlled by an attacker to flood a predetermined target using series of malformed or malicious packets that overwhelm the allocated resources</p><p>application-bug level attacks and infrastructural level attacks:</p><p><img src="https://i.imgur.com/4sL6roU.png" alt=""></p><p>Exmple of application-bug level: ping-of-death attack. Attachkers  use a ping packet size of 65,535 bytes which exceeds the maximum IPv4 packet size. When most modern operating systems try to handle such packets, they generally<br>
+freeze, crash or reboot due to buffer overflow.</p><p>Exmple of infrastructural level attacks: TCP SYN flood. Attachkers send a lot of syn packets but don’t response to ack packets. As a result, the servers don’t know if syn+ack processes are successed or not and will re-try 5 times normally, which results in a huge consumption of resources.</p><p>Here’s a list of DDoS attacks, features and tools.</p><p><img src="https://imgur.com/WEhc7xD.png" alt=""></p><h2 id="ddos-detection"><a class="anchor hidden-xs" href="#ddos-detection" title="ddos-detection"><span class="octicon octicon-link"></span></a>DDoS detection</h2><p>Typical DDoS detection techniques classify packet traffic as either legitimate or malicious, and can be broadly categorized into signature based, anomaly based and hybrid. Signature based detection techniques use a set of rules obtained with domain knowledge. Anomaly based detection techniques are based on the assumption that most instance are normal and only few are abnormal. We’ll talk about Anomaly based detection methods in details in the following paragraphs.</p><p>The anomaly approach is typically carried out in two phases, namely: training and detection phases. In the training phases, each instance of the input data can be represented as a sequence of features, such that the data can be transformed to structured data. Another important aspect of the input data is that they should be labelled. There are mainly three types of methods: supervised, semi-supervised and unsupervised. The most commonly used methods are supervised methods becuase they’re the easilest. Most ready-to-use methods are supervised methods such as SVM, random forest, logistic regression. However, supervised learning needs sufficient labelld data which is not always the actual status for many problems. Semi-supervised learning can be used when there’re not sufficient labelled data. It can train the prediction model not only by considering the differences between positive instances and negative instance in the labelled data, but also considering the similarities between instances in limited labelled data and sufficient unlabelled data. At last, when there’re not labelled data at all, unsupervised methods can be used to do the classification based on the assumption that normal instances are significantly more frequent than anomalies in the data.</p><p>Take KDD’99 dateset as an example. KDD 99 is a dataset proposed in KDD conference for a competition of intrusion detection. In KDD 99 there are more than 5,000,000 connection records. Each record was labelled as normal or attack. The specific types of attacks were also labelled including DDos, R2L, U2R, and Probing. The features for each instance can be devided into three types including basic features of individual TCP connections, content features within a connection suggested by domain knowledge, traffic features computed using a two second time window. With these features and labels, a classifier can be easily trained. However, I have several doubts about the machine learning based detection methods, which are discussed in the last section.</p><p>In the paper ‘Distributed denial of service (DDoS) resilience in cloud: Review and conceptual cloud DDoS mitigation framework’, the authors group existing techniques into different “ring” classes based on the algorithms used. The 5 classes are machine learning, statistical, data mining, classifier, artificial intelligence. However in my point of view, this setting of classes doesn’t make sense because they are not the same level of methods. For example, data mining can be seen as the application of machine learning, and classifier is a part of machine learning methods.</p><h2 id="discussion"><a class="anchor hidden-xs" href="#discussion" title="discussion"><span class="octicon octicon-link"></span></a>Discussion</h2><ul>
+<li>In the paper the author mentioned there are two types of detection methods: signature based and anomaly based. However, since the anomaly based methods can generate a formula for the target variable, the anomaly based methods should be easily transformed into rule based (signature based) methods.</li>
+<li>As the features are simple and interpretable, the model/formula should be also simple and interpretable. Most features will be useless for the detection. Few of them can be interpreted as simple rules. The machine learning algorithms are nothing mystic.</li>
+<li>Once a detection model has been trained, it should be applicable to any other users/servers, because the model is supposed to prevent all the attacks. The models are not necessary to be trained on every server.</li>
+<li>The only reason to train the model again is to update the model for new types of attacks which were never seen before. Online learning (incremental learning) is a good solution for this senerial.</li>
+
+<!-- End page content -->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- W3.CSS Container -->
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px">
+<p class="w3-right"> CS/ECE 5584: Network Security, Fall 2017, <a href="http://ningzhang.info" target="_blank" class="w3-hover-opacity">Ning Zhang</a>
+</p></div>
+
+
+
+</body>
+
+</html>
