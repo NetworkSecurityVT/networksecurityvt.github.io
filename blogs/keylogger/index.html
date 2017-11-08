@@ -1,0 +1,220 @@
+﻿
+<!DOCTYPE html>
+<html>
+<title>CS/ECE 5584: Network Security, Fall 2017</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #990000;
+    color: white;
+}
+
+.tabstyle { display: inline-block; width: 150px; }
+</style>
+
+<script>
+  function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+  }
+ 
+  function w3_close() {
+      document.getElementById("mySidebar").style.display = "none";
+      document.getElementById("myOverlay").style.display = "none";
+  }
+</script>
+
+<body>
+
+
+
+<!-- Sidebar/menu -->
+
+
+<nav class="w3-sidebar w3-black w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>Network<br>Security</b></h3>
+  </div>
+  <div class="w3-bar-block">
+    <a href="../../index.html#Announcements"   onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Announcements</a> 
+    <a href="../../index.html#Syllabus"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Syllabus</a> 
+    <a href="../../index.html#Schedule"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Schedule</a> 
+    <a href="../../index.html#Projects"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Projects</a> 
+    <a href="../../index.html#Readings"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Readings</a>
+    <a href="../index.html"                    onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Blogs</a>  
+    <a href="../../index.html#Ethics"          onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Ethics</a> 
+  </div>
+</nav>
+
+<!-- Header -->
+  
+  <!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-black w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-black w3-margin-right" onclick="w3_open()">☰</a>
+  <span>Network Security</span>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+<h1 style="text-align: center;"><span style="font-size: 20.0pt; line-height: 107%;">Keyloggers</span></h1>
+<p><span style="font-size: 12.0pt; line-height: 107%;">&nbsp;</span></p>
+<p><strong><span style="font-size: 12.0pt; line-height: 107%;">Introduction</span></strong></p>
+<p><span style="font-size: 12.0pt; line-height: 107%;">When speaking about keyloggers, people usually mean malicious software programs that try to receive personal information by monitoring keystrokes. All though most keyloggers are software programs, it is not the only version of keyloggers. It can also exist in the form of hardware attached inside for example the computer or keyboard. </span></p>
+<p><span style="font-size: 12.0pt; line-height: 107%;">Keyloggers are not only malicious software. It is also legitimate software programs that can help parents monitor their children&rsquo;s activities on the internet or employers to make sure the company computers are only used for business purposes by the employees. When it is used with malicious intent, the keyloggers can record information of what keys is pressed on the user&rsquo;s keyboard and therefore obtain private user names and passwords. This data is then passed on to the cyber criminals who can use the information to do serious harm to the affected user.</span></p>
+<p><strong><span style="font-size: 12.0pt; line-height: 107%;">How do keyloggers work?</span></strong></p>
+<p><span style="font-size: 12.0pt; line-height: 107%;">Let us first look at <em>software keyloggers</em>. They can infiltrate a computer when a program is installed. One common method to spread the keylogger is by using scam emails and social engineering to trick users into downloading and installing the malicious software. The user believes that he/she is installing a necessary, safe program but instead allows the keylogger to be installed and start to gather crucial information. </span></p>
+<p><span style="font-size: 12.0pt; line-height: 107%;">A common method that keyloggers use is having a hook mechanism to monitor the keystrokes made by the user. By using the windows function SetWindowsHookEx(), the keylogger can recognize which keys that are pressed. That information is copied and stored in a log file before it is passed on forward to its intended procedure. The log file possibly filled with important information can then be forwarded to the cyber-criminal without raising any suspicion from the user. </span></p>
+<p><span style="font-size: 12.0pt; line-height: 107%;">Another type of keyloggers operates on the Kernel level. These types of keyloggers recognizes the keystrokes before the operating system and applications does. The data is saved and sent to the cyber-criminal. Kernel keyloggers are difficult to detect for regular anti-malware programs, and often some kind of rootkit detection software needs to be used. </span></p>
+
+<center>
+<img src="hardwarekeylogger.jpg" alt="hardware_key_logger">
+<br>
+</center>
+
+<p><span style="font-size: 12.0pt; line-height: 107%;">There is also <em>hardware keyloggers. </em>These are devices that are attached between the keyboard and the computer, for example at the computers connection port for the keyboard. More Similar to how software keyloggers work, these devices can log and store all the strokes of the keyboard in an internal memory. The memory is often accessed through typing a specified password for the device in a text editor. They have an advantage compared to the software keyloggers in the fact that they are not detected my anti-spyware programs. However, they are usually visible and can be detected by an aware user. </span></p>
+<p><strong><span style="font-size: 12.0pt; line-height: 107%;">Usage of keyloggers</span></strong></p>
+<p><span style="font-size: 12.0pt; line-height: 107%;">Keyloggers are not only used by criminals to steal private information. As mentioned in the introduction, it can also be a legitimate tool to use to control activities performed on the computer. When keyloggers are used as parental control, the program can keep track on the children&rsquo;s conversations on social media and email. It can take screenshots of what is on the screen when a certain word is typed, for instance &ldquo;love&rdquo; or &ldquo;credit card&rdquo;. The program can also send emails to the parent with notifications regarding if any suspicious activities have occurred in the latest, pre-defined time period. <br /> Using parental control does not have to be because the parent wants to spy on its child, it can also be a way to protect the child from child predators or other people with bad intent. </span></p>
+<p><span style="font-size: 12.0pt; line-height: 107%;">Companies can use keylogger programs to keep track of employees&rsquo; internet activities. This can be more important than it sounds. By using a keylogger, the company can detect if an employee is leaking confidential material that belongs to the company. The employer can also see if a worker is using its computer for different purposes other than work related purposes.&nbsp; </span></p>
+<p><span style="font-size: 12.0pt; line-height: 107%;">Keyloggers used with illegal intent poses as one of the biggest risks to users of all cybercrimes. They are hard to detect and can inflict massive damage by retrieving user names and passwords. After retrieving the user&rsquo;s account information, the cyber-criminal can access the user&rsquo;s bank account and transfer away money. </span></p>
+<p><strong><span style="font-size: 12.0pt; line-height: 107%;">Protection against keyloggers</span></strong></p>
+<p><span style="font-size: 12.0pt; line-height: 107%;">Since there are a lot of different types of keyloggers, there are also different ways to defend yourself against them. An on-screen keyboard that temporary replaces the physical keyboard is effective against hardware keyloggers. Anti-virus programs can be useful against software keyloggers that use a hook mechanism. The anti-virus programs are able to detect keyloggers by examining the executable codes and by looking for known behaviors of keyloggers using hook methods.&nbsp; One-time passwords can work against keyloggers in order to protect login credentials, but this does not stop the keylogger from later on retrieving bank account number once the user is already logged in. Another way to stay protected against keyloggers are to use two-step authentication. By using the latter, the significance of the password is partly removed because the user has to confirm his identity one more time by using another device such as a cell phone. Then even if the keylogger retrieves the login credentials they can not be used by a third part to login because they do not have access to the second device. </span></p>
+<p><strong><span style="font-size: 12.0pt; line-height: 107%;">Conclusion</span></strong></p>
+<p><span style="font-size: 12.0pt; line-height: 107%;">Keyloggers are powerful programs that can be useful to control activities performed on a computer when they are legitimately used. However, they can also be malicious programs that tries to infiltrate computers to retrieve passwords and other confidential information. There are both software keyloggers and hardware keyloggers and they need to be defended against with different methods. Anti-virus software and two-step authentication are examples of protection against keyloggers. </span></p>
+<p style="tab-stops: 159.0pt;"><span style="font-size: 12.0pt; line-height: 107%; font-family: 'Times New Roman',serif;">&nbsp;</span></p>
+
+
+
+<!-- End page content -->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- W3.CSS Container -->
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px">
+<p class="w3-right"> CS/ECE 5584: Network Security, Fall 2017, <a href="http://ningzhang.info" target="_blank" class="w3-hover-opacity">Ning Zhang</a>
+</p></div>
+
+
+
+</body>
+
+</html>
