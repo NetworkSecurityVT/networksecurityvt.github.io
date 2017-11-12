@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+<title>CS/ECE 5584: Network Security, Fall 2017</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #990000;
+    color: white;
+}
+
+.tabstyle { display: inline-block; width: 150px; }
+</style>
+
+<script>
+  function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+  }
+ 
+  function w3_close() {
+      document.getElementById("mySidebar").style.display = "none";
+      document.getElementById("myOverlay").style.display = "none";
+  }
+</script>
+
+<body>
+
+<!-- Sidebar/menu -->
+
+<nav class="w3-sidebar w3-black w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()"
+      class="w3-button w3-hide-large w3-display-topleft"
+      style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>Network<br>Security</b></h3>
+  </div>
+  <div class="w3-bar-block">
+    <a href="../../index.html#Announcements"   onclick="w3_close()"
+        class="w3-bar-item w3-button w3-hover-white">Announcements</a> 
+    <a href="../../index.html#Syllabus"        onclick="w3_close()"
+        class="w3-bar-item w3-button w3-hover-white">Syllabus</a> 
+    <a href="../../index.html#Schedule"        onclick="w3_close()"
+        class="w3-bar-item w3-button w3-hover-white">Schedule</a> 
+    <a href="../../index.html#Projects"        onclick="w3_close()"
+        class="w3-bar-item w3-button w3-hover-white">Projects</a> 
+    <a href="../../index.html#Readings"        onclick="w3_close()" 
+        class="w3-bar-item w3-button w3-hover-white">Readings</a>
+    <a href="../index.html"                 onclick="w3_close()" 
+        class="w3-bar-item w3-button w3-hover-white">Blogs</a>  
+    <a href="../../index.html#Ethics"          onclick="w3_close()"
+        class="w3-bar-item w3-button w3-hover-white">Ethics</a> 
+  </div>
+</nav>
+
+<!-- Header -->
+  
+  <!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-black w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-black w3-margin-right"
+      onclick="w3_open()">☰</a>
+  <span>Network Security</span>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" 
+    style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+  <div class="w3-container" id="Trust Issues: Exploiting TrustZone TEEs" 
+      style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-gray">
+        <b>Detecting Cyber-attack Using Unsupervised Method</b>
+    </h1>
+    <hr style="width:50px;border:5px solid #990000" class="w3-round">
+
+<!-- !INTRODUCTION! -->
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline; white-space:
+    pre-wrap;">Posted by Taoran Ji</span></div>
+<b id="docs-internal-guid-6541b086-756f-55af-a3b1-a0a0709119ce"
+    style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial; 
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; 
+    text-decoration: none; vertical-align: baseline;">
+    In the last <a href="../cybersec_social_media/index.html">blog</a>, I have
+    introduced the importance of early detection of cyber-attack events, the
+    motivation of using social media as a source of information and explored one
+    soultion which is focused on early detecting using tech blogs. Intuitively,
+    tech blogs have are less ``fresh'' than Twitter, since they are usually
+    carefully written by experts. On Twitter, users are free to report and tweet
+    anything they find suspicious without overthinking about the details.
+</span>
+</div>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+    However, using tweets is never a trivial thing. Apart from the textual
+    complexity, I introduced in the last
+    <a href="../cybersec_social_media/index.html">blog</a>, the most annoying
+    feature of the Twitter based research is that, in most cases, there are no
+    positive or negative samples available. In other words, it's hard to
+    collect a proper training and test data set. One straightforward way to solve
+    this problem is to ask researchers to identify and label the positive and
+    negative samples manually. But this doesn't work in a real-world
+    application since the volume of tweets is usually very huge. Thus,
+    reserachers are more inclined to use unsupervised methods to detect and
+    extract useful information from the sea of tweets.
+</span>
+</div>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+    In this blog, I'll explore one work which applies an unsupervised method
+    for the early detection of cyber-attacks.
+</span>
+</div>
+
+<!-- !EXPLORATION! -->
+<h3 dir="ltr" style="line-height: 1.38; margin-bottom: 4pt; margin-top: 16pt;">
+<span style="background-color: transparent; color: #434343; font-family: Arial;
+    font-size: 14pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+    Definition of Cyber-attack Event 
+</span>
+</h3>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+    The paper I'll explore in this blog is ``Weakly Supervised Extraction of
+    Computer Security Events from Twitter''. Though it proposed a weakly
+    supervised method for the computer security events detection, I still
+    consider it as an unsupervised method since only very few positive samples
+    are required, and the core contribution in this paper is critical
+    information mining, which works in an unsupervised way. 
+</span></div>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+    Before exploring the details of the technology used in this paper, let's
+    first try to answer this most fundamental question: what is the definition
+    of cyber attack event? Intuitively, this problem can be answered from
+    a security angle. Let's see the description from
+    <a href="https://www.techopedia.com/definition/24748/cyberattack">Techpedia.
+    </a>
+</span></div>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-left: 36pt;
+    margin-top: 0pt;">
+    <span style="background-color: transparent; color: black;
+        font-family: Arial; font-size: 11pt; font-style: italic;
+        font-variant: normal; font-weight: 400; text-decoration: none;
+        vertical-align: baseline;">“</span>
+    <span style="background-color: white; color: black; font-family: Arial;
+        font-size: 11pt; font-style: italic; font-variant: normal;
+        font-weight: 400; text-decoration: none; vertical-align: baseline;">
+        Definition - What does Cyberattack mean? A cyberattack is deliberate
+        exploitation of computer systems, technology-dependent enterprises and
+        networks. Cyberattacks use malicious code to alter computer code, logic
+        or data, resulting in disruptive consequences that can compromise data
+        and lead to cybercrimes, such as information and identity theft.
+    </span></div>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+    I don't even want to read the entire description since it doesn't help us to
+    formulate the problem people want to solve. The issue here is that this
+    definition fails to connect the problem with the textual data we have. We
+    need a description which can cast the cyber attack detection problem into
+    the textual data mining or classification field.  In the paper, the authors
+    defined the cyber attack event as a tuple (ENTITY, DATE). To further ensure
+    that this event is a security-related event, each event is expected to be
+    one of security categories named after the security keyword (e.g., hack,
+    DDoS). 
+</span></div>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+    With this definition, the problem is then transformed to a classification
+    paradigm, that is, filter tweets by event type related keywords and then
+    identify tweets that are related to unknown events. With this idea in mind,
+    the workflow proposed in the paper is very intuitive and easy to understand.
+</span></div>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;
+    text-align: center;">
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline; white-space:
+    pre-wrap;"><img alt="workflow.png" src="./img/p1.png"
+    style="-webkit-transform: rotate(0.00rad); border: none; transform:
+    rotate(0.00rad);" ></span></div>
+<h3 dir="ltr" style="line-height: 1.38; margin-bottom: 4pt; margin-top: 16pt;">
+<span style="background-color: transparent; color: #434343; font-family: Arial;
+    font-size: 14pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+    Collection of Seed Events and Candidate Events 
+</span>
+</h3>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+    Collecting seed events is pretty straightforward, information analysts
+    already prided a set of 10 - 20 seed events for each type of cyber attacks.
+    For instance, the seed instances for DDoS attacks are shown in the following
+    table. As we can see, each entry is presented in the tuple (ENTITY, DATE).
+    In particular, ENTITY here is the victim name in the table. 
+</span> </div>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;
+    text-align: center;">
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline; white-space:
+    pre-wrap;"><img alt="candidate.png" src="./img/seed_ins.png"
+    style="-webkit-transform: rotate(0.00rad); border: none; transform:
+    rotate(0.00rad);" ></span></div>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+    Not like their names, candidate events are in fact collections of suspicious
+    tweets. This process consists of three submodules. First of all, candidate
+    tweets are extracted from Twitter Streaming API using the keywords like
+    hacked, ddos and breach. Secondly, the extracted tweets will be put into an
+    NLP pipeline, in which each component of tweets will be further analyzed.
+    For instance, date contained in the tweet will be normalized and collected.
+    The contextual environment of keyword will also be collected since the
+    authors think that the neighbors of keywords will also contribute to the
+    classification.  The following are some examples of contextual features. 
+</span>
+</div>
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;
+    text-align: center;">
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+    <img alt="features.png" src="./img/features.png"
+    style="-webkit-transform: rotate(0.00rad); border: none;
+    transform: rotate(0.00rad);" >
+</span></div>
+<h3 dir="ltr" style="line-height: 1.38; margin-bottom: 4pt; margin-top: 16pt;">
+<span style="background-color: transparent; color: #434343; font-family: Arial;
+    font-size: 14pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+    Classification
+</span>
+</h3>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+    As we discussed before, there are no classified training data available in
+    this case. Though researchers can get some instances from experts, it needs
+    too many human powers to collect enough training samples. So in this
+    situation, we have a lot of unlabeled events. If we treat all these samples
+    as negative points, then we will train a biased classifier since many of
+    them are in fact positive points. Meanwhile, treating every sample as
+    positive is not a choice, either. The authors gave a smart way to solve this
+    problem. They used the concept of expectation. In particular, they want to
+    maximize the likelihood term over the positive seed instances with
+    a regularization that encourages the expectation over unlabeled data to
+    match the user provided target expectation. First of all, it's easy to
+    understand why we want to maximize the likelihood of seed instances. Second,
+    they do this maximization under one condition, that is, try to make the
+    differences between expectations of unlabeled data and user expectation as
+    small as possible. In this paper, the authors proves that this method has
+    better performance than the traditional classifiers like SVM.
+</span></div>
+<h3 dir="ltr" style="line-height: 1.38; margin-bottom: 4pt; margin-top: 16pt;">
+<span style="background-color: transparent; color: #434343; font-family: Arial;
+    font-size: 14pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+    Afterword
+</span>
+</h3>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+    Cyber-attack detection and characterization using open-source data is still
+    an open research field. Not like the traditional security field, in this
+    research, people are more focused on using maching learning or data mining
+    methods to identify indicators from the sea of open source information. In
+    this blog, we explore and discuss one work in this field. Though it works
+    better than other general methods like SVM, it still needs to be further
+    improved since its performance depends on the a user-defined expectation
+    value which is very hard to determine in real-world application.
+</span></div>
+<b style="font-weight: normal;"><br></b>
+
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+</span>
+</div>
+<br>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+</span>
+</div>
+<div>
+<span style="background-color: transparent; color: black; font-family: Arial;
+    font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400;
+    text-decoration: none; vertical-align: baseline;">
+    <br>
+</span>
+</div>
+
+<div style="clear: both;"></div>
+</div>
+</div>
+</div>
+<!-- End page content -->
+
+<!-- W3.CSS Container -->
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px">
+<p class="w3-right"> CS/ECE 5584: Network Security, Fall 2017, <a href="http://ningzhang.info" target="_blank" class="w3-hover-opacity">Ning Zhang</a>
+</p></div>
+</body>
+</html>
