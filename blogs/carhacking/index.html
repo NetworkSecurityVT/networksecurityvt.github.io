@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<title>CS/ECE 5584: Network Security, Fall 2017</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #990000;
+    color: white;
+}
+
+.tabstyle { display: inline-block; width: 150px; }
+</style>
+
+<script>
+  function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+  }
+ 
+  function w3_close() {
+      document.getElementById("mySidebar").style.display = "none";
+      document.getElementById("myOverlay").style.display = "none";
+  }
+</script>
+
+<body>
+
+
+
+<!-- Sidebar/menu -->
+
+
+<nav class="w3-sidebar w3-black w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>Network<br>Security</b></h3>
+  </div>
+  <div class="w3-bar-block">
+    <a href="../index.html#Announcements"   onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Announcements</a> 
+    <a href="../index.html#Syllabus"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Syllabus</a> 
+    <a href="../index.html#Schedule"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Schedule</a> 
+    <a href="../index.html#Projects"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Projects</a> 
+    <a href="../index.html#Readings"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Readings</a>
+    <a href="../index.html"                 onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Blogs</a>  
+    <a href="../index.html#Ethics"          onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Ethics</a> 
+  </div>
+</nav>
+
+<!-- Header -->
+  
+  <!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-black w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-black w3-margin-right" onclick="w3_open()">☰</a>
+  <span>Network Security</span>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+  <div class="w3-container" id="Car Hacking: An Overview" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-gray"><b>Car Hacking - An Overview and Introduction to CAN</b></h1>
+    <h2 class="w3-xlarge w3-text-gray"><i><b>
+         
+    </b></i></h2>
+    <hr style="width:50px;border:5px solid #990000" class="w3-round">
+
+    
+
+
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Posted by Louis "Mischa" Michael</span></div>
+      
+      <b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">This blog post was inspired by this Defcon talk: 
+</span></div>
+    
+      
+      <iframe allowfullscreen="" frameborder="0" height="270" src="https://www.youtube.com/embed/uIj7wkAoJ6Y" width="480"></iframe>
+      
+<h3 dir="ltr" style="line-height: 1.38; margin-bottom: 4pt; margin-top: 16pt;">
+<span style="background-color: transparent; color: #434343; font-family: Arial; font-size: 14pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">What is Car Hacking?</span></h3>
+      
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">As more technology gets added to vehicles, there is a general increase in the total number of attack surfaces in those vehicles. This problem presents itself in a large number of ways --everything from relay and replay attacks of key unlock signals, to stealing vehicles, to things as simple as sending signals to change the car’s internal LEDs to be a fun new color. If it involves using technology in a way that is not intended in a vehicle, it falls into the realm currently popularly referred to as ‘car hacking.’ 
+</span></div>
+
+
+
+
+<h3 dir="ltr" style="line-height: 1.38; margin-bottom: 4pt; margin-top: 16pt;">
+<span style="background-color: transparent; color: #434343; font-family: Arial; font-size: 14pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Why is it important?</span></h3>
+      
+      
+      
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Cars represent one of the biggest investments in most peoples’ lives, but some of the scariest car hacking doesn’t stop at stealing vehicles. Some of the most impressive and most terrifying hacks don’t stop at theft; they can include things like turning off the engine while the car is moving, posing severe safety risks to car operators. 
+</span></div>
+
+      
+<h3 dir="ltr" style="line-height: 1.38; margin-bottom: 4pt; margin-top: 16pt;">
+<span style="background-color: transparent; color: #434343; font-family: Arial; font-size: 14pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">What is a CAN Bus?</span></h3>
+      
+      <div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt; text-align: center;">
+<span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;"><img height="377" src="./img/fig1.jpg" style="-webkit-transform: rotate(0.00rad); border: none; transform: rotate(0.00rad);" width="624"></span></div>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt; text-indent: 36pt;">
+<span style="background-color: transparent; color: #666666; font-family: Arial; font-size: 9pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Figure 1: A CAN bus</span></div>
+      
+       <b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Your car, like most of your life, has a computer attached to it. Unlike any of the other computers in your life, this one can tell you things such as why your ‘check engine’ light is on. You can actually buy a device to tell you things like fault codes for around <a HREF="https://www.walmart.com/ip/Red-KW805-Any-car-OBD2-EOBD-CAN-BUS-Fault-Code-Diagnostic-Reader-Scanner-tool/854478684?wmlspartner=wlpa&selectedSellerId=11017&adid=22222222227091704239&wmlspartner=wmtlabs&wl0=&wl1=g&wl2=c&wl3=204642008396&wl4=pla-333239688228&wl5=9060046&wl6=&wl7=&wl8=&wl9=pla&wl10=117088882&wl11=online&wl12=854478684&wl13=&veh=sem">$10 at Walmart</a>. Your car sends all of this information in a really simple way. It connects a bus to every part of your car that could want to communicate with each other, and they all can send and receive messages over this bus. This bus is called the CAN (Controller Area Network) bus. Before CAN, every ECU (Electric Control Unit), the board that runs a particular subsystem of your car like the brakes, has a BCM (Break Control Module), would run wires to every other part of the car it would want to network with. This got really complicated and cumbersome as more connections meant more and more wire. That is the problem that CAN is trying to solve. Now everything just sends its messages to one place and its gets where it is going. Very cool and simple, but very unsecure. Sometimes cars actually have multiple busses, but they all work similarly and have the same problems. While different car manufactures have different protocols, the basic idea is the same. Right now, the way CAN works it has no authentication or signing, which means if you can get to a point where you can send signals over it, you can pretend to be any piece of the car that is willing to listen. This gets really exciting the more pieces of a car are listening as a result of things like parking assist, where the car can move the steering wheel for you. Send a signal asking for the wheel to turn and it will do it, no questions asked.       
+</span></div>
+      
+      <h3 dir="ltr" style="line-height: 1.38; margin-bottom: 4pt; margin-top: 16pt;">
+<span style="background-color: transparent; color: #434343; font-family: Arial; font-size: 14pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Interesting Example  </span></h3>
+      
+       <b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Wired video on the Hack 
+    
+<iframe allowfullscreen="" frameborder="0" height="270" src="https://www.youtube.com/embed/MK0SrxBC1xs" width="480"></iframe>
+    
+Full paper, lots more detail:  <a href="http://illmatics.com/Remote%20Car%20Hacking.pdf">http://illmatics.com/Remote%20Car%20Hacking.pdf</a>
+    
+ Defcon talk for more info but less reading: 
+    
+    <iframe allowfullscreen="" frameborder="0" height="270" src="https://www.youtube.com/embed/OobLb1McxnI" width="480"></iframe>
+    
+    One of the most interesting and most widely talked about exploits was an issue that Chrysler had in their vehicles as a result of allowing access to a vehicle through the cellular system. Once the computer could issue generic commands, CAN bus commands could be issued and this means that a lot more dangerous stuff could happen, like turning off the engine. This exploit was patched by Chrysler but it brought a lot of publicity to the realm of car hacking, not to the joy of Jeep owners. 
+</span></div>
+      
+      <h3 dir="ltr" style="line-height: 1.38; margin-bottom: 4pt; margin-top: 16pt;">
+<span style="background-color: transparent; color: #434343; font-family: Arial; font-size: 14pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Lack of Standards </span></h3>
+      
+       <b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Each car manufacturer has different ECUs and as a result has different signals that get sent across CAN. The messages that each car sends have to be reverse engineered separately; there is not a rainbow book for all cars, but a lot of information is published about information like error codes so that devices to run diagnostics work. Interestingly, this is less of a problem in tucks which have a lot more standards in their CAN messages, and there is even a push to use CAN to log things like time driving in long distance trucks to better enforce existing trucking regulation.       
+</span></div>
+
+      <h3 dir="ltr" style="line-height: 1.38; margin-bottom: 4pt; margin-top: 16pt;">
+<span style="background-color: transparent; color: #434343; font-family: Arial; font-size: 14pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Going Forward</span></h3>
+      
+       <b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Car hacking is an increasingly important issue as we start to see a myriad of new technological advancements around motorways. The biggest and most interesting of these is self-driving cars, but along with this advancement also brings a lot of questions into the mix about the kind of infrastructure that is going to be put in place to support vehicles. Some really interesting proposals are in place to add communication between cars as well as from roads to vehicles. These have the potential to do great things like dramatically lowering vehicle collisions, but the increased size and complexity of networks, as well as the impact of the information that vehicles receive, all mean more attack surfaces with dire consequences. Even now, trivial but really basic implementations of this are in place to judge how long it takes to travel a section of road.  Signs like the one in Figure 2 frequently gets their information by tracking Bluetooth mac addresses across a series of checkpoints to see on average how long a vehicle take to go a certain distance based on how long Bluetooth devices on board that vehicle take to travel that distance.  
+</span></div>
+      
+      <div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt; text-align: center;">
+<span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;"><img height="377" src="./img/fig2.jpg" style="-webkit-transform: rotate(0.00rad); border: none; transform: rotate(0.00rad);" width="624"></span></div>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt; text-indent: 36pt;">
+<span style="background-color: transparent; color: #666666; font-family: Arial; font-size: 9pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Figure 2: A DMS showing traffic</span></div>
+      
+     
+      
+
+
+      <b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">The bottom line is that more technology is going into the dangerous vehicles we ride in every day, and we need to think long and hard as we add connectivity to all of these computers.   
+
+    </span></div>     
+      
+       <h3 dir="ltr" style="line-height: 1.38; margin-bottom: 4pt; margin-top: 16pt;">
+<span style="background-color: transparent; color: #434343; font-family: Arial; font-size: 14pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Other Interesting Reading</span></h3>
+            
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Check out Hack a Day breaking down CAN and spoofing RPM signals to make a car standing still have its tachometer pegged.  
+</span></div><a href="https://www.youtube.com/watch?v=vxErDiSM_1Q" style="text-decoration: none;"><span style="background-color: transparent; color: #1155cc; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: underline; vertical-align: baseline; white-space: pre-wrap;">https://hackaday.com/2013/10/22/can-hacking-the-in-vehicle-network/</span></a>
+
+
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">The Ohio Department of Transportation’s info page on Dynamic Message Signs (DMS) like the one pictured in figure 2. 
+</span></div><a href="https://www.youtube.com/watch?v=KkEVwswqIBs" style="text-decoration: none;"><span style="background-color: transparent; color: #1155cc; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: underline; vertical-align: baseline; white-space: pre-wrap;">https://www.dot.state.oh.us/Divisions/Operations/Traffic/FAQs/Pages/DMS.aspx 
+</span></a>
+
+      <b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Gizmodo article on Bluetooth to do traffic estimates.  
+</span></div><a href="https://www.youtube.com/watch?v=KkEVwswqIBs" style="text-decoration: none;"><span style="background-color: transparent; color: #1155cc; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: underline; vertical-align: baseline; white-space: pre-wrap;">https://gizmodo.com/5966301/this-highway-tracks-random-bluetooth-signals-to-estimate-travel-times
+</span></a>
+      
+      <b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Article on what exactly CAN is and how it came to be.
+</span></div><a href="https://www.youtube.com/watch?v=KkEVwswqIBs" style="text-decoration: none;"><span style="background-color: transparent; color: #1155cc; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: underline; vertical-align: baseline; white-space: pre-wrap;">http://canbuskits.com/what.php 
+</span></a>
+      
+ <h3 dir="ltr" style="line-height: 1.38; margin-bottom: 4pt; margin-top: 16pt;">
+<span style="background-color: transparent; color: #434343; font-family: Arial; font-size: 14pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Image Credits: </span></h3>
+
+<b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Figure 1 –  </span></div><a href="https://www.usenix.org/legacy/event/hotbots07/tech/full_papers/wang/wang_html/" style="text-decoration: none;"><span style="background-color: transparent; color: #1155cc; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: underline; vertical-align: baseline; white-space: pre-wrap;">http://canbuskits.com/what.php/</span></a>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">      
+
+    <b style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Figure 2 – </span></div><a href="https://www.slideshare.net/PratikNarang/feature-selection-for-detection-of-peer-topeer-botnet-traffic" style="text-decoration: none;"><span style="background-color: transparent; color: #1155cc; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: underline; vertical-align: baseline; white-space: pre-wrap;">https://www.dot.state.oh.us/Divisions/Operations/Traffic/FAQs/Pages/DMS.aspx</span></a>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;"> 
+    
+      
+      
+      
+  </div>
+</div>
+<!-- End page content -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- W3.CSS Container -->
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px">
+<p class="w3-right"> CS/ECE 5584: Network Security, Fall 2017, <a href="http://ningzhang.info" target="_blank" class="w3-hover-opacity">Ning Zhang</a>
+</p></div>
+
+
+
+</body>
+
+</html>
