@@ -1,0 +1,324 @@
+
+
+<!DOCTYPE html>
+<html>
+<title>CS/ECE 5584: Network Security, Fall 2017</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #990000;
+    color: white;
+}
+
+.tabstyle { display: inline-block; width: 150px; }
+</style>
+
+<script>
+  function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+  }
+ 
+  function w3_close() {
+      document.getElementById("mySidebar").style.display = "none";
+      document.getElementById("myOverlay").style.display = "none";
+  }
+</script>
+
+<body>
+
+
+
+<!-- Sidebar/menu -->
+
+
+<nav class="w3-sidebar w3-black w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>Network<br>Security</b></h3>
+  </div>
+  <div class="w3-bar-block">
+    <a href="../../index.html#Announcements"   onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Announcements</a> 
+    <a href="../../index.html#Syllabus"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Syllabus</a> 
+    <a href="../../index.html#Schedule"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Schedule</a> 
+    <a href="../../index.html#Projects"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Projects</a> 
+    <a href="../../index.html#Readings"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Readings</a>
+    <a href="../index.html"                 onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Blogs</a>  
+    <a href="../../index.html#Ethics"          onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Ethics</a> 
+  </div>
+</nav>
+
+<!-- Header -->
+  
+  <!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-black w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-black w3-margin-right" onclick="w3_open()">☰</a>
+  <span>Network Security</span>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+  <div class="w3-container" id="Primary Users' Location Privacy in Shared Spectrum" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-gray"><b>Primary Users' Location Privacy in Shared Spectrum</b></h1>
+    <h2 class="w3-xlarge w3-text-gray"><i><b> Yang Xiao </b></i></h2>
+    <hr style="width:50px;border:5px solid #990000" class="w3-round">
+
+
+
+<div class="entry-content">
+
+
+
+
+<p>As you may know, radio frequency is the most valuable resource in wireless communications. With the rapidly growing demand of frequency spectrum hungry devices and applications, regulators such as the Federal Communication Committee (FCC) are working with private sectors on novel spectrum sharing technologies. Specifically, the FCC recently finalized its ruling on <a href="https://www.fcc.gov/rulemaking/12-354" target="_blank" rel="noopener">Citizens Broadband Radio Service (CBRS) </a> which opens 3550-3700 MHz band (aka. 3.5 GHz Band) for public use <span style="color:#ff0000;">[2]</span>. This gives a huge incetive for the development of applications of 3.5 GHz band and also raises many more problems to deal with. One of the most discussed issues is privacy of primary users, whose private information such as locations, time of operation, frequency of operation may be breached when they have to share a same spectrum band with the public, to whom the adversaries often belong. This blog will address on the privacy of the most sentive information of primary users - location. We will check out the three tiers of users and the spectrum access system, the location privacy problem, and how two research papers dealt with this problem.</p>
+<p>&nbsp;</p>
+
+
+
+<h2 style="text-align:left;"><span style="color:#333399;">Users and Spectrum Access System in 3.5 GHz Band</span></h2>
+<div align="center" class="category">
+  <img src="img/3-tiers-of-users.png" />
+  <img src="img/sas-pu-su.png" />
+</div>
+<p style="text-align:center;"><strong>Figure 1.</strong> Three tiers of spectrum users. <span style="display:inline-block; width: 300px;"></span> <strong>Figure 2.</strong> Conceptual SAS operations.</p>
+<p>&nbsp;</p>
+
+<p>There are three types of users allowed in CBRS shown in Figure 1:</p>
+<ul>
+  <li> <strong>Incumbent Access Users: </strong>Federal radars, FSS earth stations, Grandfathered satellite services users, and other registered non-federal incumbents.</li>
+  <li> <strong>Priority Users: </strong>Users with Priority Licenses (PAL) that will be assigned by competitve bidding.</li> 
+  <li> <strong>General Authorized Access Users: </strong> Users with flexible access to unused PAL channels.</li>
+</ul>
+<p>In research communities, the first two tiers of users are referred as "Primary Users" and the third tier of users are referred as "Secondary Users". We will use "PU" and "SU" for convenience. The Spectrum Access System (SAS) is the central scheduler that assigns unused spectrum to SUs by request, as shown in Figure 2. The SAS collects information from PUs, deals with SU requests with the caution of preserving PU's private information. Usually the SAS is equipped with a Geolocation Database (GDB) to store both PU and SU locations and compute the optimal spectrum assignments for SUs' queries. </p>
+<p>We will focus on the model proposed by <span style="color:#ff0000;">[4]</span>, which gives a mathematical model on the data flow between SAS with PUs and SUs, shown in Figure 3. </p>
+<div align="center" class="category">
+  <img src="img/sas-dataflow.png" />
+</div>
+<p style="text-align:center;"><strong>Figure 3.</strong> SAS data flow model.</p>
+<p>&nbsp;</p>
+
+The parameters of this above model is shown in Table 1:
+<p style="text-align:center;"><strong>Table 1.</strong> SAS model parameters.</p>
+<div align="center" class="category">
+  <img src="img/sas-para.png" />
+</div>
+<p>&nbsp;</p>
+As a short summary of this data flow model, the PUs first register their characteristics such as locations, intereference threshold and requirements to the SAS database. During operation, an SU sends a spectrum request along with its location, channel gain, and profitable transmission power to the SAS. The SAS solves an optimization problem that maximizes SU's utility of the sprectrum while guranteeing the PUs' intereference requirements. As a note, the PUs' interference requirement does not provide a solution to their location privacy. We will delve into the privacy issue in the following sections.
+<p>&nbsp;</p>
+
+<h2 style="text-align:left;"><span style="color:#333399;">Inference Attacks against PU Location Privacy</span></h2>
+<p>After the introduction of the system model and math definitions, we can finally come to the privacy problem. The privacy problem of general multi-user spectrum sharing system was first mentioned in <span style="color:#ff0000;">[6]</span>, which mainly considers protecting military spectrum users. The attacks on PUs' location privacy with statistical inference was first formalized in <span style="color:#ff0000;">[3]</span>. Here we assume the communications between the PUs and the SAS is absolutely safe, the adversary usually hacks several SUs or an entire SU network so that it can fetch information through request-response with the SAS. Based on the information acquired, it runs a inference scheme that iteratively updates its expectations on the existance of a PU at every candidate location. The following two subsections are the attack models used in <span style="color:#ff0000;">[3]</span> and <span style="color:#ff0000;">[4]</span> correspondingly. <span style="color:#ff0000;">[5]</span> further extends <span style="color:#ff0000;">[4]</span>'s attack model by considering the incorporation of the Environment Sensing Capability (ESC) into the SAS, but uses the same inference method. Therefore I'll leave it out in this section.</p>
+
+
+<h4 style="text-align:left;"><span style="color:#0000ff;">Attack from [3]:</h4>
+<p>This paper simplified the communication between the SAS and SUs and considered a TV white space model. As is shown in Figure 4.</p>
+<div align="center" class="category">
+  <img src="img/3-query-response.png" />
+</div>
+<p style="text-align:center;"><strong>Figure 4.</strong> Simplified model of data flow.</p>
+<p>&nbsp;</p>
+
+<p>The attacker is assumed to operate a SU device on the move or several SU devices with fixed locations:</p>
+<div align="center" class="category">
+  <img src="img/attacker-movements.png" />
+</div>
+<p style="text-align:center;"><strong>Figure 5.</strong> Two equivalent types of adversarial operations. Greens dots denote PUs, red dots denote SUs, devil icons denote SUs operated by the attacker.</p>
+<p>&nbsp;</p>
+
+<p>The attacker initiates a table of likelihood P of the PU existence of all locations in the grid. After each query-response with the SAS, the attacker's SU gets assigned a channel and a power range to transmit. Based on the power range values, it then updates the likelihoods of all locations regarding to their distance to the attacker's SU. Specifically, if the attacker is assigned a limited transmission power that is lower than the maximum power, all locations with the assigned power range will be safely ruled out and updated with zero likelihood because there are no PUs in it; All locations beyond the assigned power range but within the rannge computed with the maximum transmission power will be updated with higher likelihood, because this ring area must contain one or more PUs which makes the SAS not to assign the full use of maximum transmission power to the SU. Figure 6 illustrates how the update is processed. And this updating procedure keeps going until the likelihood table makes perfect sense and is ready for a decision.</p> 
+<div align="center" class="category">
+  <img src="img/3-update-case.png" />
+</div>
+<p style="text-align:center;"><strong>Figure 6.</strong> Left: Channel is available but transmission power is limited. Right: Channel is available and maxumum possible transmission power is allowed.</p>
+<p>&nbsp;</p>
+
+At last, a privacy metric called <strong>Incorrectness (IC)</strong> is computed directly from these likelihoods P:
+<div align="center">
+  <img src="img/3-IC.png" />
+</div>
+
+<p>With the IC metric at hand, we can then obtain the relation between PU privacy and SU utility through simulation. The simulation results with diffferent privacy protection schemes which will be shown in the next section.</p>
+<p>&nbsp;</p>
+
+<h4 style="text-align:left;"><span style="color:#0000ff;">Attack from [4]:</h4>
+<p>Compared with the previous paper, <span style="color:#ff0000;"> [4]</span>'s model is more realistic as it considers the interference requirements of the PU, as is shown in the SAS data flow model in Figure 3. Before introducing the attack model, <span style="color:#ff0000;"> [4]</span> defines an optimization problem for the SAS, that is:</p>
+<div align="center">
+  <img src="img/4-opt.png" />
+</div>
+<p>This optimization problem represents the SAS's choice on how to assign the range of transmission power per SU request meanwhile constraining on PUs' interference requirements. This is the key element of the SAS which will be exploited by the adversary for maximum likelihood estimation.</p>
+<p>Since we only consider the case that the adversary operates its own SUs, here only presents the second of the three attack models proposed by [4].</p>
+<div align="center" class="category">
+  <img src="img/compromised-SU.png" />
+</div>
+<p style="text-align:center;"><strong>Figure 7.</strong> Attack model - compromised SU devices.</p>
+<p>&nbsp;</p>
+
+<p>In this model, the attacker has access to all communication flows between the SAS and any hacked SU devices, similar to <span style="color:#ff0000;"> [3]</span>'s model. But unlike <span style="color:#ff0000;"> [3]</span>, this model cannot direct updates the location likelihoods after receiving each SAS response, as it considers a more realistic scenario where it is impossible to derive the likelihood update from the power range because of the interference between each PU-SU pair. Instead it forms a <a href = "https://en.wikipedia.org/wiki/Maximum_likelihood_estimation" target="_blank" rel="noopener">Maximum Likelihood estimation</a> problem with heuristic method.</p>
+<p>After a period of time, we assume the adversary has observed T power assignments:</p>
+<div align="center"><img src="img/4-power-T.png"/></div>
+<p>Then based on these observations, the likelihood of the existence of PU for a set of PU candidate locations is:</p>
+<div align="center"><img src="img/4-ML.png"/></div>
+<p>When the number of total locations N is large (ie. a higher resolution on the area), direct computing the Maximum Likelihood estimation becomes intractable since there are n^2 candidate location sets. Alternatively, heuristic methods are used. After each power assignment, the adversary identifies those locations where a PU could not exist based on her prior knowledge on PU interference criteria. The enimination process keeps going until the number of remain candidate locations is small enough for direct ML calculation. This is called <strong>Composite Method</strong>. In addition, <strong>Interference Constraint Margin (ICM)</strong> and <strong>Single PU Error (SPE)</strong> are used to further lower the computation complexity. In the end, the adversary uses a method called x-sigma to determine the locations with likelihoods x standard deviations beyond the mean likelihood value so that it obtains a small set of locations with very high chance of the existence of a PU.</p>
+<p>To measure the efficacy of this inference, this paper uses a metric called <strong>Sum Distance Error</strong>, which is actually the same meric as the <strong>Incorrectness</strong> used in <span style="color:#ff0000;">[3]</span>. Additionally, <strong>PU Privacy Time</strong> is used to measure how long the privacy metric can stay above a certain threshold.</p>
+<p>&nbsp;</p>
+
+
+
+<h2 style="text-align:left;"><span style="color:#000080;">Privacy Preserving Techniques and Simulation Results</span></h2>
+<p>From the discussion in <span style="color:#ff0000;"> [3] [4] [5]</span>, there are five techniques to enhance PU location privacy:</p>
+<ul>
+  <li><strong>1. False PU entry: </strong>A PU sends a set of indistinguishable locations to the SAS instead of its true location.</li>
+  <li><strong>2. Output perturbation with additive noise: </strong>The SAS adds negative noise to the assigned power to SUs, which is equivalent to reducing SU's power range and enlarging the PU's protecting contour.</li>
+  <li><strong>3. Putput perturbation with transfiguration: </strong>Similar to 3, but the SAS uses a polygon to substitute the protecting coutour rather than a sphere.</li>
+  <li><strong>4. K-anonymity: </strong>The SAS groups all PUs into groups of K. All PUs of a single group are non-distinguishable.</li>
+  <li><strong>5. K-clustering: </strong>The SAS clusters all PUs into K clusters. All Pus of a single cluster are non-distinguishable.</li>
+</ul>
+<p>Interestingly, <span style="color:#ff0000;">[3]</span> uses technique 2,3,4,5 while <span style="color:#ff0000;">[4]</span> uses 1,2. The reason is that when interference is considered, the notion of "protecting contour" makes no more sense. That's why technique 3,4,5 are hard to implement under the <span style="color:#ff0000;">[4]</span>'s settings. The follow two figures show the simulation results from two papers.</p>
+<div align="center" class="category">
+  <img src="img/3-sim-set.png" />
+  <img src="img/3-res1.png" />
+  <img src="img/3-res2.png" />
+</div>
+<p style="text-align:center;"><strong>Figure 8.</strong> Simulation result from <span style="color:#ff0000;">[3]</span>. <strong>Left: </strong>PU privacu versus number of query-responses under different privacy protection schemes. Perturbation with additive noise works best at first, then 2-clustering overshadows the others when the number of query responses become large. <strong>Right: </strong>SU utility versus PU privacy under two privacy protection schemes. This shows the fundamental tradeoff between privacy and efficiency. As we see, perturbation with additive noise works better than transfiguration, though the latter is more complicate to implement.</p>
+
+<div align="center" class="category">
+  <img src="img/4-sim-set.png" />
+  <img src="img/4-res1.png" />
+  <img src="img/4-res2.png" />
+</div>
+<p style="text-align:center;"><strong>Figure 9.</strong> Simulation result from <span style="color:#ff0000;">[4]</span>. The SPE identified one PU but totally missed the other. The ICN missed both PUs but with the general areas correct. While the Composite method achieves the best result since it is the only method that spotted out all the 2 PUs, and achieved zero error (zero privacy for PUs) after convergence. Generally, all these heuristic methods achieve good attacking results.</p>
+<p>&nbsp;</p>
+
+<h2 style="text-align:left;"><span style="color:#000080;">End Notes</span></h2>
+<p>In the 3.5 GHz band, the incumbent users were reluctant to share the spectrum from the general public due to security concerns. Indeed, from the simulation results above various PU privacy preserving techniques can only delay the time of breach rather than completely resolving the inference attacks. To the SAS, it always has to make a hard choice between PU privacy and SU utility, which embodies the fundamental tradeoff in this research domain - security versus complexity. However, to strike a balance on this tradeoff depends on the requirements of both sides and it is a viable research option. As time goes on, more of once restrictly frequency band will be available for public use, to which mroe advanced spectrum sharing technologies and privacy preserving techniques will be needed. This is our opportunity.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+
+
+
+
+
+<h2 style="text-align:left;"><span style="color:#333399;">References</span></h2>
+<pre style="text-align:left;">
+<span style="color:#ff0000;">[1]</span> 3.5 GHz Order on Recon and 2nd R&O. FCC 2016. <a href="https://apps.fcc.gov/edocs_public/attachmatch/FCC-16-55A1_Rcd.pdf" target="_blank" rel="noopener">Link</a>
+<span style="color:#ff0000;">[2]</span> 3.5 GHz Band / Citizens Broadband Radio Service. FCC 2015. <a href="https://apps.fcc.gov/edocs_public/attachmatch/FCC-15-47A1.pdf" target="_blank" rel="noopener">Link</a>
+<span style="color:#ff0000;">[3]</span> Bahrak, Behnam, et al. "Protecting the primary users' operational privacy in spectrum sharing." DYSPAN 2014. <a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=6817800" target="_blank" rel="noopener">Link</a>
+<span style="color:#ff0000;">[4]</span> Clark, Matthew, and Konstantinos Psounis. "Can the privacy of primary networks in shared spectrum be protected?" INFOCOM 2016. <a href="http://www-bcf.usc.edu/~kpsounis/Papers/privacy_infocom2016.pdf" target="_blank" rel="noopener">Link</a>
+<span style="color:#ff0000;">[5]</span> Clark, Matthew, and Konstantinos Psounis. "Designing sensor networks to protect primary users in spectrum access systems." WONS 2017. <a href="https://pdfs.semanticscholar.org/4ba4/906fc92e889b15758473811ea5dc4d94a96c.pdf" target="_blank" rel="noopener">Link</a>
+<span style="color:#ff0000;">[6]</span> Robertson, Andrew, Joseph Molnar, and Jeffrey Boksiner. "Spectrum Database Poisoning for Operational Security in Policy-Based Spectrum Operations." MMILCOM 2013. <a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=6735652" target="_blank" rel="noopener">Link</a>
+</pre>
+<p>&nbsp;</p>		
+
+
+
+</div><!-- .entry-content -->
+
+
+
+
+
+
+
+  </div>
+</div>
+<!-- End page content -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- W3.CSS Container -->
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px">
+<p class="w3-right"> CS/ECE 5584: Network Security, Fall 2017, <a href="http://ningzhang.info" target="_blank" class="w3-hover-opacity">Ning Zhang</a>
+</p></div>
+
+
+
+</body>
+
+</html>
