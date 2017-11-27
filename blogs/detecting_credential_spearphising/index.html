@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<title>CS/ECE 5584: Network Security, Fall 2017</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #990000;
+    color: white;
+}
+
+.tabstyle { display: inline-block; width: 150px; }
+
+
+</style>
+
+<script>
+  function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+  }
+ 
+  function w3_close() {
+      document.getElementById("mySidebar").style.display = "none";
+      document.getElementById("myOverlay").style.display = "none";
+  }
+</script>
+
+<body>
+
+
+
+<!-- Sidebar/menu -->
+
+
+<nav class="w3-sidebar w3-black w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>Network<br>Security</b></h3>
+  </div>
+  <div class="w3-bar-block">
+    <a href="../index.html#Announcements"   onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Announcements</a> 
+    <a href="../index.html#Syllabus"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Syllabus</a> 
+    <a href="../index.html#Schedule"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Schedule</a> 
+    <a href="../index.html#Projects"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Projects</a> 
+    <a href="../index.html#Readings"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Readings</a>
+    <a href="../index.html"                 onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Blogs</a>  
+    <a href="../index.html#Ethics"          onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Ethics</a> 
+  </div>
+</nav>
+
+<!-- Header -->
+  
+  <!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-black w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-black w3-margin-right" onclick="w3_open()">☰</a>
+  <span>Network Security</span>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+  <div class="w3-container" id="PRMitM" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-gray"><b>Detecting Credential Spearphishing in Enterprise Settings</b></h1>
+    <h2 class="w3-xlarge w3-text-gray"><i><b>
+         A summary of the detection techniques presented in this 
+           <a href="https://www.usenix.org/system/files/conference/usenixsecurity17/sec17-ho.pdf"> paper</a> 
+    </b></i></h2>
+    <hr style="width:50px;border:5px solid #990000" class="w3-round">
+
+    
+
+
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Posted by Kate Nguyen</span></div>
+<b id="docs-internal-guid-6541b086-756f-55af-a3b1-a0a0709119ce" style="font-weight: normal;"><br></b>
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; ">
+<h3>Introduction </h3>
+<p>Most people are familiar with or even encountered phising attacks. A lot of research and detection methods have been developed regarding preventing phising attacks which target a general audience. However, much less work has been done to prevent spearphising attacks. Like a phising attacks, a spearphising attack involves using emails to trick recipients into performing a dangerous action. However, unlike phising attacks, spearphising attacks are specifically targeted towards a single user rather than a general audience. Emails sent in spearphising attacks are specially crafted for the target making them much more difficult to attack. Additionally, since spearphising attacks are much more uncommon than phising attacks, it’s difficult to develop detection methods that can catch new spearphising attacks. This blog post summarizes the work done to develop a detection technique for spearphising attacks as published in a 2017 paper entitled “Detecting Credential Spearphising Attacks in Enterprise Settings” [1].  </p>  
+<p>The authors of this paper develop a spearphising detection technique that successfully detects attacks in a real set of enterprise email data. Their method combines both domain knowledge and data analysis. This paper won the 2017 Internet Defense Prize and stands out because spearphising attacks are a notoriously difficult attack to detect. </p>
+The main contributions of this paper are: 
+<ul>
+<li> use of domain knowledge to derive features that target the various stages of spearphising</li>
+<li>design of a DAS anomaly detection technique that doesn’t require labeled training data and works well with an unbalanced set of benign vs malicious data </li>
+<li>proving real time detection of spearphising attacks with an acceptable false positive rate</li>
+</ul>
+
+<h3 dir="ltr" style="line-height: 1.38; margin-bottom: 4pt; margin-top: 16pt;">
+What is Spearphising: Attack Taxonomy</h3>
+<b>Spearphising:</b> Social engineering attack where attacker sends targeted deceptive email to trick recipient into performing some kind of dangerous activity <br>
+
+<p>Spearphising is unusual from other security attacks in that it doesn't require a lot of technical sophistication. Attacks are hard to detect because emails are handcrafted. This paper looks at credential spearphising, a specific type of spearphising attack where the malicious email tries to convince the recipient into clicking a link and then entering their credentials. Victims of this attack generally possess some sort of privileged access, so the authors focus on detecting attacks within an enterprise setting. </p>
+<center><img src="img/example.png"><br>Figure 1: An example of a spearphising attack, note that the email contains specific information (in this case email address) about the target [2]</center>
+<p>The first portion of this paper goes into detail about the attack taxonomy of spearphising attacks which is vital to the success of their detection method. They break the attack down into two stages:
+<ul>
+<li> Lure: Convincing target to perform action, typically achieved by posing as trusted or authoritative figure
+</li>
+<li> Exploit: Exploiting trust gained to induce target into performing a dangerous activity
+</li>
+</ul>
+The lure stage corresponds to the email itself, which convinces users to proceed to the exploit stage. The exploit stage involves the user clicking on the url the leads them to a malicious website and then tricking them into entering their credentials.
+</p>
+
+<p>The authors further split the lure stage into three distinct types of impersonation models. Spearphising usually involves posing as a trusted figure and the impersonation models represent how the attacker goes about accomplishing this. Their detection method targets three types of impersonation: 
+<ul> 
+<li>Name Spoofer: The attacker poses as a real, trusted individual while using a fake/malicious email address</li>
+<li>Previously Unseen: The attacker does not attempt to pose specifically as another person, but they may still be percieved as trustworthy</li>
+<li>Lateral Attacker: The attacker sends the spearphising email from compromised user's email address</li>
+</ul>
+
+
+<h4>Security Model</h4>
+The goals of this paper were to detect real credential spearphising attacks in an enterprise setting, without creating too many false alarms. They limit their detection to an alert budget of 10 alerts per day. This is because alerts need to be manually inspected by a security analyst, so it's important to minimize the number of alerts that the analyst has to go through while still being able to detect real attacks. 
+
+<h3>Data and Features</h3>
+<p>The data used in the spearphising detection mechanism was obtained from Lawrence Berkley National Labs. The dataset was completely anonymized as all the values in the logs were hashed. This means, for example, that the authors could not actually see an original email address but only it's hashed value. Since the same email address will have the same hash value, they are still able to determine if that address has previously sent emails.  
+
+They use three different types of data in their detection method: 
+<ul>
+  <li> SMTP Logs: Emails sent to and from the organization between 3/1/2013 and 1/14/2017</li>
+  <li>NIDS Logs: Intrusion detection logs that provided information on which URLs were visited, if those URLs had previously been visited and which emails the URL corresponded to </li>
+  <li>LDAP Logs: Information of employee login including when, where and how often a user logs in </li>
+</ul>
+</p>
+<p> Based on this dataset and the attack taxonomy developed earlier, the authors customize specific characteristics that correspond to each type of spearphising attack. Figure 2 shows an overview of the charateristics. </p>
+<center><img width="1500" src="img/features.png"><br>Figure 2: Table showing how each type of spearphising the attack has specific features and characteristics used to detect it</center>
+
+<p> A spearphising attack will comprise of two stages: the lure stage and the exploit stage. Therefore, the authors combine features from both to determine if a spearphising attack has occured. 
+For the lure stage, they look specifically at sender reputation. The sender reputation will vary based on which impersonation model is being used.
+</p>
+<ul>
+<li>
+<p>For a name spoofing attack, the attacker wants to pose as a real person using a fake email address. In this case, we can expect that the name of the email is reputable, but the email address is not. In terms of features, they expect that the name used in this attack sends emails quite frequently but the address itself, which is only posing as the sender, will not appear frequently. </p></li>
+<li><p>For a previously unseen attack, the attacker does not base their reputation on any known person. Therefore, it can be expected that the frequency of both the name and the email address are low. </p></li>
+<li><p>For a lateral attack, the attacker gains access to a legitimate user accounts and uses that account to send their spearphising email. In this case, the authors look at LDAP logs for login information of the account sending the email. They expect that the location of login will be suspicious because of unauthorized use. Therefore, they look at how many other employees have logged into the same city and how often the sender logs in from the city.   </p></li>
+</ul>
+<p>Detecting the exploit stage requires looking at the domain reputation of the URL in the spearphising attack. The authors assume that the URL used in a spearphising attack will be relatively uncommon. Therefore, they use the NIDS logs to look for cases where the URL is not frequently visited by employees and the difference between the first recorded visit to the URL and when the email containing the URL arrived. </p>
+
+<h3>Detection Architecture</h3>
+<p>Using the features described earlier, the authors develop a detection mechanism that allows them to detect spearphising attacks in real time. The most important part of the detection mechanism is the algorithm they used for scoring each event and comparing features, called Directed Anomaly Scoring (DAS). </p>
+<center><img src="img/DAS.png"><br>Figure 3: Directed anomaly scoring example [1]</center>
+<p>When an event arrives, DAS ranks the event by comparing how suspicious it is relative to previous events. The event is represented by its feature vector which contains 2 domain reputations and 2 sender reputation features. These features correspond to the lure and exploit stages as described in the previous section. The event is scored for each of the 3 types of impersonation model since each impersonation model looks at different features. The event receives an anomaly score based on how many events it is more suspicious than. An event E is only as suspicious as another event E’ if all of its features are more suspicious than the features of event E’. DAS works well because the attack model for spearphising is so specific and it’s important to minimize the number of false positives. For example, even if the sender name for an event is extremely uncommon, the email will not be flagged if it contains a common URL. Figure 3 shows how DAS works scoring an event based on how suspicious it is compared to other events. As we can see, even though Event 1 has a “suspicious” score in one of its features, DAS only categorizes it as more suspicious than Event A because it is benign in the other feature. </p> 
+
+DAS is used as the scoring mechanism in the overall detection architecture presented in Figure 4. There are three parts to the detection process: 
+<ul>
+<li>Feature extraction: This is where the feature vectors are generated for each event. Each event will have 3 feature vectors corresponding to the different scores for each of the three impersonation models. </li>
+<li>Nightly anomaly scoring: The purpose of this stage is to allow real-time comparison based on the past months’ worth of data. This way, events are evaluated for how suspicious they are to a larger timeline. Each night the detection system collects all the events from the past month and selects 30 x alert budget of the most suspicious events to develop a comparison set. The comparison set is used by the detection system for realtime generation.</li>
+<li>Realtime alert generation: When an email with a URL arrives, the detection system computes it’s feature vector and evaluates it in respect to the comparison set. If the event is more suspicious than any of the events in the comparison set, an alert is generated. </li>
+</ul>
+
+<center><img width="1000" src="img/arch.png"><br>Figure 4: Overview of the detection mechanism presented in the paper that generates realtime alerts[1]</center>
+
+<h3>Evaluation</h3>
+<p>The authors evaluated how their detection method performed on the dataset obtained from LBNL. This datset contained over 370 million emails. They evaluate their method based on performance (true positives) and time burden (false positives). Their goal is to detect all spearphising attacks in the dataset while maintaining a small number of alerts per day. They designate an alert budget of 10 alerts per day: 4 alerts for a name spoofing attack, 4 alerts for a previously unseen attack and 2 alerts for a lateral attacker (which they expect to occur less often). They establish 19 spearphising attacks within the dataset based on the incident database of the LBNL security team.</p> 
+<p> With a median of 7 alerts per day, their detection system successfully identified 17/19 of the attacks. This meets the goals originally set by the authors. Although their system missed 2 attacks, their detection method is a vast improvement for spearphising detection. They compared their detection model to several other machine learning models commonly used for anomaly detection. They found that other algorithms could find at most 4/19 of the spearphising attacks with a daily alert budget of 10 alerts. To achieve detection of 17/19 attacks, the other models needed an increased alert budget of more than 91-2,455 alerts per day. Maintaining a low alert budget is important because a security analyst is manually inspecting each alert. </p>
+
+<h3>Discussion and Thoughts</h3>
+<p>I really enjoyed this paper because it combined both machine learning/data analysis with security knowledge to develop a detection mechanism for an attack that was previously very difficult to intercept. The authors did a very good job of explaining their entire detection mechanism and how each part worked. Their idea was both simple and effective and could be applied easily in real world settings. As a security professional who has worked in security operations centers before, I appreciate that they took into account a low alert budget and real world constraints. Spearphising detection is so difficult because of the lack of data available. It would be interesting to see how this approach applies to other enterprise settings because of how specific the features are. For example, I work for a organization that has employees telecommuting from all over the United States.  I imagine it would be hard to establish features for a lateral attacker because the location for login varies so greatly.  </p>
+<br>
+Discussion Questions
+<ul>
+<li> What are other security problems that would be a good fit with DAS? What sort of characteristics of a problem indicates that it would be better solved with DAS than other machine learning algorithms commonly used in anomaly detection? </li>
+
+<li> Authors make it seem really easy to pick which features to look at, how much trial and error should we expect if we are using DAS? How much domain knowledge is needed? </li>
+
+<li>What are some evasion strategies? How could we prevent poisoning? How to make DAS more robust?
+</li>
+
+</ul> 
+<h3>Citations</h3>
+[1] “Detecting Credential Spearphishing Attacks
+in Enterprise Settings”. G. Ho, A. Sharma, M. JAved, V. Paxson and D. Wagner. 2017 USENIX Security Symposium. https://www.usenix.org/system/files/conference/usenixsecurity17/sec17-ho.pdf
+<br>
+[2] “What Is “Spear Phishing”, and How Does It Take Down Big Corporations?”. How-To-Geek. https://www.howtogeek.com/142635/htg-explains-what-spear-phishing-attacks-are-and-why-theyre-taking-down-big-corporations/
+
+</span></div>
+
+
+<div dir="ltr" style="line-height: 1.38; margin-bottom: 0pt; margin-top: 0pt;">
+<span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;"> </span></div>
+<div>
+<span style="background-color: transparent; color: black; font-family: Arial; font-size: 11pt; font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;"><br></span></div>
+<div style="clear: both;"></div>
+</div>
+
+
+
+
+
+
+
+  </div>
+</div>
+<!-- End page content -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- W3.CSS Container -->
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px">
+<p class="w3-right"> CS/ECE 5584: Network Security, Fall 2017, <a href="http://ningzhang.info" target="_blank" class="w3-hover-opacity">Ning Zhang</a>
+</p></div>
+
+
+
+</body>
+
+</html>
