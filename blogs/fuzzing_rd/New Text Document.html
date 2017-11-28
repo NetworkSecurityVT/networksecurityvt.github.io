@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+<title>CS/ECE 5584: Network Security, Fall 2017</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #990000;
+    color: white;
+}
+
+.tabstyle { display: inline-block; width: 150px; }
+</style>
+
+<body>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-black w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>Network<br>Security</b></h3>
+  </div>
+  <div class="w3-bar-block">
+    <a href="../../index.html#Announcements"   onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Announcements</a> 
+    <a href="../../index.html#Syllabus"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Syllabus</a> 
+    <a href="../../index.html#Schedule"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Schedule</a> 
+    <a href="../../index.html#Projects"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Projects</a> 
+    <a href="../../index.html#Readings"        onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Readings</a>
+    <a href="../index.html"                 onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Blogs</a>  
+    <a href="../../index.html#Ethics"          onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Ethics</a> 
+  </div>
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-black w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-black w3-margin-right" onclick="w3_open()">?</a>
+  <span>Network Security</span>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+  <!-- Header -->
+  <div class="w3-container" style="margin-top:80px" id="showcase">
+    <h1 class="w3-xxxlarge"><b>Journey of emulating embedded hardware with QEMU</b>  </h1>
+  </div>
+  <div class="w3-container" id="Ethics" style="margin-top:75px">
+    <p>In this blog, I log my initial effort to try out emulating embedded hardware with QEMU.<br>
+      <br>
+    </p>
+    <h4><strong>Background:</strong></h4>
+    <br>
+    QEMU can emulate the execution of different architecture and platform. It is a machine emulator. It use dynamic translation of virtual machine code to host code. It has its own intermediate language using its tiny code generator (TCG). In our case, we need to modify the following modules. The major C files we would need to modify are /vl.c (defines start of execution main(), and sets up a virtual machine environment given specs such as ram size, devices, number of CPUs etc), /cpu.c /exec-all.c /exec.c /cpu-exec.c (following main execution). All the virtual hardwares are under /hw/. Qemu emulates a number of hardware. (we need to add or find peripherals in this part) Frontend of TCG is for different CPU architecture, we would not modify front end. Backend of TCG is for host system, we would not modify backend either. 
+    <br><br>
+    SensorTag is an IoT sensor provided by TI. It is composed of two cpu, ARM cortex-M0 and cortex-M3. M3 is for application and M0 for wireless communication physical layer. It also has five sensors. SensorTag is provided with rich software development support. It has an IDE called Code Composer Studio which compile the firmware for M3. Although firmware for M0 is not configurable by development tools provided by Ti, we may dump its flash and memory through communicating to it with device driver on M3. But in this work, we will focus on application processor first. Or if we find an easy way to extract baseband firmware, we will do that instead. Besides the Code Composer Studio, there also exist a flash writer provided by TI. All of these tools communicate to the board through cJTAG. It would be nice if we can port this hardware architecture to QEMU, but in this blog, we will focus on working on an already ported architecture.
+    <br><br>
+    By default, QEMU translates all guest architectures (14 in total) to it's own internal IR called TCG (Tiny Code Generator). This IR is not robust enough for our analyses, so we leverage the translation module from S2E to translate a step further to LLVM. In order to handle taint propagation through QEMU's helper functions, we use Clang to translate the relevant helper functions to the LLVM IR. This allows us to have complete and correct information flow models for code that executes within QEMU, without having to worry about architecture-specific details. But in this blog, we will not go to that deep.
+    <br><br>
+    <h4><strong>Log:</strong></h4>
+The first thing is to find a SoC ported into QEMU before. And I find three potential example.
+    <br><br>
+1. STM32 project.
+<br><br>
+
+http://beckus.github.io/qemu_stm32/<br>
+https://github.com/beckus/qemu_stm32<br>
+<br>
+2. MCU eclipse -- STM32 series<br><br>
+https://gnu-mcu-eclipse.github.io/qemu/<br>
+https://github.com/gnu-mcu-eclipse/qemu<br>
+https://gnu-mcu-eclipse.github.io/qemu/<br>
+Maple – LeafLab Arduino-style STM32 microcontroller board<br>
+NUCLEO-F103RB – ST Nucleo Development Board for STM32 F1 series<br>
+NetduinoGo – Netduino GoBus Development Board with STM32F4<br>
+NetduinoPlus2 – Netduino Development Board with STM32F4<br>
+STM32-E407 – Olimex Development Board for STM32F407ZGT6<br>
+STM32-H103 – Olimex Header Board for STM32F103RBT6<br>
+STM32-P103 – Olimex Prototype Board for STM32F103RBT6<br>
+STM32-P107 – Olimex Prototype Board for STM32F107VCT6<br>
+STM32F4-Discovery – ST Discovery kit for STM32F407/417 lines<br>
+STM32F429I-Discovery – ST Discovery kit for STM32F429/439 lines<br>
+STM32F103RB<br>
+STM32F107VC<br>
+STM32F405RG<br>
+STM32F407VG<br>
+STM32F407ZG<br>
+STM32F429ZI<br>
+STM32L152RE<br>
+<br>
+3. QEMU mainstream
+<br><br>
+https://github.com/qemu/qemu/blob/master/hw/arm/stellaris.c<br>
+https://github.com/qemu/qemu/blob/master/hw/arm/stm32f205_soc.c<br>
+<br><br>
+TI Stellaris<br>
+STM32F205<br>
+<br><br>
+Then we will set up the environment for developing. And we will compare the advantages and disadvantages in each setup. We will first set up the second solution which is eclipse MCU and see how it works.
+<br><br>
+After following the tutorial on their website, we set up a eclipse environment for debugging STM32 program on Qemu. It port the mentioned architecure before into Qemu and use the gdbserver provided by Qemu to debug the internal loaded program. Eclipse is attaching a arm-gdb to the port opened by Qemu.
+<br><br>
+<figure>
+  <img src="http://4.bp.blogspot.com/-DlOlSjM7IMo/WhOhH4LvZnI/AAAAAAAAA5Q/OU2wItghz3ItcBvKGrRlv3_Ne-lvPG7EQCK4BGAYYCw/s1600/%257EE7Q2%252854O%2524%2540%2524BGWCL2CMVP9.png" alt="The Pulpit Rock" width="1400" height="800">
+</figure>
+<br>
+
+The advantage of this way is that we can debug our program running on a hardware SoC by leaving the emulation job to Qemu.<br><br>
+
+The disadvantage of this way is that we can not directly debug Qemu while the emulation is running.
+<br><br>
+However, we can achieve our goal of debug the Qemu directly while executing the emulation. First, after a little hack of the makefile from the original author, we managed to build the modified Qemu with debugging symbol embedded. So we set up a new Eclipse project and import the make system of the Qemu source. Then we debug the Qemu binary with the source. Then we also open a gdbserver on the Qemu and we create another project and import the source for the embedded application. And we attach the remote gdb debugger to the running Qemu.
+<br><br>
+But in our case, we want to know the internals of how Qemu start up code, and we want to know how real firmware binary eactly work with Qemu. So the blink.elf is not a firmware binary dump. It is the source of firmware binary dump. With this framework, it is designed for us to evaluate our userland application but not full system emuolation.
+<br><br>
+So we go to the second way. We set up the environment for STM32 project. Since the main stream is similar to this setup, we will only discuss about this setup. First, we compile the source for the STM32 version of Qemu. Then we setup eclipse for debugging it. We import according to make file and set up the gdb debugger. The following figure shows the setup. (In this setup we use the Qemu to emulate the execution of a firmware binary which blink led).
+<br><br>
+<figure>
+  <img src="http://1.bp.blogspot.com/-iQ6_XikWTUU/WhOq_M-321I/AAAAAAAAA5o/9YpoBBBm-qgJe0lbMsqqhHMEu2f73jQwACK4BGAYYCw/s1600/Z1R111%2540%2529%255D2%255BYI%257D%2560DR8AS%2529%257D9.png" alt="The Pulpit Rock" width="1400" height="800">
+</figure>
+<br>
+After we are able to debug the qemu source code. We make it open a gdbserver port. And in this case we can see the execution of binary image inside it. The starting address of the binary is 0x5680.<br>
+<br><br>
+<figure>
+  <img src="http://1.bp.blogspot.com/-RAa_LOaRn-0/WhOqpFYfXtI/AAAAAAAAA5g/IsAbl9ELRF07bUZulMaSqRuZeylFGdoCgCK4BGAYYCw/s1600/9C%255DV%2525OH%255D%25604CW%2528C%257E2J%2524FWG23.png" alt="The Pulpit Rock" width="1400" height="800">
+</figure>
+<br>
+The partial disassembled code is listed as following:
+<br><br>
+<pre>
+00005680 <Reset_Handler>:
+ .weak Reset_Handler
+ .type Reset_Handler, %function
+Reset_Handler: 
+
+/* Copy the data segment initializers from flash to SRAM */
+  movs r1, #0
+    5680: 2100       movs r1, #0
+  b LoopCopyDataInit
+    5682: e003       b.n 568c <LoopCopyDataInit>
+
+00005684 <CopyDataInit>:
+
+CopyDataInit:
+ ldr r3, =_sidata
+    5684: 4b0a       ldr r3, [pc, #40] ; (56b0 <LoopFillZerobss+0x10>)
+ ldr r3, [r3, r1]
+    5686: 585b       ldr r3, [r3, r1]
+ str r3, [r0, r1]
+    5688: 5043       str r3, [r0, r1]
+ adds r1, r1, #4
+    568a: 3104       adds r1, #4
+
+0000568c <LoopCopyDataInit>:
+  
+LoopCopyDataInit:
+ ldr r0, =_sdata
+    568c: 4809       ldr r0, [pc, #36] ; (56b4 <LoopFillZerobss+0x14>)
+ ldr r3, =_edata
+    568e: 4b0a       ldr r3, [pc, #40] ; (56b8 <LoopFillZerobss+0x18>)
+ adds r2, r0, r1
+    5690: 1842       adds r2, r0, r1
+ cmp r2, r3
+    5692: 429a       cmp r2, r3
+ bcc CopyDataInit
+    5694: d3f6       bcc.n 5684 <CopyDataInit>
+ ldr r2, =_sbss
+    5696: 4a09       ldr r2, [pc, #36] ; (56bc <LoopFillZerobss+0x1c>)
+ b LoopFillZerobss
+    5698: e002       b.n 56a0 <LoopFillZerobss>
+    </pre>
+
+
+We can see from the firmware binary that the code first go through reset handler and will copy the init data to places.
+<br>
+
+
+Then it goes to system init:<br>
+<pre>
+
+0000038c <SystemInit>:
+  * @note   This function should be used only after reset.
+  * @param  None
+  * @retval None
+  */
+void SystemInit (void)
+{
+     38c: b580       push {r7, lr}
+     38e: af00       add r7, sp, #0
+  /* Reset the RCC clock configuration to the default reset state(for debug purpose) */
+  /* Set HSION bit */
+  RCC->CR |= (uint32_t)0x00000001;
+     390: f44f 5380  mov.w r3, #4096 ; 0x1000
+     394: f2c4 0302  movt r3, #16386 ; 0x4002
+     398: f44f 5280  mov.w r2, #4096 ; 0x1000
+     39c: f2c4 0202  movt r2, #16386 ; 0x4002
+     3a0: 6812       ldr r2, [r2, #0]
+     3a2: f042 0201  orr.w r2, r2, #1
+     3a6: 601a       str r2, [r3, #0]
+
+  /* Reset SW, HPRE, PPRE1, PPRE2, ADCPRE and MCO bits */
+#ifndef STM32F10X_CL
+  RCC->CFGR &= (uint32_t)0xF8FF0000;
+     3a8: f44f 5280  mov.w r2, #4096 ; 0x1000
+     3ac: f2c4 0202  movt r2, #16386 ; 0x4002
+     3b0: f44f 5380  mov.w r3, #4096 ; 0x1000
+     3b4: f2c4 0302  movt r3, #16386 ; 0x4002
+     3b8: 6859       ldr r1, [r3, #4]
+     3ba: 2300       movs r3, #0
+     3bc: f6cf 03ff  movt r3, #63743 ; 0xf8ff
+     3c0: 400b       ands r3, r1
+     3c2: 6053       str r3, [r2, #4]
+#else
+  RCC->CFGR &= (uint32_t)0xF0FF0000;
+#endif /* STM32F10X_CL */  
+
+  /* Reset HSEON, CSSON and PLLON bits */
+  RCC->CR &= (uint32_t)0xFEF6FFFF;
+     3c4: f44f 5380  mov.w r3, #4096 ; 0x1000
+     3c8: f2c4 0302  movt r3, #16386 ; 0x4002
+     3cc: f44f 5280  mov.w r2, #4096 ; 0x1000
+     3d0: f2c4 0202  movt r2, #16386 ; 0x4002
+     3d4: 6812       ldr r2, [r2, #0]
+     3d6: f022 7284  bic.w r2, r2, #17301504 ; 0x1080000
+     3da: f422 3280  bic.w r2, r2, #65536 ; 0x10000
+     3de: 601a       str r2, [r3, #0]
+
+  /* Reset HSEBYP bit */
+  RCC->CR &= (uint32_t)0xFFFBFFFF;
+     3e0: f44f 5380  mov.w r3, #4096 ; 0x1000
+     3e4: f2c4 0302  movt r3, #16386 ; 0x4002
+     3e8: f44f 5280  mov.w r2, #4096 ; 0x1000
+     3ec: f2c4 0202  movt r2, #16386 ; 0x4002
+     3f0: 6812       ldr r2, [r2, #0]
+     3f2: f422 2280  bic.w r2, r2, #262144 ; 0x40000
+     3f6: 601a       str r2, [r3, #0]
+
+  /* Reset PLLSRC, PLLXTPRE, PLLMUL and USBPRE/OTGFSPRE bits */
+  RCC->CFGR &= (uint32_t)0xFF80FFFF;
+     3f8: f44f 5380  mov.w r3, #4096 ; 0x1000
+     3fc: f2c4 0302  movt r3, #16386 ; 0x4002
+     400: f44f 5280  mov.w r2, #4096 ; 0x1000
+     404: f2c4 0202  movt r2, #16386 ; 0x4002
+     408: 6852       ldr r2, [r2, #4]
+     40a: f422 02fe  bic.w r2, r2, #8323072 ; 0x7f0000
+     40e: 605a       str r2, [r3, #4]
+
+  /* Reset CFGR2 register */
+  RCC->CFGR2 = 0x00000000;    
+#else
+  /* Disable all interrupts and clear pending bits  */
+  RCC->CIR = 0x009F0000;
+     410: f44f 5380  mov.w r3, #4096 ; 0x1000
+     414: f2c4 0302  movt r3, #16386 ; 0x4002
+     418: f44f 021f  mov.w r2, #10420224 ; 0x9f0000
+     41c: 609a       str r2, [r3, #8]
+  #endif /* DATA_IN_ExtSRAM */
+#endif
+
+  /* Configure the System clock frequency, HCLK, PCLK2 and PCLK1 prescalers */
+  /* Configure the Flash Latency cycles and enable prefetch buffer */
+  SetSysClock();
+     41e: f000 f8a7  bl 570 <SetSysClock>
+
+#ifdef VECT_TAB_SRAM
+  SCB->VTOR = SRAM_BASE | VECT_TAB_OFFSET; /* Vector Table Relocation in Internal SRAM. */
+#else
+  SCB->VTOR = FLASH_BASE | VECT_TAB_OFFSET; /* Vector Table Relocation in Internal FLASH. */
+     422: f44f 436d  mov.w r3, #60672 ; 0xed00
+     426: f2ce 0300  movt r3, #57344 ; 0xe000
+     42a: f04f 6200  mov.w r2, #134217728 ; 0x8000000
+     42e: 609a       str r2, [r3, #8]
+#endif
+}
+     430: bd80       pop {r7, pc}
+     432: bf00       nop
+
+After system init, it will go to the application entry point to do its fuction:
+
+#include "stm32f10x.h"
+#include "stm32_p103.h"
+
+void busyLoop(uint32_t delay )
+{
+  while(delay) delay--;
+}
+
+int main(void)
+{
+    init_led();
+
+    while(1) {
+       GPIOC->BRR = 0x00001000;
+       busyLoop(500000);
+       GPIOC->BSRR = 0x00001000;
+       busyLoop(500000);
+    }
+}
+
+Now we know what the firmware binary does, let's look at how Qemu emulate the full system.
+
+Qemu will execute as following:
+
+allocate memory for objects g_mem_set_vtable
+module_call_init() set memory for virtual peripheral devices
+add commandline options
+runstate_init() set memory for cpu
+Module_init_machine() initialize blank cpu states
+qemu_init_main_loop() initialize locks
+qemu_signal_init()
+qemu_mutex_init()
+cpu_exec_init_all() initialize dynamic translator for ARM target code to x86 host code
+qemu_init_cpu_loop()
+stm32_p103_init() initialize virtual peripheral devices and cpu
+sysbus_connect_irq()
+
+and the above finishes the initialization for stm32f4 SoC hardware emulation.
+
+And it will go into hybrid event driven and parralled emulation of embedded device. 
+</pre>  
+
+
+
+
+</div>
+
+<!-- W3.CSS Container -->
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px">
+<p class="w3-right"> CS/ECE 5584: Network Security, Fall 2017, <a href="http://ningzhang.info" target="_blank" class="w3-hover-opacity">Ning Zhang</a>
+</p></div>
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+</script>
+
+</body>
+</html>
